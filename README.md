@@ -22,3 +22,5 @@ Es el proyecto que voy a desarrollar en el curso.
  Si se cumple el objetivo de herencia con `alojamiento` y `alimentación`, siguiendo la premisa de sencillez y huyendo de una complicación innecesaria, no implementaría `cuidado veterinario`.
 
 ![Lur](./lurGrub.png "Lur en la playa")
+
+[Wiki](https://git.institutomilitar.com/joseluispuentes82/residenciaanimales-api/wikis) | [DIM Sandstorm](https://dim.institutomilitar.com/) | [Programa semanal](https://web.institutomilitar.com/semanal.html) |  [DIM Web](https://web.institutomilitar.com/) | [Recursos Online DIM](https://web.institutomilitar.com/recursos-online.html)
