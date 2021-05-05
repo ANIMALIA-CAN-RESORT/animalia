@@ -5,11 +5,9 @@
         http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
     version="1.0">
 
-    <mapped-superclass class="es.lanyu.commons.identificable.AbstractNombrable"
-        access="FIELD">
-        <attributes>
-            <basic name="nombre" optional="false" />
+    <mapped-superclass class="residenciaAnimales.AlojamientoImpl" access="FIELD">
+		<attributes>
+		    <basic name="idJaula" optional="false" />
         </attributes>
     </mapped-superclass>
-
 </entity-mappings>

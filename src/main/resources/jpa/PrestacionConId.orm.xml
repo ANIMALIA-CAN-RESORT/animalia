@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm 
+        http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+    version="1.0">
+
+    <entity class="es.puentes.repositorios.PrestacionConId" access="FIELD">
+        <table name="PRESTACIONES"/>
+	<inheritance strategy="SINGLE_TABLE"/>
+	<discriminator-column name="TIPO"/>
+	<discriminator-value>P</discriminator-value>
+		<attributes>
+			<many-to-one name="mascota" optional="false"><!-- fetch="LAZY">-->
+              <join-column name="ID_MASCOTA" referencedColumnName="ID"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+    <entity class="es.lanyu.eventos.repositorios.AlimentacionConId" access="FIELD">
+        <discriminator-value>AM</discriminator-value>
+    </entity>
+    <entity class="es.lanyu.eventos.repositorios.AlojamientoConId" access="FIELD">
+        <discriminator-value>AJ</discriminator-value>
+    </entity>
+</entity-mappings>

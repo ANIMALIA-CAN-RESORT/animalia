@@ -5,10 +5,13 @@
         http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
     version="1.0">
 
-    <mapped-superclass class="es.lanyu.commons.identificable.IdentificableString"
-        access="FIELD">
-        <attributes>
-            <id name="id" />
+    <mapped-superclass class="residenciaAnimales.PrestacionImpl" access="FIELD">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="IDENTITY"/>
+			</id>
+		    <basic name="fechaEntrada" optional="false" />
+		    <basic name="fechaSalida" optional="false" />
         </attributes>
     </mapped-superclass>
 </entity-mappings>

@@ -1,4 +1,4 @@
-package es.lanyu.usuarios.repositorios;
+package es.puentes.deLanchas;
 
 import java.util.List;
 

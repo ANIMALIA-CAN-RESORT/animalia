@@ -1,4 +1,4 @@
-package es.lanyu.usuarios.repositorios;
+package es.puentes.deLanchas;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
