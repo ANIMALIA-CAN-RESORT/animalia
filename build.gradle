@@ -20,7 +20,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
 	//implementation 'com.github.LanyuEStudio:datos-deportivos:v1.0.0'
-	implementation project(':residenciaAnimales_libreria')
+	implementation project(':residenciaAnimales-libreria')
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
