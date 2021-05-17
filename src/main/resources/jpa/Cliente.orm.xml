@@ -11,8 +11,9 @@
             <basic name="nombre" optional="false" />
             <basic name="apellido1" optional="false" />
             <basic name="apellido2" optional="true" />
-            <basic name="telefono" optional="false" />
+            <basic name="tfno" optional="false" />
             <basic name="email" optional="true" />
+            <one-to-many name="mascotas" target-entity="es.puentes.entidades.MascotaConId" mapped-by="cliente"/>
         </attributes>
     </mapped-superclass>
 </entity-mappings>

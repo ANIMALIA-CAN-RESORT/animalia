@@ -7,11 +7,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import es.puentes.entidades.ClienteConId;
+import es.puentes.entidades.MascotaConId;
 
-@RepositoryRestResource(path="clientes", collectionResourceRel="clientes", itemResourceRel="cliente")
-public interface ClienteDAO extends JpaRepository<ClienteConId, Long> {
+@RepositoryRestResource(path="mascotas", collectionResourceRel="mascotas", itemResourceRel="mascota")
+public interface MascotaDAO extends JpaRepository<MascotaConId, Long> {
 
 	@RestResource(path="nombre")
-	List<ClienteConId> findByNombreContaining(@Param("nombre") String txt);
+	List<MascotaConId> findByNombreContaining(@Param("nombre") String txt);
 }
