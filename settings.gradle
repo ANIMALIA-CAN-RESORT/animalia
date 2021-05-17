@@ -1,3 +1,0 @@
-rootProject.name = 'residenciaAnimales-api'
-
-includeFlat 'residenciaAnimales-libreria'
