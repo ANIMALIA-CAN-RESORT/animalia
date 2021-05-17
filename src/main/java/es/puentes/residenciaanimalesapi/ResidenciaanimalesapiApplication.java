@@ -8,10 +8,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 
+import es.puentes.rest.ConfiguracionRest;
+
 
 @SpringBootApplication
 @ImportResource({"classpath:config/jpa-config.xml"})
-@Import(ConfiguracionPorJava.class)
+@Import({ConfiguracionPorJava.class, ConfiguracionRest.class})
 public class ResidenciaanimalesapiApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(ResidenciaanimalesapiApplication.class);
@@ -19,5 +21,6 @@ public class ResidenciaanimalesapiApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context =
 				SpringApplication.run(ResidenciaanimalesapiApplication.class, args);
+		log.debug("Espero que funcione la api");
 	}
 }

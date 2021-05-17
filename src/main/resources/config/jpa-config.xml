@@ -7,13 +7,13 @@
                            http://www.springframework.org/schema/data/jpa
                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <jpa:repositories base-package="${es.puentes.repositorios-package}" />
+    <jpa:repositories base-package="${misRepositorios}" />
 
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- Decimos donde buscar entidades -->
-        <property name="packagesToScan" value="${es.puentes.entidades-package}" />
+        <property name="packagesToScan" value="${misEntidades}" />
         <!-- Decimos como se mapean de Java a BD y viceversa -->
         <property name="mappingResources">
             <list>
@@ -28,7 +28,7 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <!-- <prop key="hibernate.show_sql">true</prop> -->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
