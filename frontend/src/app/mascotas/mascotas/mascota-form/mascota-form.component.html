@@ -1,0 +1,70 @@
+<form #mascotaForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12">
+      <label>Nombre <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.nombre" placeholder="Nombre del Cliente" name="nombre"
+        required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
+        'is-valid': !nombre.invalid }"/>
+      <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors.required">
+            El Nombre de la Mascota es obligatorio
+        </div>
+        <div *ngIf="nombre.errors.minlength">
+          El Nombre de la Mascota debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Chip <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.chip" placeholder="Chip de la mascota" name="chip"
+        required minlength="9" maxlength="9" #chip="ngModel" [ngClass]="{ 'is-invalid': chip.invalid && (chip.dirty || chip.touched),
+        'is-valid': !chip.invalid }"/>
+      <div class="text-danger" *ngIf="chip.invalid && (chip.dirty || chip.touched)">
+        <div *ngIf="chip.errors.required">
+            El Chip de la Mascota es obligatorio
+        </div>
+        <div *ngIf="chip.errors.minlength || chip.errors.maxlength">
+          El Chip de la Mascota debe tener 9 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Raza</label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.raza" placeholder="Raza de la mascota" name="raza"
+        required/>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Talla</label>
+      <select name="talla">
+        <option value="s">S</option>
+        <option value="m" selected>M</option>
+        <option value="l">L</option>
+        <option value="xl">XL</option>
+      </select>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Propietario</label>
+        <select name="propietario" [ngModel]="mascota.propietario"  style="vertical-align: top;">
+         <!-- <option *ngFor="let mascota of cliente.mascotas" [ngValue]="mascota">{{cliente.mascotas}}</option> -->
+         <!--no se como poner esto...-->
+        </select>
+    </div>
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <div class="col-lg-5 col-md-12">
+      <button class="btn btn-primary" role="button"
+      (click)="crearMascota()"
+      *ngIf="!mascota.id; else elseBlock"
+        [disabled]="!mascotaForm.form.valid">
+        Crear Mascota
+      </button>
+      <ng-template #elseBlock>
+        <button class="btn btn-primary" role="button"
+        (click)="actualizar()"
+        [disabled]="!mascotaForm.form.valid">
+          Aceptar
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,25 @@
+/*--- FOOTER ---*/
+footer a.btn,
+footer a.btn:hover {
+  color: inherit;
+}
+
+footer a.btn-link {
+  font-size: 1.6rem;
+}
+
+.btn-link .fa-twitter:hover {
+  color: #009deb;
+}
+
+.btn-link .fa-gitlab:hover {
+  color: #e24329;
+}
+
+.btn-link .fa-whatsapp:hover {
+  color: #1ada4a;
+}
+
+.btn-link .fa-facebook:hover {
+  color: #2f1be2;
+}

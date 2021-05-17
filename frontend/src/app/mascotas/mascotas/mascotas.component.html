@@ -1,0 +1,18 @@
+<div class="row justify-content-end">
+  <button class="btn btn-rounded btn-warning">
+    <a class="nav-link" routerLink="/mascotas/formulario">Nueva Mascota</a>
+  </button>
+</div>
+<div class="row">
+  <div class="col-1 mx-2"><b>NOMBRE</b></div>
+  <div class="col-1 mx-2"><b>RAZA</b></div>
+  <div class="col-1 mx-2"><b>TALLA</b></div>
+</div>
+<hr class='w-100'>
+<div class="row " *ngFor='let mascota of mascotas'>
+    <app-mascota
+     [mascota]='mascota'
+     (mascotaEditar)='OnEditarMascota($event)'
+     (mascotaEliminar)='onEliminarMascota($event)'>
+    </app-mascota>
+</div>
