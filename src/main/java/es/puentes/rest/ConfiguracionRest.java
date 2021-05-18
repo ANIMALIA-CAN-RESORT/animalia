@@ -26,6 +26,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import es.puentes.entidades.MascotaConId;
+
 @Configuration
 public class ConfiguracionRest {
 
@@ -33,7 +35,7 @@ public class ConfiguracionRest {
 	RepresentationModelProcessor<RepositorySearchesResource> addSearchLinks(RepositoryRestConfiguration config) {
 		Map<Class<?>, Class<?>> controllersRegistrados = new HashMap<>();
 
-//		controllersRegistrados.put(Fusil.class, FusilController.class);
+		controllersRegistrados.put(MascotaConId.class, MascotaController.class);
 
 		return new RepresentationModelProcessor<RepositorySearchesResource>() {
 

@@ -11,6 +11,7 @@
             <basic name="nombre" optional="false" />
             <basic name="talla" optional="false" />
             <basic name="raza" optional="true" />
+            <one-to-many name="prestaciones" target-entity="es.puentes.entidades.PrestacionConId" mapped-by="mascota"/>
         </attributes>
     </mapped-superclass>
 </entity-mappings>

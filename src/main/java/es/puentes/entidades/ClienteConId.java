@@ -1,20 +1,23 @@
 package es.puentes.entidades;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import es.puentes.repositorios.ClienteListener;
 import es.puentes.residencia.Cliente;
 import es.puentes.residencia.Mascota;
 
+
 @Entity
+@EntityListeners(ClienteListener.class)
 @Table(name="CLIENTES")
 public class ClienteConId extends Cliente {
 

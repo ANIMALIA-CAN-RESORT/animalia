@@ -19,6 +19,7 @@
             <list>
               <value>jpa/Cliente.orm.xml</value> 
               <value>jpa/Mascota.orm.xml</value> 
+              <value>jpa/Prestacion.orm.xml</value> 
                 <!-- Se pueden poner varias entidades en un mismo archivo -->
             </list>
         </property>
