@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  appName: 'Angular Board DEV',
+  appName: 'Animalia DEV',
   production: false,
   unitsCulture: 'metric',
-  host: 'https://localhost:8099/api/'
+  host: 'https://localhost:8080/api/'
 };
 
 /*
