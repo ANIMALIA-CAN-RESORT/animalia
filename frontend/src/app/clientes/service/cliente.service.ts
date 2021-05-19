@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../models/cliente';
+import { ClienteImpl } from '../models/cliente-impl';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,27 @@ export class ClienteService {
 
   getClientes(): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 productos. sino saldria solo la primera pagina
+  }
+
+  extraerClientes(respuestaApi: any): Cliente[] {
+    const clientes: Cliente[] = [];
+    respuestaApi._embedded.clientes.forEach(c => {
+      clientes.push(this.mapearCliente(c));
+    })
+    return clientes;
+  }
+  mapearCliente(clienteApi: any): ClienteImpl {
+    const cliente: ClienteImpl = new ClienteImpl();
+    const url = clienteApi.url;
+    cliente.id = url.slice(url.lastIndexOf('/') + 1, url.length);//como el id de la api es un long no me complico y asi lo tengo string
+    cliente.nombre =clienteApi.nombre;
+    cliente.apellido1 =clienteApi.apellido1;
+    cliente.apellido2 =clienteApi.apellido2;
+    cliente.dni =clienteApi.dni;
+    cliente.telefono =clienteApi.tfno;
+    cliente.email =clienteApi.email;
+    cliente.mascotas =clienteApi.mascotas;
+    return cliente;
   }
 
   create(cliente: Cliente): Observable<any> {

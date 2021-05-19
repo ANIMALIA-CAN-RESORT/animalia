@@ -10,4 +10,7 @@ export class ClienteImpl implements Cliente {
   telefono: string;
   email: string;
   mascotas: Mascota[];
+
+  constructor() { }
+
 }
