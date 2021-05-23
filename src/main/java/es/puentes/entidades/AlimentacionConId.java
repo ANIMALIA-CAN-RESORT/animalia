@@ -27,9 +27,9 @@ import es.puentes.residencia.Mascota;
 @DiscriminatorValue("AM")
 public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique=true)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(unique=true)
 	private long id;
 	@Column(name="TIPO_COMIDA")
 	private String tipoComida;//será "NORMAL" o "PREMIUM
