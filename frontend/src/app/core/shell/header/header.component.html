@@ -7,8 +7,8 @@
         <a routerLink="/">
           <h2>CAN RESORT</h2>
         </a>
-        <span> <i class="fa fa-dot-circle-o mx-3" aria-hidden="true"></i></span>
-        <p>Residencia de animales</p>
+        <span> <fa-icon class="color-0" [icon]="faDotCircle"></fa-icon></span>
+        <p>&nbsp;Residencia de animales</p>
       </div>
       <!-- Menu de Navegación-->
       <nav class="col-md-12 col-lg-auto menu d-flex align-items-stretch flex-wrap flex-sm-nowrap">
@@ -17,29 +17,28 @@
           <div class="d-flex flex-column text-center">
             <!--Con Flex-Column hacemos que el  texto este arriba y el icono abajo-->
             <span>CLIENTES</span>
-            <i title="clientes" class="fa fa-user" aria-hidden="true"></i>
+            <fa-icon [icon]="faUser"></fa-icon>
           </div>
         </a>
         <a routerLink="mascotas" class="color-2 d-flex align-items-center">
           <div class="d-flex flex-column text-center">
             <!--Con Flex-Column hacemos que el  texto este arriba y el icono abajo-->
             <span>MASCOTAS</span>
-            <fa-icon [icon]="['fas', 'dog']"></fa-icon>
+            <fa-icon [icon]="faDog"></fa-icon>
           </div>
         </a>
         <a routerLink="suites" class="color-3 d-flex align-items-center">
           <div class="d-flex flex-column text-center">
             <!--Con Flex-Column hacemos que el  texto este arriba y el icono abajo-->
             <span>SUITES PERRUNAS</span>
-            <i title="suites" class="fa fa-bed" aria-hidden="true"></i>
+            <fa-icon [icon]="faBed"></fa-icon>
           </div>
         </a>
         <a routerLink="administracion" class="color-4 d-flex align-items-center">
           <div class="d-flex flex-column text-center">
             <!--Con Flex-Column hacemos que el  texto este arriba y el icono abajo-->
             <span>ADMINISTRACIÓN</span>
-            <fa-icon [icon]="['fas', 'users-cog']"></fa-icon>
-            <!--Iconos fontawesome-->
+            <fa-icon [icon]="faUsersCog"></fa-icon>
           </div>
         </a>
       </nav>

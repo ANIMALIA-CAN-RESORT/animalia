@@ -24,7 +24,11 @@ header .logo h2 {
   color:#ef1b2d
 }
 
-header .logo .fa-dot-circle-o {
+header .logo h2:hover {
+  color: #23f010;
+}
+
+header .logo .color-0 {
   color: #df0bcd;
 }
 
