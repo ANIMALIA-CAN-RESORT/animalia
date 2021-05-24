@@ -9,6 +9,7 @@
         <attributes>
             <basic name="fechaEntrada" optional="false" />
             <basic name="fechaSalida" optional="false" />
+            <basic name="pagada" optional="false" />
         </attributes>
     </mapped-superclass>
 </entity-mappings>

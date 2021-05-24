@@ -14,7 +14,7 @@ public interface PrestacionDAO extends JpaRepository<PrestacionConId, Long>, Pre
 //	@RestResource(path="entre-fechas")
 //	List<PrestacionConId> findByTemporalBetween(Instant comienzo, Instant fin);
 
-	@RestResource(path="entre-fechas")
+	@RestResource(path="por-id")
 	List<PrestacionConId> findAllById(Long id);
 	
 }

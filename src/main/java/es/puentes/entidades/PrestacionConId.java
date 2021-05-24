@@ -28,7 +28,6 @@ public abstract class PrestacionConId extends PrestacionImpl {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private long id;
-	private boolean pagada;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MASCOTA")
@@ -44,14 +43,6 @@ public abstract class PrestacionConId extends PrestacionImpl {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-	
-	public boolean isPagada() {
-		return pagada;
-	}
-	
-	public void setPagada(boolean pagada) {
-		this.pagada = pagada;
 	}
 	
 	public MascotaConId getMascota() {

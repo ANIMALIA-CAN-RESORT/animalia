@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.puentes.entidades.PrestacionConId;
 import es.puentes.repositorios.PrestacionDAO;
+import es.puentes.residencia.Prestacion;
 
 @RepositoryRestController
-@RequestMapping(path = "/prestaciones/search")
+@RequestMapping(path = "/prestaciones")
 public class PrestacionController {
 
 	private PrestacionDAO prestacionDAO;
