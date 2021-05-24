@@ -17,4 +17,9 @@ public interface PrestacionDAO extends JpaRepository<PrestacionConId, Long>, Pre
 	@RestResource(path="por-id")
 	List<PrestacionConId> findAllById(Long id);
 	
+    @RestResource(exported=false)
+    void deleteById(Long id);
+
+    @RestResource(exported=false)
+    void delete(PrestacionConId entity);
 }
