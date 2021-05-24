@@ -5,8 +5,7 @@
 export const environment = {
   appName: 'Animalia DEV',
   production: false,
-  unitsCulture: 'metric',
-  host: 'https://localhost:8082/api/'
+  host: 'http://localhost:8080/api/'
 };
 
 /*

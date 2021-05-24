@@ -6,7 +6,7 @@ export interface Cliente {
   apellido1: string;
   apellido2: string;
   dni: string;
-  telefono: string;
+  tfno: string;
   email: string;
-  mascotas: Mascota[];
+  mascotas: any[];
 }

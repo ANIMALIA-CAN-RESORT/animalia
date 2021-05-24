@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Mascota } from 'src/app/mascotas/models/mascota';
+import { MascotaImpl } from 'src/app/mascotas/models/mascota-impl';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../models/cliente';
 import { ClienteImpl } from '../models/cliente-impl';
@@ -30,18 +32,18 @@ export class ClienteService {
   }
   mapearCliente(clienteApi: any): ClienteImpl {
     const cliente: ClienteImpl = new ClienteImpl();
-    const url = clienteApi.url;
+    const url = clienteApi._links.self.href;
     cliente.id = url.slice(url.lastIndexOf('/') + 1, url.length);//como el id de la api es un long no me complico y asi lo tengo string
     cliente.nombre =clienteApi.nombre;
     cliente.apellido1 =clienteApi.apellido1;
     cliente.apellido2 =clienteApi.apellido2;
     cliente.dni =clienteApi.dni;
-    cliente.telefono =clienteApi.tfno;
+    cliente.tfno =clienteApi.tfno;
     cliente.email =clienteApi.email;
-    cliente.mascotas =clienteApi.mascotas;
+   
     return cliente;
   }
-
+  
   create(cliente: Cliente): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, cliente).pipe(
       catchError((e) => {

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from '../models/cliente';
+import { ClienteImpl } from '../models/cliente-impl';
 import { ClienteService } from '../service/cliente.service';
 
 @Component({
@@ -11,10 +12,11 @@ import { ClienteService } from '../service/cliente.service';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [];
+  @Input() clienteEditar: ClienteImpl;
 
   constructor(
     private clienteService: ClienteService,
-    private router: Router) { }//para poder mandar a pagina de clientes/propietarios despues de editar
+    private router: Router) { }//para poder mandar a pagina de clientes despues de editar
 
   ngOnInit(): void {
       this.clienteService.getClientes().subscribe(clientes => {

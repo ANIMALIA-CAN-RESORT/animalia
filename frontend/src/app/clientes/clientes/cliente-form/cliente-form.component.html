@@ -55,7 +55,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <label>Teléfono <sup class="text-danger">*</sup></label>
-      <input type="tel" class="form-control" [(ngModel)]="cliente.telefono" placeholder="Teléfono del Cliente" name="telefono"
+      <input type="tel" class="form-control" [(ngModel)]="cliente.tfno" placeholder="Teléfono del Cliente" name="telefono"
         required minlength="9" maxlength="9" #telefono="ngModel" [ngClass]="{ 'is-invalid': telefono.invalid && (telefono.dirty || telefono.touched),
         'is-valid': !telefono.invalid }"/>
       <div class="text-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
@@ -80,14 +80,7 @@
     </div>
 
 
-    <div class="col-lg-4 col-md-12">
-      <label>Mascotas</label>
-        <select name="mascotas[]" [ngModel]="cliente.mascotas" multiple style="vertical-align: top;">
-         <option *ngFor="let mascota of cliente.mascotas" [ngValue]="mascota">{{cliente.mascotas}}</option>
-         <!--no se como poner esto...-->
 
-        </select>
-    </div>
   </div>
   <div class="form-row justify-content-between pt-5">
     <div class="col-lg-5 col-md-12">
