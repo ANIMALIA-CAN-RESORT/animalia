@@ -1,1 +1,46 @@
-<p>home works!</p>
+<h2>
+  <b>EXAMEN DE ANGULAR</b>
+  <img width="40" style="vertical-align: -0.3em" src="./assets/logo_polla_con_alas.png"/>
+</h2>
+
+<form>
+  <fieldset>
+    <legend>Comandante D. José Luis Puentes Álamos &nbsp;<fa-icon [icon]="faDog"></fa-icon>
+    </legend>
+    <section>
+      <label for="nombre">Nombre &nbsp;</label>
+      <input name="nombre" type="text" value="Jose Luis Puentes Álamos" readonly size="25"/>
+    </section>
+    <section>
+      <label for="estudio">Ha estudiado &nbsp;</label>
+      <input name="estudio" value="s" type="radio" checked/>
+      <i>Si </i>&nbsp;
+      <input name="estudio" value="n" type="radio" disabled/>
+      <i>No</i>
+    </section>
+    <section>
+      <label for="aprobar">Merece aprobar &nbsp;</label>
+      <input name="aprobar" value="s" type="radio" checked/>
+      <i>Si </i>&nbsp;
+      <input name="aprobar" value="n" type="radio" disabled/>
+      <i>No</i>
+    </section>
+    <section>
+      <label for="deseo"><b>NOTA DESEADA &nbsp;</b></label>
+      <select name="deseo">
+        <option disabled>0</option>
+        <option disabled>1</option>
+        <option disabled>2</option>
+        <option disabled>3</option>
+        <option disabled>4</option>
+        <option disabled>5</option>
+        <option disabled>6</option>
+        <option disabled>7</option>
+        <option disabled>8</option>
+        <option disabled>9</option>
+        <option selected>10</option>
+      </select>
+    </section>
+  </fieldset>
+  <input value="Aceptar" type="submit" class="btn btn-success"/>
+</form>
