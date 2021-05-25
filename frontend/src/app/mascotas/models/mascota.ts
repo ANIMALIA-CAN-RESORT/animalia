@@ -6,5 +6,6 @@ export interface Mascota {
   chip: string;
   talla: string;
   raza: string;
-  propietario: ClienteImpl;
+  cliente: ClienteImpl;
+  prestaciones: any[];
 }

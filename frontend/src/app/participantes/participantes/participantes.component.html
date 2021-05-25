@@ -1,0 +1,18 @@
+<div class="row justify-content-end">
+  <button class="btn btn-rounded btn-dark text-white" type="button">
+    <a class="nav-link" routerLink="/participantes/formulario">Nuevo Participante</a>
+  </button>
+</div>
+
+<div class="container">
+  <div class="row" *ngFor='let participante of participantes'>
+    <app-participante
+     [participante]='participante'
+     (participanteEditar)='OnEditarParticipante($event)'
+     (participanteEliminar)='onEliminarParticipante($event)'>
+    </app-participante>
+  </div>
+</div>
+
+
+

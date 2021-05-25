@@ -1,0 +1,42 @@
+<form #participanteForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12">
+      <label>Nombre <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="participante.nombre" placeholder="Nombre Participante" name="parti"
+        required minlength="3" #parti="ngModel" [ngClass]="{ 'is-invalid': parti.invalid && (parti.dirty || parti.touched),
+        'is-valid': !parti.invalid }"/>
+      <div class="text-danger" *ngIf="parti.invalid && (parti.dirty || parti.touched)">
+        <div *ngIf="parti.errors.required">
+            El Nombre del Participante es obligatorio
+        </div>
+        <div *ngIf="parti.errors.minlength">
+            El Nombre del Participante debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label for="Identificador">Identificador <sup class="text-danger"></sup></label>
+      <input type="text" class="form-control" [(ngModel)]="participante.id" placeholder="Acronimo(PAIS)" name="identificador"
+        minlength="3" #identificador="ngModel"
+        [ngClass]="{'is-invalid': identificador.invalid && (identificador.dirty || identificador.touched),
+          'is-valid': identificador.invalid }"/>
+    </div>
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <div class="col-lg-5 col-md-12">
+      <button class="btn btn-primary" role="button"
+      (click)="create()"
+      *ngIf="cambiarBoton; else elseBlock"
+        [disabled]="!participanteForm.form.valid">
+        Crear Participante
+      </button>
+      <ng-template #elseBlock>
+        <button class="btn btn-primary" role="button"
+        (click)="actualizar()"
+        [disabled]="!participanteForm.form.valid">
+          Editar
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</form>

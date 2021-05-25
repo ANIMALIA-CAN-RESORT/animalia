@@ -7,6 +7,6 @@ export class MascotaImpl implements Mascota {
   chip: string;
   talla: string;
   raza: string;
-  propietario: ClienteImpl;
-
+  cliente: ClienteImpl;
+  prestaciones: any[];
 }
