@@ -11,7 +11,6 @@ import { ClienteService } from '../../service/cliente.service';
 export class ClienteFormComponent implements OnInit {
 
   cliente: ClienteImpl = new ClienteImpl();
-  @Input() clienteEditar: ClienteImpl;
 
   constructor(
     private clienteService: ClienteService,
@@ -21,6 +20,17 @@ export class ClienteFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarCliente();
+  }
+
+  cargarCliente(): void {
+    this.activateRoute.params.subscribe((params) => {
+      const id: string = params.id;
+      if (id) {
+        this.clienteService
+          .getCliente(id)
+          .subscribe((cliente) => (this.cliente = cliente));
+      }
+    });
   }
 
   crearCliente(): void {
@@ -38,16 +48,7 @@ export class ClienteFormComponent implements OnInit {
     });
   }
 
-  cargarCliente(): void {
-    this.activateRoute.params.subscribe((params) => {
-      const id: string = params.id;
-      if (id) {
-        this.clienteService
-          .getCliente(id)
-          .subscribe((cliente) => (this.cliente = cliente));
-      }
-    });
-  }
+
 
 
 }

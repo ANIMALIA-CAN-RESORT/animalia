@@ -12,27 +12,13 @@ import { ClienteService } from '../service/cliente.service';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [];
-  @Input() clienteEditar: ClienteImpl;
 
-  constructor(
-    private clienteService: ClienteService,
-    private router: Router) { }//para poder mandar a pagina de clientes despues de editar
+  constructor(private clienteService: ClienteService) { }//para poder mandar a pagina de clientes despues de editar
 
   ngOnInit(): void {
       this.clienteService.getClientes().subscribe(clientes => {
             this.clientes = this.clienteService.extraerClientes(clientes);
           });
-  }
-
-  onEliminarCliente(cliente: Cliente): void {
-    this.clienteService.delete(cliente.id).subscribe(response => {
-      console.log(response);
-    });
-  }
-
-  OnEditarCliente(cliente: Cliente): void {
-    let url = `clientes/formulario/${cliente.id}`;
-    this.router.navigate([url]);
   }
 }
 

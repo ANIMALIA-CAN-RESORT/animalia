@@ -7,14 +7,8 @@
   <div class="col-1 mx-2"><b>NOMBRE</b></div>
   <div class="col-1 mx-2"><b>APELLIDO 1</b></div>
   <div class="col-1 mx-2"><b>APELLIDO 2</b></div>
-  <div class="col-1 mx-2"><b>TFNO</b></div>
-  <div class="col-1 mx-2"><b>EMAIL</b></div>
 </div>
 <hr class='w-100'>
 <div class="row " *ngFor='let cliente of clientes'>
-    <app-cliente
-     [cliente]='cliente'
-     (clienteEditar)='OnEditarCliente($event)'
-     (clienteEliminar)='onEliminarCliente($event)'>
-    </app-cliente>
+    <app-cliente [cliente]='cliente'></app-cliente>
 </div>

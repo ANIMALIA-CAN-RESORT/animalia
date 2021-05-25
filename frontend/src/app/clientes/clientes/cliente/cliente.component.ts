@@ -11,23 +11,15 @@ import { ClienteService } from '../../service/cliente.service';
 export class ClienteComponent implements OnInit {
 
   @Input() cliente: ClienteImpl;
-  @Output() clienteEliminar = new EventEmitter<ClienteImpl>();
-  @Output() clienteEditar = new EventEmitter<ClienteImpl>();
 
-  constructor(
-    private clienteService: ClienteService,
-    private router: Router) { }
+  constructor(private clienteService: ClienteService) { }
 
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  eliminar(cliente: ClienteImpl): void {
-    this.clienteEliminar.emit(cliente);
-  }
+  delete(cliente: ClienteImpl): void {
 
-  editar(cliente: ClienteImpl): void {
-    this.clienteEditar.emit(cliente);
+    this.clienteService.delete(cliente.id).subscribe(response => console.log(cliente));
   }
 
 }
