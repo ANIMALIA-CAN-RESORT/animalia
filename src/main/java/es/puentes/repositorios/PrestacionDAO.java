@@ -9,16 +9,16 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import es.puentes.entidades.PrestacionConId;
 
 @RepositoryRestResource(path="prestaciones", collectionResourceRel="prestaciones", itemResourceRel="prestacion")
-public interface PrestacionDAO extends JpaRepository<PrestacionConId, Long>, PrestacionDAOCustom {
+public interface PrestacionDAO extends JpaRepository<PrestacionConId, String>, PrestacionDAOCustom {
 
 //	@RestResource(path="entre-fechas")
 //	List<PrestacionConId> findByTemporalBetween(Instant comienzo, Instant fin);
 
 	@RestResource(path="por-id")
-	List<PrestacionConId> findAllById(Long id);
+	List<PrestacionConId> findAllById(String id);
 	
     @RestResource(exported=false)
-    void deleteById(Long id);
+    void deleteById(String id);
 
     @RestResource(exported=false)
     void delete(PrestacionConId entity);

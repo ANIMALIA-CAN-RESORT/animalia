@@ -1,4 +1,3 @@
-import { Mascota } from "src/app/mascotas/models/mascota";
 import { Cliente } from "./cliente";
 
 export class ClienteImpl implements Cliente {

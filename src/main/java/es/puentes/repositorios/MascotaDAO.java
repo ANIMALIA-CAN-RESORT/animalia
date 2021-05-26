@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import es.puentes.entidades.MascotaConId;
 
 @RepositoryRestResource(path="mascotas", collectionResourceRel="mascotas", itemResourceRel="mascota")
-public interface MascotaDAO extends JpaRepository<MascotaConId, Long>, MascotaDAOCustom {
+public interface MascotaDAO extends JpaRepository<MascotaConId, String>, MascotaDAOCustom {
 
 	@RestResource(path="nombre")
 	List<MascotaConId> findByNombreContaining(@Param("nombre") String txt);

@@ -1,14 +1,18 @@
 <div class="row justify-content-end">
-  <button class="btn btn-rounded btn-warning">
-    <a class="nav-link" routerLink="/clientes/formulario">Nuevo Cliente</a>
+  <button class="btn btn-rounded btn-warning text-white">
+    <a class="nav-link" routerLink="/clientes/formulario">Nuevo cliente</a>
   </button>
 </div>
 <div class="row">
-  <div class="col-1 mx-2"><b>NOMBRE</b></div>
-  <div class="col-1 mx-2"><b>APELLIDO 1</b></div>
-  <div class="col-1 mx-2"><b>APELLIDO 2</b></div>
+  <div class="col-3 mx-2"><b>NOMBRE</b></div>
+  <div class="col-2 mx-2"><b>APELLIDO 1</b></div>
+  <div class="col-2 mx-2"><b>APELLIDO 2</b></div>
 </div>
 <hr class='w-100'>
-<div class="row " *ngFor='let cliente of clientes'>
-    <app-cliente [cliente]='cliente'></app-cliente>
+<div *ngFor='let cliente of clientes'>
+  <app-cliente 
+  [cliente]='cliente'
+  (clienteEditar)='OnEditarCliente($event)'
+  (clienteEliminar)='onEliminarCliente($event)'>
+</app-cliente>
 </div>

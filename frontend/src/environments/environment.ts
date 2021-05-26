@@ -5,8 +5,7 @@
 export const environment = {
   appName: 'Animalia DEV',
   production: false,
-  host: 'http://localhost:8080/api/',
-  hostDatosDeportivos: 'https://datos-deportivos-api.herokuapp.com/api'
+  host: 'http://localhost:8080/api/'
 };
 
 /*

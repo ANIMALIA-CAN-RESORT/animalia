@@ -11,7 +11,7 @@ public interface MascotaDAOCustom {
 
 	//List<MascotaConId> getMascotasDeCliente(String dniCliente); //no me gusta
 	
-	List<Prestacion> getPrestacionesPagadasDeMascota(Long id);
-	List<Prestacion> getPrestacionesNoPagadasDeMascota(Long id);
+	List<Prestacion> getPrestacionesPagadasDeMascota(String id);
+	List<Prestacion> getPrestacionesNoPagadasDeMascota(String id);
 
 }

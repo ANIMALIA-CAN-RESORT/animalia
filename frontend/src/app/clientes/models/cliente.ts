@@ -1,4 +1,3 @@
-import { Mascota } from "src/app/mascotas/models/mascota";
 
 export interface Cliente {
   id: string;

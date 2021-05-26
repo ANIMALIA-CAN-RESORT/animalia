@@ -9,8 +9,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.puentes.entidades.MascotaConId;
-import es.puentes.entidades.PrestacionConId;
 import es.puentes.residencia.Prestacion;
 
 @Transactional(readOnly = true)
@@ -24,7 +22,7 @@ public class MascotaDAOImpl implements MascotaDAOCustom {
 	EntityManager entityManager;
 	
 	@Override
-	public List<Prestacion> getPrestacionesPagadasDeMascota(Long id) {
+	public List<Prestacion> getPrestacionesPagadasDeMascota(String id) {
 
 		List<Prestacion> prestaciones = mascotaDAO.findById(id).get().getPrestaciones().stream().filter(j -> j.isPagada() == true)
 				.collect(Collectors.toList());
@@ -33,7 +31,7 @@ public class MascotaDAOImpl implements MascotaDAOCustom {
 	}
 
 	@Override
-	public List<Prestacion> getPrestacionesNoPagadasDeMascota(Long id) {
+	public List<Prestacion> getPrestacionesNoPagadasDeMascota(String id) {
 
 		List<Prestacion> prestaciones = mascotaDAO.findById(id).get().getPrestaciones().stream().filter(j -> j.isPagada() == false)
 				.collect(Collectors.toList());

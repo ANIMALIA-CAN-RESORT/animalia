@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import es.puentes.entidades.ClienteConId;
 
 @RepositoryRestResource(path="clientes", collectionResourceRel="clientes", itemResourceRel="cliente") 
-public interface ClienteDAO extends JpaRepository<ClienteConId, Long> {
+public interface ClienteDAO extends JpaRepository<ClienteConId, String> {
 
 	@RestResource(path="nombre")
 	List<ClienteConId> findByNombreContaining(@Param("nombre") String txt);

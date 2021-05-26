@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from '../models/cliente';
-import { ClienteImpl } from '../models/cliente-impl';
 import { ClienteService } from '../service/cliente.service';
 
 @Component({
@@ -13,12 +12,23 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [];
 
-  constructor(private clienteService: ClienteService) { }//para poder mandar a pagina de clientes despues de editar
+  constructor(private clienteService: ClienteService,
+    private router: Router) { }
 
   ngOnInit(): void {
-      this.clienteService.getClientes().subscribe(clientes => {
-            this.clientes = this.clienteService.extraerClientes(clientes);
-          });
+  this.clienteService.getClientes()
+      .subscribe(clientes => {
+        this.clientes = this.clienteService.extraerClientes(clientes);
+      });
+  }
+  onEliminarCliente(cliente: Cliente): void {
+    this.clienteService.borrar(cliente.id).subscribe(response => {
+      console.log(response);
+    });
+  }
+
+  OnEditarCliente(cliente: Cliente): void {
+    let url = `clientes/formulario/${cliente.id}`;
+    this.router.navigate([url]);
   }
 }
-

@@ -1,25 +1,15 @@
 package es.puentes.entidades;
 
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import es.puentes.repositorios.AlimentacionListener;
-import es.puentes.repositorios.ClienteListener;
 import es.puentes.residencia.Alimentacion;
-import es.puentes.residencia.Alojamiento;
-import es.puentes.residencia.Cliente;
-import es.puentes.residencia.Mascota;
-
 
 @Entity
 @EntityListeners(AlimentacionListener.class)
@@ -27,10 +17,6 @@ import es.puentes.residencia.Mascota;
 @DiscriminatorValue("AM")
 public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(unique=true)
-	private long id;
 	@Column(name="TIPO_COMIDA")
 	private String tipoComida;//será "NORMAL" o "PREMIUM
 	@Column(name="CANTIDAD_COMIDA_DIA")
@@ -42,14 +28,6 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 		super();
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-	
 	public String getTipoComida() {
 		return tipoComida;
 	}

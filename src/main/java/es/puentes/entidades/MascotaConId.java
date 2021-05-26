@@ -24,7 +24,7 @@ public class MascotaConId extends Mascota {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	Long id;
+	String id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CLIENTE")
@@ -32,8 +32,12 @@ public class MascotaConId extends Mascota {
 	
 	public MascotaConId() {}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public ClienteConId getCliente() {

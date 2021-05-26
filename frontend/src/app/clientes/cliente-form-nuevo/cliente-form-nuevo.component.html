@@ -44,7 +44,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <label>Apellido 2</label>
-      <input type="text" class="form-control" [(ngModel)]="cliente.apellido2" placeholder="Segundo apellido del Cliente" name="apellido1"
+      <input type="text" class="form-control" [(ngModel)]="cliente.apellido2" placeholder="Segundo apellido del Cliente" name="apellido2"
         minlength="3" #apellido2="ngModel" [ngClass]="{ 'is-invalid': apellido2.invalid && (apellido2.dirty || apellido2.touched),
         'is-valid': !apellido2.invalid }"/>
       <div class="text-danger" *ngIf="apellido2.invalid && (apellido2.dirty || apellido2.touched)">
@@ -83,17 +83,9 @@
     <div class="col-lg-5 col-md-12">
       <button class="btn btn-primary" role="button"
       (click)="crearCliente()"
-      *ngIf="!cliente.id; else elseBlock"
-        [disabled]="!clienteForm.form.valid">
+      [disabled]="!clienteForm.form.valid">
         Crear Cliente
       </button>
-      <ng-template #elseBlock>
-        <button class="btn btn-primary" role="button"
-        (click)="actualizar()"
-        [disabled]="!clienteForm.form.valid">
-          Aceptar
-        </button>
-      </ng-template>
     </div>
   </div>
 </form>
