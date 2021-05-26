@@ -12,17 +12,18 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [];
 
-  constructor(private clienteService: ClienteService,
-    private router: Router) { }
+  constructor(
+    private clienteService: ClienteService,
+    private router: Router) { }//para poder mandar a pagina de participantes despues de editar
 
   ngOnInit(): void {
-  this.clienteService.getClientes()
-      .subscribe(clientes => {
-        this.clientes = this.clienteService.extraerClientes(clientes);
-      });
-  }
+      this.clienteService.getClientes().subscribe(clientes => {
+            this.clientes = this.clienteService.extraerClientes(clientes);
+          });
+      }
+
   onEliminarCliente(cliente: Cliente): void {
-    this.clienteService.borrar(cliente.id).subscribe(response => {
+    this.clienteService.delete(cliente.id).subscribe(response => {
       console.log(response);
     });
   }
@@ -32,3 +33,4 @@ export class ClientesComponent implements OnInit {
     this.router.navigate([url]);
   }
 }
+

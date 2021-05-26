@@ -1,58 +1,46 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Cliente } from '../models/cliente';
 import { ClienteImpl } from '../models/cliente-impl';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  private urlEndPoint: string = `${environment.host}clientes/`;
+  host: string = environment.host;
+  urlEndPoint: string = `${this.host}clientes/`;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
-getClientes(): Observable<Cliente[]> {
-  return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 productos. sino saldria solo la primera pagina
-}
 
-extraerClientes(respuestaApi: any): Cliente[] {
+  getClientes(): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 productos. sino saldria solo la primera pagina
+  }
+
+  extraerClientes(respuestaApi: any): Cliente[] {
     const clientes: Cliente[] = [];
     respuestaApi._embedded.clientes.forEach(c => {
       clientes.push(this.mapearCliente(c));
     })
     return clientes;
   }
-mapearCliente(clienteApi: any): ClienteImpl {
+  mapearCliente(clienteApi: any): ClienteImpl {
     const cliente: ClienteImpl = new ClienteImpl();
     const url = clienteApi._links.self.href;
     cliente.id = url.slice(url.lastIndexOf('/') + 1, url.length);//como el id de la api es un long no me complico y asi lo tengo string
-    cliente.nombre =clienteApi.nombre;
-    cliente.apellido1 =clienteApi.apellido1;
-    cliente.apellido2 =clienteApi.apellido2;
-    cliente.dni =clienteApi.dni;
-    cliente.tfno =clienteApi.tfno;
-    cliente.email =clienteApi.email;
-   
+    cliente.nombre = clienteApi.nombre;
+    cliente.apellido1 = clienteApi.apellido1;
+    cliente.apellido2 = clienteApi.apellido2;
+    cliente.dni = clienteApi.dni;
+    cliente.tfno = clienteApi.tfno;
+    cliente.email = clienteApi.email;
+
     return cliente;
   }
 
-  getCliente(id): Observable<Cliente> {
-    return this.http.get<Cliente>(`${this.urlEndPoint}${id}`).pipe(
-      catchError((e) => {
-        if (e.status !== 401 && e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
 
   create(cliente: Cliente): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, cliente).pipe(
@@ -64,10 +52,23 @@ mapearCliente(clienteApi: any): ClienteImpl {
           console.error(e.error.mensaje);
         }
         return throwError(e);
-      }));
+      })
+    );
   }
 
-  actualizar(cliente: Cliente): Observable<any> {
+  delete(id): Observable<Cliente> {
+    return this.http.delete<Cliente>(`${this.urlEndPoint}${id}`)
+      .pipe(
+        catchError((e) => {
+          if (e.status === 405) {
+            console.error('El metodo está bien hecho');
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  update(cliente: Cliente): Observable<any> {
     return this.http
       .put<any>(`${this.urlEndPoint}${cliente.id}`, cliente)
       .pipe(
@@ -82,18 +83,16 @@ mapearCliente(clienteApi: any): ClienteImpl {
         })
       );
   }
-  borrar(id: string): Observable<Cliente> {
-    return this.http
-      .delete<Cliente>(`${this.urlEndPoint}${id}`)
-      .pipe(
-        catchError((e) => {
-          if (e.status === 405) {
-            console.error('El metodo está bien hecho');
-          }
-          return throwError(e);
-        })
-      );
+
+  getCliente(id): Observable<any> {
+    return this.http.get<Cliente>(`${this.urlEndPoint}${id}`).pipe(
+      catchError((e) => {
+        if (e.status !== 401 && e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
   }
 
 }
-

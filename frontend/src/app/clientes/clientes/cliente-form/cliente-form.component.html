@@ -82,10 +82,18 @@
   <div class="form-row justify-content-between pt-5">
     <div class="col-lg-5 col-md-12">
       <button class="btn btn-primary" role="button"
-      (click)="crearCliente()"
-      [disabled]="!clienteForm.form.valid">
-        Crear Cliente
-      </button>
+        (click)="actualizar()"
+        *ngIf="cambiarBoton; else elseBlock"
+        [disabled]="!clienteForm.form.valid">
+          Crear Cliente
+        </button>
+        <ng-template #elseBlock>
+          <button class="btn btn-primary" role="button"
+          (click)="actualizar()"
+          [disabled]="!clienteForm.form.valid">
+            Aceptar
+          </button>
+        </ng-template>
     </div>
   </div>
 </form>

@@ -1,17 +1,14 @@
 <div class="row">
-  <div class="col-3   mt-3">{{cliente.nombre | titlecase}} </div>
-  <div class="col-2  mt-3"> {{cliente.apellido1 | titlecase}}</div>
-  <div class="col-2  mt-3">{{cliente.apellido2 |lowercase}}</div>
+  <div class="col-3 mt-3">{{ cliente.nombre | uppercase }}</div>
+  <div class="col-2 mt-3">{{ cliente.apellido1 | titlecase }}</div>
+  <div class="col-2 mt-3">{{ cliente.apellido2 | titlecase }}</div>
   <div class="col-1"></div>
-  <div class="col-2"> <button  
-    class="btn btn-primary text-white" (click)="editar(cliente)">Ver</button></div><!--digo donde va a ir y le añado a la ruta el id del propietario-->
-    <div class="col-2">
-      <button
-                   (click)="eliminar(producto)"
-                    class="btn btn-rounded btn-danger text-white align-middle"
-                  >
-                    Eliminar
-                  </button>
-    </div>
-
+  <div class="col-2">
+      <button class="btn btn-primary text-white" (click)="editar(cliente)">Ver</button>
+  </div>
+  <div class="col-2">
+      <button class="btn btn-danger text-white" (click)="eliminar(cliente)">
+        Eliminar
+      </button>
+  </div>
 </div>
