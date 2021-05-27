@@ -16,9 +16,9 @@ export class ClienteService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  borrar(cliente: Cliente): Observable<Cliente> {
-    return this.http.delete<Cliente>(cliente.url);
-  }
+  // borrar(cliente: Cliente): Observable<Cliente> {
+  //   return this.http.delete<Cliente>(cliente.url);
+  // }
 
   getClientes(): Observable<any> {
 

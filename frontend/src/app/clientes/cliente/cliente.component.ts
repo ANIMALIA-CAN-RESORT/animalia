@@ -16,9 +16,9 @@ export class ClienteComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(cliente: Cliente): void {
-    this.clienteService.borrar(cliente).subscribe(response => console.log(cliente));
-  }
+  // delete(cliente: Cliente): void {
+  //   this.clienteService.borrar(cliente).subscribe(response => console.log(cliente));
+  // }
 
  
 }
