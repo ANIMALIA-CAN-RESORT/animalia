@@ -1,15 +1,39 @@
+<hr class='w-100'>
 <div class="row justify-content-end">
-  <button class="btn btn-warning text-white">
+  <button class="btn btn-warning">
     <a class="nav-link" routerLink="/clientes/formulario">Nuevo Cliente</a>
   </button>
 </div>
-<div class="row">
-  <div class="col-3 mx-2"><b>NOMBRE</b></div>
-  <div class="col-3 mx-2"><b>APELLIDO 1</b></div>
-  <div class="col-3 mx-2"><b>APELLIDO 2</b></div>
-</div>
 <hr class='w-100'>
-<div class="row " *ngFor='let cliente of clientes'>
-    <app-cliente [cliente]='cliente'>
-    </app-cliente>
+<div class="row">
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><b>NOMBRE</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>APELLIDO 1</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><b>APELLIDO 2</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>MASCOTAS</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>TELÉFONO</b></div>
+</div>
+
+<div *ngFor="let cliente of clientes">
+  <app-cliente-item [cliente]="cliente" (clienteSeleccionado)="verDatos($event)"></app-cliente-item>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="datosCliente"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosCliente">Datos Completos Cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-cliente [cliente]='clienteVerDatos' (clienteEliminar)='onClienteEliminar($event)'></app-cliente>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

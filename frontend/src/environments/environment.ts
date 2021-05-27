@@ -5,7 +5,9 @@
 export const environment = {
   appName: 'Animalia DEV',
   production: false,
-  host: 'http://localhost:8080/api/'
+  hostAnimalia: 'http://localhost:8080/api/',
+  host: 'http://swapi.dev/api/',
+  itemsPorPagina: 10
 };
 
 /*
