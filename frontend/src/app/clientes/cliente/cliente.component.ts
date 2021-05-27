@@ -3,19 +3,22 @@ import { Cliente } from '../models/cliente';
 import { ClienteService } from '../service/cliente.service';
 
 @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
+  selector: 'app-cliente',
+  templateUrl: './cliente.component.html',
   styles: []
 })
-export class ClientesComponent implements OnInit {
+export class ClienteComponent implements OnInit {
 
-  clientes: Cliente[] = [];
+  @Input() cliente: Cliente;
 
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
-
-    this.clienteService.getClientes();
   }
 
+  delete(cliente: Cliente): void {
+    this.clienteService.borrar(cliente).subscribe(response => console.log(cliente));
+  }
+
+ 
 }

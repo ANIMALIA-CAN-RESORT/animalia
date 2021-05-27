@@ -7,4 +7,5 @@ export interface Cliente {
   tfno: string;
   email: string;
   mascotas: any[];
+  url: string;
 }

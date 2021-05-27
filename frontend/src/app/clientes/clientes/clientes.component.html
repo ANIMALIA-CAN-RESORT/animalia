@@ -10,9 +10,6 @@
 </div>
 <hr class='w-100'>
 <div class="row " *ngFor='let cliente of clientes'>
-    <app-cliente
-     [cliente]='cliente'
-     (clienteEditar)='OnEditarCliente($event)'
-     (clienteEliminar)='onEliminarCliente($event)'>
-    </app-cliente>
+    <!-- <app-cliente [cliente]='cliente'>
+    </app-cliente> -->
 </div>

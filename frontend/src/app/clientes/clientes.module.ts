@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import { ClientesRoutingModule } from './clientes-routing.module';
-import { ClienteComponent } from './clientes/cliente/cliente.component';
+import { ClienteComponent } from './cliente/cliente.component';
 import { ClientesComponent } from './clientes/clientes.component';
-import { ClienteFormComponent } from './clientes/cliente-form/cliente-form.component';
 
 
 @NgModule({
-  declarations: [ClientesComponent, ClienteComponent, ClienteFormComponent
-  ],
+  declarations: [ClientesComponent, ClienteComponent],
   imports: [
     CommonModule,
-    ClientesRoutingModule,
-    FormsModule
+    ClientesRoutingModule
   ]
 })
 export class ClientesModule { }

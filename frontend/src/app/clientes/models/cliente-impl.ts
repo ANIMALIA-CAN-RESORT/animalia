@@ -9,6 +9,7 @@ export class ClienteImpl implements Cliente {
   tfno: string;
   email: string;
   mascotas: any[];
+  url:string;
 
   constructor() { }
 

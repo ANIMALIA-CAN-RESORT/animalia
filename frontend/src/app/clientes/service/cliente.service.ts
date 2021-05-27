@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../models/cliente';
 import { ClienteImpl } from '../models/cliente-impl';
@@ -10,27 +10,41 @@ import { ClienteImpl } from '../models/cliente-impl';
   providedIn: 'root'
 })
 export class ClienteService {
-  host: string = environment.host;
-  urlEndPoint: string = `${this.host}clientes/`;
 
-  constructor(private http: HttpClient) { }
 
+  private urlEndPoint: string = environment.host + 'clientes';
+
+  constructor(private http: HttpClient, private router: Router) { }
+
+  borrar(cliente: Cliente): Observable<Cliente> {
+    return this.http.delete<Cliente>(cliente.url);
+  }
 
   getClientes(): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 productos. sino saldria solo la primera pagina
+
+    return this.http.get<any>(this.urlEndPoint);
   }
 
   extraerClientes(respuestaApi: any): Cliente[] {
     const clientes: Cliente[] = [];
     respuestaApi._embedded.clientes.forEach(c => {
-      clientes.push(this.mapearCliente(c));
-    })
+      const cMapeado = this.extraerCliente(c);
+      clientes.push(cMapeado);
+    });
     return clientes;
   }
-  mapearCliente(clienteApi: any): ClienteImpl {
-    const cliente: ClienteImpl = new ClienteImpl();
-    const url = clienteApi._links.self.href;
-    cliente.id = url.slice(url.lastIndexOf('/') + 1, url.length);//como el id de la api es un long no me complico y asi lo tengo string
+  extraerCliente(clienteDesdeApi): Cliente {
+
+    const clienteApi = this.mapearCliente(clienteDesdeApi);
+    const url = clienteDesdeApi._links.self.href;
+    clienteApi.id = url.slice(url.lastIndexOf('/') + 1, url.length);
+
+    return clienteApi;
+  }
+  mapearCliente(clienteApi): Cliente {
+    const cliente = new ClienteImpl();
+    cliente.url = clienteApi._links.self.href;
+    cliente.id = cliente.url.slice(cliente.url.lastIndexOf('/') + 1, cliente.url.length);
     cliente.nombre = clienteApi.nombre;
     cliente.apellido1 = clienteApi.apellido1;
     cliente.apellido2 = clienteApi.apellido2;
@@ -41,58 +55,5 @@ export class ClienteService {
     return cliente;
   }
 
-
-  create(cliente: Cliente): Observable<any> {
-    return this.http.post(`${this.urlEndPoint}`, cliente).pipe(
-      catchError((e) => {
-        if (e.status === 400) {
-          return throwError(e);
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
-
-  delete(id): Observable<Cliente> {
-    return this.http.delete<Cliente>(`${this.urlEndPoint}${id}`)
-      .pipe(
-        catchError((e) => {
-          if (e.status === 405) {
-            console.error('El metodo está bien hecho');
-          }
-          return throwError(e);
-        })
-      );
-  }
-
-  update(cliente: Cliente): Observable<any> {
-    return this.http
-      .put<any>(`${this.urlEndPoint}${cliente.id}`, cliente)
-      .pipe(
-        catchError((e) => {
-          if (e.status === 400) {
-            return throwError(e);
-          }
-          if (e.error.mensaje) {
-            console.error(e.error.mensaje);
-          }
-          return throwError(e);
-        })
-      );
-  }
-
-  getCliente(id): Observable<any> {
-    return this.http.get<Cliente>(`${this.urlEndPoint}${id}`).pipe(
-      catchError((e) => {
-        if (e.status !== 401 && e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
 
 }
