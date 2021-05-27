@@ -10,9 +10,6 @@ import { Cliente } from '../models/cliente';
 export class ClienteItemComponent implements OnInit {
   @Input() cliente: Cliente;
   @Output() clienteSeleccionado = new EventEmitter<Cliente>();
-  genderMap: any = {
-    'male': 'Macho', 'female': 'Hembra', 'n/a': 'Sin Género'
-  };
 
   constructor() { }
 

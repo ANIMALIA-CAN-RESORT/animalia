@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   hostAnimalia: 'http://localhost:8080/api/',
   host: 'http://swapi.dev/api/',
-  itemsPorPagina: 10
+  itemsPorPagina: 30
 };
 
 /*
