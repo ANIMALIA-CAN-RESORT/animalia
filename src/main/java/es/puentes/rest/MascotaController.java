@@ -27,7 +27,7 @@ public class MascotaController {
 	
 	@GetMapping("/pagadas")
 	@ResponseBody
-	public CollectionModel<PersistentEntityResource> getPrestacionesPagadasDeMascota(@PathVariable String id,
+	public CollectionModel<PersistentEntityResource> getPrestacionesPagadasDeMascota(@PathVariable Long id,
 			PersistentEntityResourceAssembler assembler) {
 
 		List<Prestacion> prestaciones = mascotaDAO.getPrestacionesPagadasDeMascota(id);
@@ -37,7 +37,7 @@ public class MascotaController {
 
 	@GetMapping("/no-pagadas")
 	@ResponseBody
-	public CollectionModel<PersistentEntityResource> getPrestacionesNoPagadasDeMascota(@PathVariable String id,
+	public CollectionModel<PersistentEntityResource> getPrestacionesNoPagadasDeMascota(@PathVariable Long id,
 			PersistentEntityResourceAssembler assembler) {
 
 		List<Prestacion> prestaciones = mascotaDAO.getPrestacionesNoPagadasDeMascota(id);

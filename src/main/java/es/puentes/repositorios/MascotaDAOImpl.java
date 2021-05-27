@@ -22,7 +22,7 @@ public class MascotaDAOImpl implements MascotaDAOCustom {
 	EntityManager entityManager;
 	
 	@Override
-	public List<Prestacion> getPrestacionesPagadasDeMascota(String id) {
+	public List<Prestacion> getPrestacionesPagadasDeMascota(Long id) {
 
 		List<Prestacion> prestaciones = mascotaDAO.findById(id).get().getPrestaciones().stream().filter(j -> j.isPagada() == true)
 				.collect(Collectors.toList());
@@ -31,7 +31,7 @@ public class MascotaDAOImpl implements MascotaDAOCustom {
 	}
 
 	@Override
-	public List<Prestacion> getPrestacionesNoPagadasDeMascota(String id) {
+	public List<Prestacion> getPrestacionesNoPagadasDeMascota(Long id) {
 
 		List<Prestacion> prestaciones = mascotaDAO.findById(id).get().getPrestaciones().stream().filter(j -> j.isPagada() == false)
 				.collect(Collectors.toList());
