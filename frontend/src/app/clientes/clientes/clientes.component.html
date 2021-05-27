@@ -29,7 +29,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-cliente-ficha [cliente]='clienteVerDatos' (clienteEliminar)='onClienteEliminar($event)'></app-cliente-ficha>
+        <app-cliente-ficha [cliente]='clienteVerDatos' (clienteEliminar)='onClienteEliminar($event)' (clienteEditar)='onClienteEditar($event)'></app-cliente-ficha>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

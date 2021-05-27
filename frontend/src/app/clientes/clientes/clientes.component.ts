@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuxiliarService } from 'src/app/service/auxiliar.service';
+import { Router } from '@angular/router';
 import { Cliente } from '../models/cliente';
 import { ClienteImpl } from '../models/cliente-impl';
 import { ClienteService } from '../service/cliente.service';
@@ -12,17 +12,14 @@ import { ClienteService } from '../service/cliente.service';
 })
 export class ClientesComponent implements OnInit {
   clientes: Cliente[] = [];
-  todosClientes: Cliente[] = [];
   clienteVerDatos: Cliente;
-  numPaginas: number = 0;
 
   constructor(
     private clienteService: ClienteService,
-    private auxService: AuxiliarService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe((response) => this.clientes = this.clienteService.extraerClientes(response));
-    this.getTodosClientes();
   }
 
   verDatos(cliente: Cliente): void {
@@ -30,20 +27,16 @@ export class ClientesComponent implements OnInit {
   }
 
   onClienteEliminar(cliente: ClienteImpl): void {
-    console.log(`He eliminado a ${cliente.nombre}`);
-    this.clientes = this.clientes.filter(c => cliente !== c)
-  }
-
-  getTodosClientes(): void {
-    this.clienteService.getClientes().subscribe(r => {
-      this.numPaginas = this.auxService.getPaginasResponse(r);
-      for (let index = 1; index <= this.numPaginas; index++) {
-        this.clienteService.getClientesPagina(index)
-          .subscribe(response => {
-            this.todosClientes.push(...this.clienteService.extraerClientes(response));
-          });
-      }
+    this.clienteService.delete(cliente).subscribe(response => {
+      console.log(`He borrado a ${cliente.nombre}`);
+      this.router.navigate(['/clientes']);
     });
   }
 
+  onClienteEditar(cliente: ClienteImpl): void {
+    this.clienteService.update(cliente).subscribe(response => {
+      console.log(`He actualizado a ${cliente.nombre}`);
+      this.router.navigate(['/clientes']);
+    });
+  }
 }

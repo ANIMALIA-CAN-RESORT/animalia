@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClienteImpl } from '../models/cliente-impl';
 import { ClienteService } from '../service/cliente.service';
 
@@ -9,15 +10,18 @@ import { ClienteService } from '../service/cliente.service';
   ]
 })
 export class ClienteFormComponent implements OnInit {
-  cliente: ClienteImpl = new ClienteImpl('', '', '', '', '', '', '', '', '', null);
+  cliente: ClienteImpl = new ClienteImpl();
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService, 
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  create(): void {
-    this.clienteService.create(this.cliente);
+  crearCliente(): void {
+    this.clienteService.create(this.cliente).subscribe((response) => {
+      console.log(`He creado a ${this.cliente.nombre}`);
+      this.router.navigate(['/clientes']);
+    });
   }
-
 }

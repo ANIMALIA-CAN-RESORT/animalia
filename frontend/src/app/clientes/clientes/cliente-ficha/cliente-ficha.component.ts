@@ -10,6 +10,7 @@ import { ClienteImpl } from '../../models/cliente-impl';
 export class ClienteFichaComponent implements OnInit {
   @Input() cliente: ClienteImpl;
   @Output() clienteEliminar = new EventEmitter<ClienteImpl>();
+  @Output() clienteEditar = new EventEmitter<ClienteImpl>();
 
   constructor() { }
 
@@ -17,5 +18,9 @@ export class ClienteFichaComponent implements OnInit {
   }
   eliminar(): void {
     this.clienteEliminar.emit(this.cliente);
+  }
+
+  editar(): void {
+    this.clienteEditar.emit(this.cliente);
   }
 }

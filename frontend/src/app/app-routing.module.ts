@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'administracion',
     loadChildren: () => import('./administracion/administracion.module').then(m => m.AdministracionModule)
-  },
+  }, 
   {
     path: 'planeta',
     loadChildren: () => import('./planetas/planetas.module').then(m => m.PlanetasModule)
