@@ -4,15 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { AuxiliarService } from '../service/auxiliar.service';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
-import { ClienteItemComponent } from './cliente-item/cliente-item.component';
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClienteFichaComponent } from './clientes/cliente-ficha/cliente-ficha.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 
 
 
 @NgModule({
-  declarations: [ClientesComponent, ClienteFichaComponent, ClienteFormComponent, ClienteItemComponent],
+  declarations: [ClientesComponent, ClienteFichaComponent, ClienteFormComponent, ClienteComponent],
   imports: [
     CommonModule,
     ClientesRoutingModule,

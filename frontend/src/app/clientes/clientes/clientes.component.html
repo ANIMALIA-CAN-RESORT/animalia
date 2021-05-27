@@ -14,7 +14,7 @@
 </div>
 
 <div *ngFor="let cliente of clientes">
-  <app-cliente-item [cliente]="cliente" (clienteSeleccionado)="verDatos($event)"></app-cliente-item>
+  <app-cliente [cliente]="cliente" (clienteSeleccionado)="verDatos($event)"></app-cliente>
 </div>
 
 <!-- Modal -->
