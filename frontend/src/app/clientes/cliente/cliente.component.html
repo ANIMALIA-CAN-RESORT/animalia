@@ -7,6 +7,38 @@
   <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2">{{cliente.tfno}}</div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">
       <!-- <button class="btn btn-success" [routerLink]="['/planeta', cliente.planeta]">Mascotas</button> -->
-      <button class="btn btn-success" [routerLink]="['/mascotas', cliente.mascotas]">Mascotas</button><!--a ver como lo pongo...-->
+      <button class="btn btn-success" href="#" data-toggle="modal" data-target="#modalMascotas">Mascotas</button><!--a ver como lo pongo...-->
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalMascotas" tabindex="-1" role="dialog" aria-labelledby="mascotas"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mascotas">Mascotas de {{cliente.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let mascota of mascotas">
+          <div class="card">
+            <img class="card-img-top" src="holder.js/100px180/" alt="">
+            <div class="card-body">
+              <h4 class="card-title text-center">{{mascota.nombre}}</h4>
+              <p class="card-text"><b>Raza:&nbsp;</b>{{mascota.raza}}</p>
+              <p class="card-text"><b>Talla:&nbsp;</b>{{mascota.talla}}</p>
+              <p class="card-text"><b>Chip:&nbsp;</b>{{mascota.chip}}</p>
+            </div>
+          </div>   
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ngOnInit()">Cerrar</button>
+      </div>
+    </div>
   </div>
 </div>

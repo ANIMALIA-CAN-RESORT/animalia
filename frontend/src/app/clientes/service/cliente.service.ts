@@ -12,13 +12,25 @@ import { ClienteImpl } from '../models/cliente-impl';
 })
 export class ClienteService {
 
+
   private host: string = environment.hostAnimalia;
   private urlEndPoint: string = `${this.host}clientes/`;
 
   constructor(
     private http: HttpClient) { }
 
+  getMascotasCliente(cliente): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}${cliente.id}/mascotas`);
+  }
 
+  extraerMascotasCliente(respuestaApi: any): any[] {
+    const mascotas: any [] = [];
+    respuestaApi._embedded.mascotas.forEach(m => {
+      mascotas.push(m);
+
+    });
+    return mascotas;
+  }
   getClientes(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
   }
@@ -34,16 +46,16 @@ export class ClienteService {
 
   mapearCliente(clienteApi: any): ClienteImpl {
     const cliente = new ClienteImpl();
-      cliente.nombre = clienteApi.nombre;
-      cliente.apellido1 = clienteApi.apellido1;
-      cliente.apellido2 = clienteApi.apellido2;
-      cliente.dni = clienteApi.dni;
-      cliente.tfno = clienteApi.tfno;
-      cliente.email = clienteApi.email;
-      cliente.url = clienteApi._links.self.href;
-      cliente.id = cliente.getId(cliente.url);
+    cliente.nombre = clienteApi.nombre;
+    cliente.apellido1 = clienteApi.apellido1;
+    cliente.apellido2 = clienteApi.apellido2;
+    cliente.dni = clienteApi.dni;
+    cliente.tfno = clienteApi.tfno;
+    cliente.email = clienteApi.email;
+    cliente.url = clienteApi._links.self.href;
+    cliente.id = cliente.getId(cliente.url);
 
-      return cliente;
+    return cliente;
   }
 
   create(cliente: Cliente): Observable<any> {

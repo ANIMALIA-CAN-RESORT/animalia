@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Cliente } from '../models/cliente';
+import { ClienteService } from '../service/cliente.service';
 
 @Component({
   selector: 'app-cliente',
@@ -10,10 +11,13 @@ import { Cliente } from '../models/cliente';
 export class ClienteComponent implements OnInit {
   @Input() cliente: Cliente;
   @Output() clienteSeleccionado = new EventEmitter<Cliente>();
+  mascotas: any [] = [0,0];
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.clienteService.getMascotasCliente(this.cliente).subscribe((response) => this.mascotas = this.clienteService.extraerMascotasCliente(response));
+
   }
 
 }
