@@ -4,12 +4,12 @@ import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';
 
 @Component({
-  selector: 'app-prestacion-form',
-  templateUrl: './prestacion-form.component.html',
+  selector: 'app-prestacion-form-alimentacion',
+  templateUrl: './prestacion-form-alimentacion.component.html',
   styles: [
   ]
 })
-export class PrestacionFormComponent implements OnInit {
+export class PrestacionFormAlimentacionComponent implements OnInit {
   prestacion: PrestacionImpl = new PrestacionImpl();
 
   constructor(private prestacionService: PrestacionService, 
@@ -20,7 +20,7 @@ export class PrestacionFormComponent implements OnInit {
 
   crearCliente(): void {
     this.prestacionService.create(this.prestacion).subscribe((response) => {
-      console.log(`He creado a ${this.prestacion.nombre}`);
+      console.log(`He creado una ${this.prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
     });
   }
