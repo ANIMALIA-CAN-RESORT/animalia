@@ -32,7 +32,7 @@
         <app-cliente-ficha [cliente]='clienteVerDatos' (clienteEliminar)='onClienteEliminar($event)' (clienteEditar)='onClienteEditar($event)'></app-cliente-ficha>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ngOnInit()">Cerrar</button>
       </div>
     </div>
   </div>
