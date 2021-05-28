@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faDotCircle } from '@fortawesome/free-regular-svg-icons';
-import { faBed, faDog, faUser, faUsersCog } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faBone, faDog, faUser, faUsersCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +10,9 @@ import { faBed, faDog, faUser, faUsersCog } from '@fortawesome/free-solid-svg-ic
 export class HeaderComponent implements OnInit {
   faUser =faUser;
   faDog = faDog;
-  faBed =faBed;
-  faUsersCog =faUsersCog;
+  faBed = faBed;
+  faBone = faBone;
+  faUsersCog = faUsersCog;
   faDotCircle = faDotCircle;
 
 
