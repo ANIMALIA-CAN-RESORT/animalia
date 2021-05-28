@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { faBed, faBone, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Prestacion } from '../models/prestacion';
 
 @Component({
@@ -8,6 +9,11 @@ import { Prestacion } from '../models/prestacion';
   ]
 })
 export class PrestacionComponent implements OnInit {
+  faBed = faBed;
+  faBone = faBone;
+  faTimes =faTimes;
+  faCheck = faCheck;
+  variablePago = faCheck;
   @Input() prestacion: Prestacion;
   @Output() prestacionSeleccionada = new EventEmitter<Prestacion>();
 

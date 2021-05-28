@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faBed, faBone, faEuroSign } from '@fortawesome/free-solid-svg-icons';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';
@@ -8,10 +9,14 @@ import { PrestacionService } from '../service/prestacion.service';
 @Component({
   selector: 'app-prestaciones',
   templateUrl: './prestaciones.component.html',
-  styles: [
+  styleUrls: ['./prestaciones.component.css'
   ]
 })
 export class PrestacionesComponent implements OnInit {
+  faBed = faBed;
+  faBone = faBone;
+  faEuro =faEuroSign;
+
   prestaciones: Prestacion[] = [];
   prestacionVerDatos: Prestacion;
 
