@@ -13,10 +13,7 @@ import { PrestacionImpl } from '../models/prestacion-impl';
 export class PrestacionService {
 
   private host: string = environment.hostAnimalia;
-  private urlEndPoint: string = `${this.host}prestaciones/`;
-  private urlEndPointAlojamiento: string = `${this.host}alojamientos/`;
-  private urlEndPointAlimentacion: string = `${this.host}alimentaciones/`;
-
+  private urlEndPoint: string = `${this.host}clientes/`;
 
   constructor(
     private http: HttpClient) { }
@@ -28,74 +25,29 @@ export class PrestacionService {
 
   extraerPrestaciones(respuestaApi: any): Prestacion[] {
     const prestaciones: Prestacion[] = [];
-    respuestaApi._embedded.alimentaciones.forEach(p => {
-      prestaciones.push(this.mapearAlimentacion(p));
-    });
-    respuestaApi._embedded.alojamientos.forEach(p => {
-      prestaciones.push(this.mapearAlojamiento(p));
+    respuestaApi._embedded.clientes.forEach(p => {
+      prestaciones.push(this.mapearPrestacion(p));
+
     });
     return prestaciones;
   }
 
-  mapearAlimentacion(prestacionApi: any): PrestacionImpl {
+  mapearPrestacion(prestacionApi: any): PrestacionImpl {
     const prestacion = new PrestacionImpl();
-    prestacion.fechaEntrada = prestacionApi.fechaEntrada;
-    prestacion.fechaSalida = prestacionApi.fechaSalida;
-    prestacion.pagada = prestacionApi.pagada;
+    prestacion.nombre = prestacionApi.nombre;
+    prestacion.apellido1 = prestacionApi.apellido1;
+    prestacion.apellido2 = prestacionApi.apellido2;
+    prestacion.dni = prestacionApi.dni;
+    prestacion.tfno = prestacionApi.tfno;
+    prestacion.email = prestacionApi.email;
     prestacion.url = prestacionApi._links.self.href;
-    prestacion.tipoComida = prestacionApi.tipoComida;
-    prestacion.tipo = "Alimentacion";
-    prestacion.cantidadComidaDiaria = prestacionApi.cantidadComidaDiaria;
-    prestacion.precioPrestacion = prestacionApi.email;
     prestacion.id = prestacion.getId(prestacion.url);
 
-    return prestacion;
-  }
-
-  mapearAlojamiento(prestacionApi: any): PrestacionImpl {
-    const prestacion = new PrestacionImpl();
-    prestacion.fechaEntrada = prestacionApi.fechaEntrada;
-    prestacion.fechaSalida = prestacionApi.fechaSalida;
-    prestacion.pagada = prestacionApi.pagada;
-    prestacion.url = prestacionApi._links.self.href;
-    prestacion.jaula = prestacionApi.jaula;
-    prestacion.tipo = "Alojamiento";
-    prestacion.precioPrestacion = prestacionApi.email;
-    prestacion.id = prestacion.getId(prestacion.url);
-
-    return prestacion;
+      return prestacion;
   }
 
   create(prestacion: Prestacion): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, prestacion).pipe(
-      catchError((e) => {
-        if (e.status === 400) {
-          return throwError(e);
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
-
-  createAlojamiento(prestacion: Prestacion): Observable<any> {
-    return this.http.post(`${this.urlEndPointAlojamiento}`, prestacion).pipe(
-      catchError((e) => {
-        if (e.status === 400) {
-          return throwError(e);
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
-
-  createAlimentacion(prestacion: Prestacion): Observable<any> {
-    return this.http.post(`${this.urlEndPointAlimentacion}`, prestacion).pipe(
       catchError((e) => {
         if (e.status === 400) {
           return throwError(e);

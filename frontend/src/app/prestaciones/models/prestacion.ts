@@ -1,15 +1,13 @@
 export interface Prestacion {
 
   id: string;
-  fechaEntrada: Date;
-  fechaSalida: Date;
-  pagada: boolean;
-  tipoComida?: string;
-  cantidadComidaDiaria?: number;
-  jaula?: string;
-  mascota: string;
+  nombre: string;
+  apellido1: string;
+  apellido2: string;
+  dni: string;
+  tfno: string;
+  email: string;
+  mascotas: any[];
   url: string;
-  tipo: string;
-  precioPrestacion: number;
 
 }
