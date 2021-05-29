@@ -13,7 +13,7 @@ import { PrestacionImpl } from '../models/prestacion-impl';
 export class PrestacionService {
 
   private host: string = environment.hostAnimalia;
-  private urlEndPoint: string = `${this.host}clientes/`;
+  private urlEndPoint: string = `${this.host}prestaciones/`;
 
   constructor(
     private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class PrestacionService {
 
   extraerPrestaciones(respuestaApi: any): Prestacion[] {
     const prestaciones: Prestacion[] = [];
-    respuestaApi._embedded.clientes.forEach(p => {
+    respuestaApi._embedded.alimentaciones.forEach(p => {
       prestaciones.push(this.mapearPrestacion(p));
 
     });
@@ -34,12 +34,12 @@ export class PrestacionService {
 
   mapearPrestacion(prestacionApi: any): PrestacionImpl {
     const prestacion = new PrestacionImpl();
-    prestacion.nombre = prestacionApi.nombre;
-    prestacion.apellido1 = prestacionApi.apellido1;
-    prestacion.apellido2 = prestacionApi.apellido2;
-    prestacion.dni = prestacionApi.dni;
-    prestacion.tfno = prestacionApi.tfno;
-    prestacion.email = prestacionApi.email;
+    prestacion.tipo = prestacionApi.tipo;
+    prestacion.fechaEntrada = prestacionApi.fechaEntrada;
+    prestacion.fechaSalida = prestacionApi.fechaSalida;
+    prestacion.tipoComida = prestacionApi.tipoComida;
+    prestacion.cantidadComidaDiaria = prestacionApi.cantidadComidaDiaria;
+    prestacion.pagada = prestacionApi.pagada;
     prestacion.url = prestacionApi._links.self.href;
     prestacion.id = prestacion.getId(prestacion.url);
 

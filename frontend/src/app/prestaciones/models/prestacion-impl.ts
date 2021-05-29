@@ -3,14 +3,16 @@ import { Prestacion } from "./prestacion";
 export class PrestacionImpl implements Prestacion {
 
   id: string;
-  nombre: string;
-  apellido1: string;
-  apellido2: string;
-  dni: string;
-  tfno: string;
-  email: string;
-  mascotas: any[];
+  fechaEntrada: Date;
+  fechaSalida: Date;
+  pagada: boolean;
+  tipoComida?: string;
+  cantidadComidaDiaria?: number;
+  jaula?: string;
+  mascota: string;
   url: string;
+  tipo: string;
+  precioPrestacion: number;
 
   constructor(){}
   getId(url: string): string {

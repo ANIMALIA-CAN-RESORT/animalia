@@ -34,14 +34,14 @@ export class PrestacionesComponent implements OnInit {
 
   onPrestacionEliminar(prestacion: PrestacionImpl): void {
     this.prestacionService.delete(prestacion).subscribe(response => {
-      console.log(`He borrado a ${prestacion.nombre}`);
+      console.log(`He borrado una ${prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
     });
   }
 
   onPrestacionEditar(prestacion: PrestacionImpl): void {
     this.prestacionService.update(prestacion).subscribe(response => {
-      console.log(`He actualizado a ${prestacion.nombre}`);
+      console.log(`He actualizado una ${prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
     });
   }

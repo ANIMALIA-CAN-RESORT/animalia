@@ -20,7 +20,7 @@ export class PrestacionFormComponent implements OnInit {
 
   crearCliente(): void {
     this.prestacionService.create(this.prestacion).subscribe((response) => {
-      console.log(`He creado a ${this.prestacion.nombre}`);
+      console.log(`He creado una ${this.prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
     });
   }
