@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Mascota } from '../models/mascota';
+import { MascotaImpl } from '../models/mascota-impl';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
 
@@ -66,6 +68,20 @@ export class PrestacionService {
     );
   }
 
+  createAlojamiento(prestacion: Prestacion): Observable<any> {
+    return this.http.post(`${this.host}alojamientos/`, prestacion).pipe(
+      catchError((e) => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
+  }
+
   delete(prestacion): Observable<Prestacion> {
     return this.http.delete<Prestacion>(`${this.urlEndPoint}${prestacion.id}`)
       .pipe(
@@ -103,5 +119,30 @@ export class PrestacionService {
         return throwError(e);
       })
     );
+  }
+
+
+  getMascotas(): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/`);
+  }
+
+  extraerMascotas(respuestaApi: any): Mascota[] {
+    const mascotas: Mascota[] = [];
+    respuestaApi._embedded.mascotas.forEach(m => {
+      mascotas.push(this.mapearMascota(m));
+    });
+    return mascotas;
+  }
+
+  mapearMascota(mascotaApi: any): MascotaImpl {
+    const mascota = new MascotaImpl();
+    mascota.nombre = mascotaApi.nombre;
+    mascota.raza = mascotaApi.raza;
+    mascota.talla = mascotaApi.talla;
+    mascota.chip = mascotaApi.chip;
+    mascota.url = mascotaApi._links.self.href;
+    mascota.id = mascota.getId(mascota.url);
+
+    return mascota;
   }
 }

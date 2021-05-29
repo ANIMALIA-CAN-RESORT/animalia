@@ -2,67 +2,60 @@
   <div class="form-row py-2">
     <div class="col-lg-6 col-md-12">
       <label>Mascota <sup class="text-danger">*</sup></label>
-      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="DNI del Cliente" name="dni"
-        required minlength="9" maxlength="9" #dni="ngModel" [ngClass]="{ 'is-invalid': dni.invalid && (dni.dirty || dni.touched),
-        'is-valid': !dni.invalid }"/>
-      <div class="text-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
-        <div *ngIf="dni.errors.required">
-            El DNI del Cliente es obligatorio
-        </div>
-        <div *ngIf="dni.errors.minlength || dni.errors.maxlength">
-          El DNI del Cliente debe tener 9 carácteres
+      <select name="mascotas" [(ngModel)]="codMascota" (change)="cargarMascota()" class="form-control" required #mascota="ngModel" [ngClass]="{ 'is-invalid': mascota.invalid && (mascota.dirty || mascota.touched),
+      'is-valid': !mascota.invalid }">
+        <option *ngFor="let mascota of mascotas" [value]="mascota.id">
+          <span>{{ mascota.nombre }}</span>
+        </option>
+      </select>
+      <div class="text-danger" *ngIf="mascota.invalid && (mascota.dirty || mascota.touched)">
+        <div *ngIf="mascota.errors.required">
+            Es obligatorio elegir la mascota
         </div>
       </div>
     </div>
     <div class="col-lg-6 col-md-12">
       <label>Jaula <sup class="text-danger">*</sup></label>
-      <input type="text" class="form-control" [(ngModel)]="prestacion.jaula" placeholder="Segundo apellido del Cliente" name="apellido1"
-        minlength="3" #apellido2="ngModel" [ngClass]="{ 'is-invalid': apellido2.invalid && (apellido2.dirty || apellido2.touched),
-        'is-valid': !apellido2.invalid }"/>
-      <div class="text-danger" *ngIf="apellido2.invalid && (apellido2.dirty || apellido2.touched)">
-        <div *ngIf="apellido2.errors.minlength">
-          Si existe debe tener al menos 3 carácteres
-        </div>
-      </div>
+      <select name="jaula" id="jaula" class="form-control" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+      </select>
     </div>
     <div class="col-lg-6 col-md-12">
       <label>Entrada <sup class="text-danger">*</sup></label>
-      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="Nombre del Cliente" name="nombre"
-        required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
-        'is-valid': !nombre.invalid }"/>
-      <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-        <div *ngIf="nombre.errors.required">
-            El Nombre del Cliente es obligatorio
-        </div>
-        <div *ngIf="nombre.errors.minlength">
-          El Nombre del Cliente debe tener al menos 3 carácteres
-        </div>
-      </div>
+      <input type="date" class="form-control" [(ngModel)]="prestacion.fechaEntrada" name="fechaEntrada" min='1990-01-11' max='2050-12-31'
+        required #fechaEntrada="ngModel" />
     </div>
     <div class="col-lg-6 col-md-12">
-      <label>Salida<sup class="text-danger">*</sup></label>
-      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="Primer apellido del Cliente" name="apellido1"
-        required minlength="3" #apellido1="ngModel" [ngClass]="{ 'is-invalid': apellido1.invalid && (apellido1.dirty || apellido1.touched),
-        'is-valid': !apellido1.invalid }"/>
-      <div class="text-danger" *ngIf="apellido1.invalid && (apellido1.dirty || apellido1.touched)">
-        <div *ngIf="apellido1.errors.required">
-            El primer apellido del Cliente es obligatorio
-        </div>
-        <div *ngIf="apellido1.errors.minlength">
-          El primer apellido del Cliente debe tener al menos 3 carácteres
-        </div>
-      </div>
-    </div>
-   
-    
-    
+      <label>Salida <sup class="text-danger">*</sup></label>
+      <input type="date" class="form-control" [(ngModel)]="prestacion.fechaSalida" name="fechaSalida" min='prestacion.fechaEntrada' max='2050-12-31'
+        required #fechaSalida="ngModel" />
+    </div>  
   </div>
   <div class="form-row justify-content-between pt-5">
     <div class="col-lg-5 col-md-12">
       <button class="btn btn-primary" role="button"
       (click)="crearAlojamiento()"
         [disabled]="!alojamientoForm.form.valid">
-        Crear Prestación
+        Crear Alojamiento
       </button>
     </div>
   </div>
