@@ -21,6 +21,6 @@ public class ResidenciaanimalesapiApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context =
 				SpringApplication.run(ResidenciaanimalesapiApplication.class, args);
-		log.debug("Espero que funcione la api");
+		log.debug("Está funcionando la aplicación ANIMALIA para la Residencia de Animales CAN RESORT");
 	}
 }
