@@ -27,8 +27,11 @@ export class PrestacionService {
     const prestaciones: Prestacion[] = [];
     respuestaApi._embedded.alimentaciones.forEach(p => {
       prestaciones.push(this.mapearPrestacion(p));
-
     });
+    respuestaApi._embedded.alojamientos.forEach(p => {
+      prestaciones.push(this.mapearPrestacion(p));
+    });
+
     return prestaciones;
   }
 
