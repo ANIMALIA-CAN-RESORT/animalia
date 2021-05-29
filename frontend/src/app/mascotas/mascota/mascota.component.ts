@@ -10,7 +10,7 @@ import { MascotaService } from '../service/mascota.service';
 })
 export class MascotaComponent implements OnInit {
   @Input() mascota: Mascota;
-  @Output() cmascotaSeleccionada = new EventEmitter<Mascota>();
+  @Output() mascotaSeleccionada = new EventEmitter<Mascota>();
   prestaciones: any [] = [0,0];
 
   constructor(private mascotaService: MascotaService) { }

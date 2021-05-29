@@ -1,0 +1,69 @@
+<form #alojamientoForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-6 col-md-12">
+      <label>Mascota <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="DNI del Cliente" name="dni"
+        required minlength="9" maxlength="9" #dni="ngModel" [ngClass]="{ 'is-invalid': dni.invalid && (dni.dirty || dni.touched),
+        'is-valid': !dni.invalid }"/>
+      <div class="text-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+        <div *ngIf="dni.errors.required">
+            El DNI del Cliente es obligatorio
+        </div>
+        <div *ngIf="dni.errors.minlength || dni.errors.maxlength">
+          El DNI del Cliente debe tener 9 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label>Jaula <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="prestacion.jaula" placeholder="Segundo apellido del Cliente" name="apellido1"
+        minlength="3" #apellido2="ngModel" [ngClass]="{ 'is-invalid': apellido2.invalid && (apellido2.dirty || apellido2.touched),
+        'is-valid': !apellido2.invalid }"/>
+      <div class="text-danger" *ngIf="apellido2.invalid && (apellido2.dirty || apellido2.touched)">
+        <div *ngIf="apellido2.errors.minlength">
+          Si existe debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label>Entrada <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="Nombre del Cliente" name="nombre"
+        required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
+        'is-valid': !nombre.invalid }"/>
+      <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors.required">
+            El Nombre del Cliente es obligatorio
+        </div>
+        <div *ngIf="nombre.errors.minlength">
+          El Nombre del Cliente debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label>Salida<sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="Primer apellido del Cliente" name="apellido1"
+        required minlength="3" #apellido1="ngModel" [ngClass]="{ 'is-invalid': apellido1.invalid && (apellido1.dirty || apellido1.touched),
+        'is-valid': !apellido1.invalid }"/>
+      <div class="text-danger" *ngIf="apellido1.invalid && (apellido1.dirty || apellido1.touched)">
+        <div *ngIf="apellido1.errors.required">
+            El primer apellido del Cliente es obligatorio
+        </div>
+        <div *ngIf="apellido1.errors.minlength">
+          El primer apellido del Cliente debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+   
+    
+    
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <div class="col-lg-5 col-md-12">
+      <button class="btn btn-primary" role="button"
+      (click)="crearAlojamiento()"
+        [disabled]="!alojamientoForm.form.valid">
+        Crear Prestación
+      </button>
+    </div>
+  </div>
+</form>

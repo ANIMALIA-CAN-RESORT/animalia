@@ -16,7 +16,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <label>Nombre <sup class="text-danger">*</sup></label>
-      <input type="text" class="form-control" [(ngModel)]="fecha.tipo" placeholder="Nombre del Cliente" name="nombre"
+      <input type="text" class="form-control" [(ngModel)]="prestacion.tipo" placeholder="Nombre del Cliente" name="nombre"
         required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
         'is-valid': !nombre.invalid }"/>
       <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">

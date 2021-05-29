@@ -1,7 +1,10 @@
 <hr class='w-100'>
 <div class="row justify-content-end">
   <button class="btn btn-warning">
-    <a class="nav-link" routerLink="/prestaciones/formulario">Nueva Prestacion</a>
+    <a class="nav-link" routerLink="/prestaciones/formulario">Nueva Alimentación</a>
+  </button>
+  <button class="btn btn-success">
+    <a class="nav-link" routerLink="/prestaciones/formularioAlojamiento">Nuevo Alojamiento</a>
   </button>
 </div>
 <hr class='w-100'>
@@ -29,7 +32,7 @@
 </div>
 
 <div *ngFor="let prestacion of prestaciones">
-  <app-prestacion [prestacion]="prestacion" (prestacionseleccionada)="verDatos($event)"></app-prestacion>
+  <app-prestacion [prestacion]="prestacion" (prestacionSeleccionada)="verDatos($event)"></app-prestacion>
 </div>
 
 <!-- Modal -->
