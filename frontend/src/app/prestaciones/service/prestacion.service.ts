@@ -47,8 +47,9 @@ export class PrestacionService {
     prestacion.precioPrestacion = prestacionApi.precioPrestacion;
     prestacion.url = prestacionApi._links.self.href;
     prestacion.id = prestacion.getId(prestacion.url);
+    prestacion.tipo = prestacionApi.jaula ? 'Alojamiento' : 'Alimentacion';
 
-      return prestacion;
+    return prestacion;
   }
 
   create(prestacion: Prestacion): Observable<any> {
