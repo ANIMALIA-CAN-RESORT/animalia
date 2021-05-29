@@ -9,15 +9,11 @@
   <div class="col-10 col-sm-10 col-md-2 col-lg-1 col-xl-1">{{prestacion.jaula}}</div>
   <div class="col-10 col-sm-10 col-md-2 col-lg-1 col-xl-1">{{prestacion.tipoComida}}</div>
   <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2">{{prestacion.cantidadComidaDiaria}}</div>
-  <div class="col-10 col-sm-10 col-md-3 col-lg-1 col-xl-1 d-flex flex-column text-center">
-    <fa-icon [icon]="variablePago"></fa-icon>
+<div class="col-10 col-sm-10 col-md-3 col-lg-1 col-xl-1 d-flex flex-column text-center">
+  <div *ngIf='prestacion.pagada; else elseBlock'>
+    <span>{{prestacion.precioPrestacion}}&nbsp;<fa-icon class="pagada" [icon]="faCheck"></fa-icon></span>
   </div>
 </div>
-
-
-
-
-
-
-  <!-- <fa-icon [icon]="faTimes"></fa-icon>
-<fa-icon [icon]="faCheck"></fa-icon> -->
+<ng-template #elseBlock>
+  <span>{{prestacion.precioPrestacion}}&nbsp;<fa-icon class="no-pagada" [icon]="faTimes"></fa-icon></span>
+</ng-template>

@@ -37,9 +37,11 @@ export class PrestacionService {
     prestacion.tipo = prestacionApi.tipo;
     prestacion.fechaEntrada = prestacionApi.fechaEntrada;
     prestacion.fechaSalida = prestacionApi.fechaSalida;
-    prestacion.tipoComida = prestacionApi.tipoComida;
-    prestacion.cantidadComidaDiaria = prestacionApi.cantidadComidaDiaria;
+    prestacion.tipoComida = prestacionApi.tipoComida ? prestacionApi.tipoComida : '';
+    prestacion.cantidadComidaDiaria = prestacionApi.cantidadComidaDiaria ? prestacionApi.cantidadComidaDiaria : '';
     prestacion.pagada = prestacionApi.pagada;
+    prestacion.jaula = prestacionApi.jaula ? prestacionApi.jaula : '';
+    prestacion.precioPrestacion = prestacionApi.precioPrestacion;
     prestacion.url = prestacionApi._links.self.href;
     prestacion.id = prestacion.getId(prestacion.url);
 

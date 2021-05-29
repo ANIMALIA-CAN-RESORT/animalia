@@ -5,18 +5,17 @@ import { Prestacion } from '../models/prestacion';
 @Component({
   selector: 'app-prestacion',
   templateUrl: './prestacion.component.html',
-  styles: [
+  styleUrls: ['./prestacion.component.css'
   ]
 })
 export class PrestacionComponent implements OnInit {
+  @Input() prestacion: Prestacion;
+  @Output() prestacionSeleccionada = new EventEmitter<Prestacion>();
   faBed = faBed;
   faBone = faBone;
   faTimes =faTimes;
   faCheck = faCheck;
-  variablePago = faCheck;
-  @Input() prestacion: Prestacion;
-  @Output() prestacionSeleccionada = new EventEmitter<Prestacion>();
-
+  
   constructor() { }
 
   ngOnInit(): void {
