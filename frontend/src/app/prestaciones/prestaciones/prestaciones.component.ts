@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBed, faBone, faEuroSign } from '@fortawesome/free-solid-svg-icons';
+import { Mascota } from '../models/mascota';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';
@@ -16,9 +17,10 @@ export class PrestacionesComponent implements OnInit {
   faBed = faBed;
   faBone = faBone;
   faEuro =faEuroSign;
-
   prestaciones: Prestacion[] = [];
   prestacionVerDatos: Prestacion;
+  mascota: Mascota;
+  mascotas: Mascota[];
 
   constructor(
     private prestacionService: PrestacionService,
@@ -26,6 +28,7 @@ export class PrestacionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
+    this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
   }
 
   verDatos(prestacion: Prestacion): void {
@@ -44,5 +47,12 @@ export class PrestacionesComponent implements OnInit {
       console.log(`He actualizado una ${prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
     });
+  }
+
+  filtrarSinPagar(): void {
+    this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => !p.pagada));
+  }
+  filtrarPagadas(): void {
+    this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
   }
 }

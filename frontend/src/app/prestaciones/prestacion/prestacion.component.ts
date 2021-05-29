@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faBed, faBone, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Mascota } from '../models/mascota';
 import { MascotaImpl } from '../models/mascota-impl';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionService } from '../service/prestacion.service';
