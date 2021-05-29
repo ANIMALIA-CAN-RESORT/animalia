@@ -14,7 +14,7 @@
   <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.fechaEntrada}}</div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.fechaSalida}}</div>
   <div class="col-10 col-sm-10 col-md-2 col-lg-1 col-xl-1 d-flex flex-column text-center">{{prestacion.jaula}}</div>
-  <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.tipoComida}}</div>
+  <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.tipoComida | uppercase}}</div>
   <div class="col-10 col-sm-10 col-md-2 col-lg-1 col-xl-1 d-flex flex-column text-center">{{prestacion.cantidadComidaDiaria}}</div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-1 col-xl-1 d-flex flex-column text-center">
     <div *ngIf='prestacion.pagada; else elseBlock'>

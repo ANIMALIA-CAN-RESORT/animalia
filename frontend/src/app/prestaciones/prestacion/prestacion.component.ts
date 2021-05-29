@@ -14,11 +14,11 @@ import { PrestacionService } from '../service/prestacion.service';
 export class PrestacionComponent implements OnInit {
   @Input() prestacion: Prestacion;
   @Output() prestacionSeleccionada = new EventEmitter<Prestacion>();
+  mascota: MascotaImpl = new MascotaImpl();
   faBed = faBed;
   faBone = faBone;
   faTimes =faTimes;
   faCheck = faCheck;
-  mascota: MascotaImpl = new MascotaImpl();
   
   constructor(private prestacionService: PrestacionService) { }
 

@@ -15,31 +15,18 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-12">
-      <label>Jaula <sup class="text-danger">*</sup></label>
-      <select name="jaula" id="jaula" class="form-control" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
+      <label>JAULA <sup class="text-danger">*</sup></label>
+      <select name="jaula" id="jaula" [(ngModel)]='prestacion.jaula' class="form-control" required #jaula="ngModel" [ngClass]="{ 'is-invalid': jaula.invalid && (jaula.dirty || jaula.touched),
+      'is-valid': !jaula.invalid }">
+        <option [value]="jaula"  *ngFor="let jaula of jaulas">{{jaula}}</option>
       </select>
-    </div>
-    <div class="col-lg-6 col-md-12">
+      <div class="text-danger" *ngIf="jaula.invalid && (jaula.dirty || jaula.touched)">
+        <div *ngIf="jaula.errors.required">
+            Es obligatorio elegir la jaula
+        </div>
+      </div>
+    </div> 
+    <!-- <div class="col-lg-6 col-md-12">
       <label>Entrada <sup class="text-danger">*</sup></label>
       <input type="date" class="form-control" [(ngModel)]="prestacion.fechaEntrada" name="fechaEntrada" min='1990-01-11' max='2050-12-31'
         required #fechaEntrada="ngModel" />
@@ -48,7 +35,7 @@
       <label>Salida <sup class="text-danger">*</sup></label>
       <input type="date" class="form-control" [(ngModel)]="prestacion.fechaSalida" name="fechaSalida" min='prestacion.fechaEntrada' max='2050-12-31'
         required #fechaSalida="ngModel" />
-    </div>  
+    </div>   -->
   </div>
   <div class="form-row justify-content-between pt-5">
     <div class="col-lg-5 col-md-12">
