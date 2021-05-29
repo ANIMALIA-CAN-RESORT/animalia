@@ -145,4 +145,8 @@ export class PrestacionService {
 
     return mascota;
   }
+
+  getMascota(prestacion: Prestacion): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}${prestacion.id}/mascota/`);
+  }
 }
