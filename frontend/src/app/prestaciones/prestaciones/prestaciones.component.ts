@@ -32,6 +32,8 @@ export class PrestacionesComponent implements OnInit {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
     this.filtro = '0';
+    this.precioFactura = 0;
+
   }
 
   verDatos(prestacion: Prestacion): void {
@@ -55,10 +57,14 @@ export class PrestacionesComponent implements OnInit {
   filtrarSinPagar(): void {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => !p.pagada));
     this.filtro = '1';
+    this.precioFactura = 0;
+
   }
   filtrarPagadas(): void {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
     this.filtro = '2';
+    this.precioFactura = 0;
+
   }
 
   filtrarMascota(mascota: Mascota): void {
@@ -71,6 +77,8 @@ export class PrestacionesComponent implements OnInit {
     else if (this.filtro == '2') {
         this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
     }
+    this.precioFactura = 0;
+
   }
 
   getPrecioFactura(): void {
