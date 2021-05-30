@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MascotaImpl } from '../../models/mascota-impl';
+import { MascotaImpl } from 'src/app/mascotas/models/mascota-impl';
 import { PrestacionImpl } from '../../models/prestacion-impl';
 import { PrestacionService } from '../../service/prestacion.service';
 

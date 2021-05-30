@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBed, faBone, faEuroSign } from '@fortawesome/free-solid-svg-icons';
-import { Mascota } from '../models/mascota';
+import { Mascota } from 'src/app/mascotas/models/mascota';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Mascota } from 'src/app/mascotas/models/mascota';
+import { MascotaImpl } from 'src/app/mascotas/models/mascota-impl';
 import { environment } from 'src/environments/environment';
-import { Mascota } from '../models/mascota';
-import { MascotaImpl } from '../models/mascota-impl';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
 

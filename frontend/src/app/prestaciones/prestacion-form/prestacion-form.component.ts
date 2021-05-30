@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Mascota } from '../models/mascota';
+import { Mascota } from 'src/app/mascotas/models/mascota';
 import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';
 
