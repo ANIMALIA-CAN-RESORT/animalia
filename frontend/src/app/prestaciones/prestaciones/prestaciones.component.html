@@ -6,15 +6,10 @@
 
   <div class="col-lg-4 col-md-12">
     <label><b>MASCOTA&nbsp;</b></label>
-    <select name="mascota" id="mascota" [(ngModel)]='mascota' (change)='getPrestacionesDeMascota(mascota)'>
+    <select name="mascota" id="mascota" [(ngModel)]='mascota' (change)='filtrarMascota(mascota)'>
       <option [value]="mascota" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
     </select>
   </div>
-
-
-
-
-
 </form>
 <div class="row justify-content-end">
   <button class="btn btn-primary text-white" routerLink="/prestaciones/formulario">Nueva Prestación
@@ -45,9 +40,15 @@
     <fa-icon [icon]="faEuro"></fa-icon>
   </div>
 </div>
-
 <div *ngFor="let prestacion of prestaciones">
   <app-prestacion [prestacion]="prestacion" (prestacionSeleccionada)="verDatos($event)"></app-prestacion>
+</div>
+<div class="row justify-content-end">
+  <button class="btn btn-primary text-white">Total: {{precioFactura}} €</button>
+</div>
+<div class="row justify-content-center">
+  <button class="btn btn-primary text-white"  (click)='getPrecioFactura()'>Generar factura 
+  </button>
 </div>
 
 <!-- Modal -->

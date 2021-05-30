@@ -22,6 +22,7 @@ export class PrestacionesComponent implements OnInit {
   mascota: Mascota;
   mascotas: Mascota[];
   filtro: string;
+  precioFactura:number = 0;
 
   constructor(
     private prestacionService: PrestacionService,
@@ -60,7 +61,7 @@ export class PrestacionesComponent implements OnInit {
     this.filtro = '2';
   }
 
-  getPrestacionesDeMascota(mascota: Mascota): void {
+  filtrarMascota(mascota: Mascota): void {
     if (this.filtro == '0') {
     this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     }
@@ -69,6 +70,13 @@ export class PrestacionesComponent implements OnInit {
     }
     else if (this.filtro == '2') {
         this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
+    }
+  }
+
+  getPrecioFactura(): void {
+    this.precioFactura = 0;
+    for (let prestacion of this.prestaciones) {
+      this.precioFactura += prestacion.precioPrestacion;
     }
   }
 
