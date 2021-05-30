@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PrestacionFormAlojamientoComponent } from './prestacion-form-alojamiento/prestacion-form-alojamiento.component';
+import { PrestacionFormComponent } from './prestacion-form/prestacion-form.component';
 import { PrestacionesComponent } from './prestaciones/prestaciones.component';
 
 const routes: Routes = [
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: PrestacionesComponent
   },
   {
-    path: 'formularioAlojamiento',
-    component: PrestacionFormAlojamientoComponent
+    path: 'formulario',
+    component: PrestacionFormComponent
   }
 ];
 

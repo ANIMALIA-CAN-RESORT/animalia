@@ -6,10 +6,10 @@ import { PrestacionFichaComponent } from './prestaciones/prestacion-ficha/presta
 import { PrestacionComponent } from './prestacion/prestacion.component';
 import { PrestacionesRoutingModule } from './prestaciones-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { PrestacionFormAlojamientoComponent } from './prestacion-form-alojamiento/prestacion-form-alojamiento.component';
+import { PrestacionFormComponent } from './prestacion-form/prestacion-form.component';
 
 @NgModule({
-  declarations: [PrestacionesComponent, PrestacionFichaComponent, PrestacionFormAlojamientoComponent, PrestacionComponent],
+  declarations: [PrestacionesComponent, PrestacionFichaComponent, PrestacionFormComponent, PrestacionComponent],
   imports: [
     CommonModule,
     PrestacionesRoutingModule,

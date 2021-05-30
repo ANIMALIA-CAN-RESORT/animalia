@@ -3,16 +3,13 @@
   <input type="radio" name="porPago"  (click)='filtrarSinPagar()'>&nbsp;&nbsp;Sin pagar&nbsp;&nbsp;
   <input type="radio" name="porPago"  (click)='filtrarPagadas()'>&nbsp;&nbsp;Pagadas&nbsp;&nbsp;
   <input type="radio" name="porPago"  (click)='ngOnInit()' checked>&nbsp;&nbsp;Todas
-<!-- 
-  <div class="col-lg-6 col-md-12">
-    <label>Mascota</label>
-    <select name="mascotas" [(ngModel)]="mascotas" (change)=''>
-      <option *ngFor="let mascota of mascotas" [value]="mascota">
-        <span>{{ mascota.nombre }}</span>
-      </option>
-    </select>
-  </div> -->
 
+  <div class="col-lg-4 col-md-12">
+    <label><b>MASCOTA&nbsp;</b></label>
+    <select name="mascota" id="mascota" [(ngModel)]='mascota' (change)='getPrestacionesDeMascota(mascota)'>
+      <option [value]="mascota" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
+    </select>
+  </div>
 
 
 
@@ -20,9 +17,7 @@
 
 </form>
 <div class="row justify-content-end">
-  <button class="btn btn-primary text-white" routerLink="/prestaciones/formulario">Nueva Alimentación
-  </button>
-  <button class="btn btn-success text-white" routerLink="/prestaciones/formularioAlojamiento">Nuevo Alojamiento
+  <button class="btn btn-primary text-white" routerLink="/prestaciones/formulario">Nueva Prestación
   </button>
 </div>
 <hr class='w-100'>

@@ -82,6 +82,20 @@ export class PrestacionService {
     );
   }
 
+  createAlimentacion(prestacion: Prestacion): Observable<any> {
+    return this.http.post(`${this.host}alimentaciones/`, prestacion).pipe(
+      catchError((e) => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
+  }
+
   delete(prestacion): Observable<Prestacion> {
     return this.http.delete<Prestacion>(`${this.urlEndPoint}${prestacion.id}`)
       .pipe(
@@ -149,4 +163,9 @@ export class PrestacionService {
   getMascota(prestacion: Prestacion): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}${prestacion.id}/mascota/`);
   }
+
+  getPrestacionesDeMascota(mascota: Mascota): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/`);
+  }
+
 }

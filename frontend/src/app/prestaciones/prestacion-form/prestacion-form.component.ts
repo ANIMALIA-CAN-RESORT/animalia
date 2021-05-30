@@ -5,12 +5,12 @@ import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';
 
 @Component({
-  selector: 'app-prestacion-form-alojamiento',
-  templateUrl: './prestacion-form-alojamiento.component.html',
+  selector: 'app-prestacion-form',
+  templateUrl: './prestacion-form.component.html',
   styles: [
   ]
 })
-export class PrestacionFormAlojamientoComponent implements OnInit {
+export class PrestacionFormComponent implements OnInit {
   prestacion: PrestacionImpl = new PrestacionImpl();
   mascota: Mascota;
   mascotas: Mascota[];
@@ -21,15 +21,26 @@ export class PrestacionFormAlojamientoComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.prestacion.tipo = 'Alojamiento';
     this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
 
   }
 
-  crearAlojamiento(): void {
-    this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
-      console.log(`He creado un ${this.prestacion.tipo}`);
-      this.router.navigate(['/prestaciones']);
-    });
+  crearPrestacion(): void {
+    if (this.prestacion.tipo == 'Alojamiento') {
+      this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
+        console.log(`He creado un ${this.prestacion.tipo}`);
+        this.router.navigate(['/prestaciones']);
+      });
+    } else if (this.prestacion.tipo == 'Alimentacion') {
+      this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
+        console.log('He creado un alojamiento');
+      });
+      this.prestacionService.createAlimentacion(this.prestacion).subscribe((response) => {
+        console.log(`He creado un ${this.prestacion.tipo}`);
+        this.router.navigate(['/prestaciones']);
+      });
+    } 
   }
 
   cargarMascota() {

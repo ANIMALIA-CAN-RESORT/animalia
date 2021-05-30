@@ -21,6 +21,7 @@ export class PrestacionesComponent implements OnInit {
   prestacionVerDatos: Prestacion;
   mascota: Mascota;
   mascotas: Mascota[];
+  filtro: string;
 
   constructor(
     private prestacionService: PrestacionService,
@@ -29,6 +30,7 @@ export class PrestacionesComponent implements OnInit {
   ngOnInit(): void {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
+    this.filtro = '0';
   }
 
   verDatos(prestacion: Prestacion): void {
@@ -51,8 +53,23 @@ export class PrestacionesComponent implements OnInit {
 
   filtrarSinPagar(): void {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => !p.pagada));
+    this.filtro = '1';
   }
   filtrarPagadas(): void {
     this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
+    this.filtro = '2';
   }
+
+  getPrestacionesDeMascota(mascota: Mascota): void {
+    if (this.filtro == '0') {
+    this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
+    }
+    else if (this.filtro == '1') {
+      this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => !p.pagada));
+    }
+    else if (this.filtro == '2') {
+        this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
+    }
+  }
+
 }

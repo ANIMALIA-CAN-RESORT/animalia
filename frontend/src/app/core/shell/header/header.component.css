@@ -72,10 +72,10 @@ header .menu .color-1:hover {
   background: #ef1b2d;
 }
 header .menu .color-2:hover {
-  background: #bd0595;
+  background:orange;
 }
 header .menu .color-3:hover {
-  background:orangered;
+  background:deeppink;
 }
 header .menu .color-4:hover {
   background: #eef107;

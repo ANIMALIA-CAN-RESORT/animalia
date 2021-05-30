@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./administracion/administracion.module').then(m => m.AdministracionModule)
   }, 
   {
-    path: 'planeta',
-    loadChildren: () => import('./planetas/planetas.module').then(m => m.PlanetasModule)
-  },
-  {
     path: 'not-found',
     component: NotFoundComponent
   },
