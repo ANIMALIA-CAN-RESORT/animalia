@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cliente } from 'src/app/clientes/models/cliente';
 import { Mascota } from '../models/mascota';
 import { MascotaImpl } from '../models/mascota-impl';
 import { MascotaService } from '../service/mascota.service';
@@ -14,6 +15,8 @@ import { MascotaService } from '../service/mascota.service';
 export class MascotasComponent implements OnInit {
   mascotas: Mascota[] = [];
   mascotaVerDatos: Mascota;
+  cliente:Cliente;
+  clientes: Cliente[];
 
   constructor(
     private mascotaService: MascotaService,
@@ -21,6 +24,8 @@ export class MascotasComponent implements OnInit {
 
   ngOnInit(): void {
     this.mascotaService.getMascotas().subscribe((response) => this.mascotas = this.mascotaService.extraerMascotas(response));
+    this.mascotaService.getClientes().subscribe((response) => this.clientes = this.mascotaService.extraerClientes(response));
+
   }
 
   verDatos(mascota: Mascota): void {

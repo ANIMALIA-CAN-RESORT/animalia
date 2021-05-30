@@ -3,9 +3,9 @@ import { Mascota } from "./mascota";
 export class MascotaImpl implements Mascota {
 
   id: string;
-  nombre: Date;
-  raza: Date;
-  talla: boolean;
+  nombre: string;
+  raza: string;
+  talla: string;
   chip: string;
   url: string;
 

@@ -2,11 +2,11 @@
   <hr class='w-100'>
   <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><a class="" data-toggle="modal"
       data-target="#modalMascota" (click)='mascotaSeleccionada.emit(mascota)'> {{mascota.nombre | uppercase}}</a></div>
-  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">{{mascota.apellido1 | titlecase}}</div>
-  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">{{mascota.apellido2 | titlecase}}</div>
-  <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2">{{mascota.tfno}}</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">{{mascota.raza | titlecase}}</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">{{mascota.talla | uppercase}}</div>
+  <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2">{{cliente.nombre | titlecase}} {{cliente.apellido1 | titlecase}}</div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">
-      <button class="btn btn-success" href="#" data-toggle="modal" data-target="#modalMascotas">Mascotas</button>
+    <button class="btn btn-success" [routerLink]="['/mascotas/prestaciones', mascota.id]">Mascotas</button>
   </div>
 </div>
 

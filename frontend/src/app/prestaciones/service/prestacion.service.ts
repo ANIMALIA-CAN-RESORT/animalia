@@ -27,13 +27,16 @@ export class PrestacionService {
 
   extraerPrestaciones(respuestaApi: any): Prestacion[] {
     const prestaciones: Prestacion[] = [];
-    respuestaApi._embedded.alimentaciones.forEach(p => {
-      prestaciones.push(this.mapearPrestacion(p));
-    });
-    respuestaApi._embedded.alojamientos.forEach(p => {
-      prestaciones.push(this.mapearPrestacion(p));
-    });
-
+    if (respuestaApi._embedded.alimentaciones) {
+      respuestaApi._embedded.alimentaciones.forEach(p => {
+        prestaciones.push(this.mapearPrestacion(p));
+      });
+    }
+    if (respuestaApi._embedded.alojamientos) {
+      respuestaApi._embedded.alojamientos.forEach(p => {
+        prestaciones.push(this.mapearPrestacion(p));
+      });
+    }
     return prestaciones;
   }
 

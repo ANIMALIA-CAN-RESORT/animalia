@@ -4,16 +4,17 @@ export class MascotaImpl implements Mascota {
 
   id: string;
   nombre: string;
-  apellido1: string;
-  apellido2: string;
-  dni: string;
-  tfno: string;
-  email: string;
-  mascotas: any[];
+  raza: string;
+  talla: string;
+  chip: string;
+  prestaciones: any[];
+  cliente:string;
   url: string;
 
   constructor(){}
+  
   getId(url: string): string {
     return url.slice(url.lastIndexOf('/') + 1, url.length);
   }
+
 }
