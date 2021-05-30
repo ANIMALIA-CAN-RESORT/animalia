@@ -27,7 +27,7 @@ export class MascotaFormComponent implements OnInit {
   crearMascota(): void {
     this.mascotaService.create(this.mascota).subscribe((response) => {
       console.log(`He creado a ${this.mascota.nombre}`);
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/mascotas']);
     });
   }
 

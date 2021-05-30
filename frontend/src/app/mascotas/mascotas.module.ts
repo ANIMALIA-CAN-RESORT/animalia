@@ -6,10 +6,11 @@ import { MascotasComponent } from './mascotas/mascotas.component';
 import { MascotaComponent } from './mascota/mascota.component';
 import { MascotaFichaComponent } from './mascotas/mascota-ficha/mascota-ficha.component';
 import { MascotaFormComponent } from './mascota-form/mascota-form.component';
+import { MascotaPrestacionesComponent } from './mascota-prestaciones/mascota-prestaciones.component';
 
 
 @NgModule({
-  declarations: [MascotasComponent, MascotaFichaComponent, MascotaFormComponent, MascotaComponent],
+  declarations: [MascotasComponent, MascotaFichaComponent, MascotaFormComponent, MascotaComponent, MascotaPrestacionesComponent],
   imports: [
     CommonModule,
     MascotasRoutingModule,

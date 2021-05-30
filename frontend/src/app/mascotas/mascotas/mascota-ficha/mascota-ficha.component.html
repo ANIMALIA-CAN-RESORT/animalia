@@ -2,7 +2,7 @@
 <form #mascotaForm="ngForm">
   <div class="form-row py-2">
     <div class="col-lg-4 col-md-12">
-      <label>CHIP <sup class="text-danger">*</sup></label>
+      <label><b>CHIP<sup class="text-danger">*</sup></b></label>
       <input type="text" class="form-control" [(ngModel)]="mascota.chip" placeholder="Chip de la mascota" name="chip"
         required minlength="9" maxlength="9" #chip="ngModel" [ngClass]="{ 'is-invalid': chip.invalid && (chip.dirty || chip.touched),
         'is-valid': !chip.invalid }"/>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-12">
-      <label>NOMBRE <sup class="text-danger">*</sup></label>
+      <label><b>NOMBRE<sup class="text-danger">*</sup></b></label>
       <input type="text" class="form-control" [(ngModel)]="mascota.nombre" placeholder="Nombre del Cliente" name="nombre"
         required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
         'is-valid': !nombre.invalid }"/>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-12">
-      <label>RAZA</label>
+      <label><b>RAZA</b></label>
       <input type="text" class="form-control" [(ngModel)]="mascota.raza" placeholder="Raza de la mascota" name="raza"
         minlength="3" #raza="ngModel" [ngClass]="{ 'is-invalid': raza.invalid && (raza.dirty || raza.touched),
         'is-valid': !raza.invalid }"/>

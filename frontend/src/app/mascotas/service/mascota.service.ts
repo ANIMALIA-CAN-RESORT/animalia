@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Cliente } from 'src/app/clientes/models/cliente';
 import { ClienteImpl } from 'src/app/clientes/models/cliente-impl';
+import { Prestacion } from 'src/app/prestaciones/models/prestacion';
+import { PrestacionImpl } from 'src/app/prestaciones/models/prestacion-impl';
 import { environment } from 'src/environments/environment';
 import { Mascota } from '../models/mascota';
 import { MascotaImpl } from '../models/mascota-impl';
@@ -139,20 +141,36 @@ export class MascotaService {
     return this.http.get<any>(`${this.urlEndPoint}${mascota.id}/prestaciones`);
   }
 
-  extraerPrestacionesMascota(respuestaApi: any): any[] {
-    const prestaciones: any[] = [];
+  extraerPrestacionesMascota(respuestaApi: any): Prestacion[] {
+    const prestaciones: Prestacion[] = [];
 
     if (respuestaApi._embedded.alojamientos) {
       respuestaApi._embedded.alojamientos.forEach(p => {
-        prestaciones.push(p);
+        prestaciones.push(this.mapearPrestacion(p));
       });
     }
     if (respuestaApi._embedded.alimentaciones) {
       respuestaApi._embedded.alimentaciones.forEach(p => {
-        prestaciones.push(p);
+        prestaciones.push(this.mapearPrestacion(p));
       });
     }
     return prestaciones;
   }
 
+  mapearPrestacion(prestacionApi: any): PrestacionImpl {
+    const prestacion = new PrestacionImpl();
+    prestacion.tipo = prestacionApi.tipo;
+    prestacion.fechaEntrada = prestacionApi.fechaEntrada;
+    prestacion.fechaSalida = prestacionApi.fechaSalida;
+    prestacion.tipoComida = prestacionApi.tipoComida ? prestacionApi.tipoComida : '';
+    prestacion.cantidadComidaDiaria = prestacionApi.cantidadComidaDiaria ? prestacionApi.cantidadComidaDiaria : '';
+    prestacion.pagada = prestacionApi.pagada;
+    prestacion.jaula = prestacionApi.jaula ? prestacionApi.jaula : '';
+    prestacion.precioPrestacion = prestacionApi.precioPrestacion;
+    prestacion.url = prestacionApi._links.self.href;
+    prestacion.id = prestacion.getId(prestacion.url);
+    prestacion.tipo = prestacionApi.jaula ? 'Alojamiento' : 'Alimentacion';
+
+    return prestacion;
+  }
 }

@@ -35,14 +35,14 @@ export class MascotasComponent implements OnInit {
   onMascotaEliminar(mascota: MascotaImpl): void {
     this.mascotaService.delete(mascota).subscribe(response => {
       console.log(`He borrado a ${mascota.nombre}`);
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/mascotas']);
     });
   }
 
   onMascotaEditar(mascota: MascotaImpl): void {
     this.mascotaService.update(mascota).subscribe(response => {
       console.log(`He actualizado a ${mascota.nombre}`);
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/mascotas']);
     });
   }
 }
