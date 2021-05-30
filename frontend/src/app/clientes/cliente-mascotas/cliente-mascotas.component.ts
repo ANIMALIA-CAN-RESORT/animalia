@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ClienteImpl } from '../models/cliente-impl';
 
 @Component({
   selector: 'app-cliente-mascotas',
@@ -7,7 +6,6 @@ import { ClienteImpl } from '../models/cliente-impl';
   styles: []
 })
 export class ClienteMascotasComponent implements OnInit {
-  @Input() cliente: ClienteImpl;
 
   constructor() { }
 
