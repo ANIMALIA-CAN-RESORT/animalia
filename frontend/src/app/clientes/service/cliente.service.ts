@@ -19,12 +19,15 @@ export class ClienteService {
   constructor(
     private http: HttpClient) { }
 
+  getMascotasIdCliente(id: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}${id}/mascotas`);
+  }
   getMascotasCliente(cliente): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}${cliente.id}/mascotas`);
   }
 
   extraerMascotasCliente(respuestaApi: any): any[] {
-    const mascotas: any [] = [];
+    const mascotas: any[] = [];
     respuestaApi._embedded.mascotas.forEach(m => {
       mascotas.push(m);
 
