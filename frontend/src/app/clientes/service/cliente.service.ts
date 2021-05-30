@@ -28,10 +28,12 @@ export class ClienteService {
 
   extraerMascotasCliente(respuestaApi: any): any[] {
     const mascotas: any[] = [];
-    respuestaApi._embedded.mascotas.forEach(m => {
-      mascotas.push(m);
+    if (respuestaApi._embedded.mascotas) {
+      respuestaApi._embedded.mascotas.forEach(m => {
+        mascotas.push(m);
 
-    });
+      });
+    }
     return mascotas;
   }
   getClientes(): Observable<any> {
