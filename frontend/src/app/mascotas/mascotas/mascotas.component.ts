@@ -15,8 +15,6 @@ import { MascotaService } from '../service/mascota.service';
 export class MascotasComponent implements OnInit {
   mascotas: Mascota[] = [];
   mascotaVerDatos: Mascota;
-  cliente:Cliente;
-  clientes: Cliente[];
 
   constructor(
     private mascotaService: MascotaService,
@@ -24,8 +22,6 @@ export class MascotasComponent implements OnInit {
 
   ngOnInit(): void {
     this.mascotaService.getMascotas().subscribe((response) => this.mascotas = this.mascotaService.extraerMascotas(response));
-    this.mascotaService.getClientes().subscribe((response) => this.clientes = this.mascotaService.extraerClientes(response));
-
   }
 
   verDatos(mascota: Mascota): void {

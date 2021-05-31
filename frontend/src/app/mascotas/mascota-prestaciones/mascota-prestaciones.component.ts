@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PrestacionImpl } from 'src/app/prestaciones/models/prestacion-impl';
 import { MascotaService } from '../service/mascota.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { MascotaService } from '../service/mascota.service';
   styles: []
 })
 export class MascotaPrestacionesComponent implements OnInit {
-  prestaciones: any[] = [];
+  prestaciones: PrestacionImpl[] = [];
   constructor(
     private activateRoute: ActivatedRoute,
     private mascotaService: MascotaService) { }

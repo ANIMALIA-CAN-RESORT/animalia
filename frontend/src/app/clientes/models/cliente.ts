@@ -1,3 +1,5 @@
+import { Mascota } from "src/app/mascotas/models/mascota";
+
 export interface Cliente {
 
   id: string;
@@ -7,7 +9,7 @@ export interface Cliente {
   dni: string;
   tfno: string;
   email: string;
-  mascotas: any[];
+  mascotas: Mascota[];
   url: string;
 
 }

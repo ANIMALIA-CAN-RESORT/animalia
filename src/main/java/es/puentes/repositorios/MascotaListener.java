@@ -1,6 +1,7 @@
 package es.puentes.repositorios;
 
 import javax.persistence.PostLoad;
+import javax.persistence.PostRemove;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
@@ -29,7 +30,7 @@ public class MascotaListener {
 //		System.err.println("Se va a guardar una mascota: " + mascota.getNombre());
 //	}
 	
-	@PreRemove
+	@PostRemove
 	public void preBorrar(MascotaConId mascota) {
 		System.err.println("Se va a borrar una mascota: " + mascota.getNombre());
 	}

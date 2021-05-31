@@ -11,12 +11,10 @@ import { ClienteService } from '../service/cliente.service';
 export class ClienteComponent implements OnInit {
   @Input() cliente: Cliente;
   @Output() clienteSeleccionado = new EventEmitter<Cliente>();
-  mascotas: any [] = [0,0];
 
-  constructor(private clienteService: ClienteService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.clienteService.getMascotasCliente(this.cliente).subscribe((response) => this.mascotas = this.clienteService.extraerMascotasCliente(response));
 
   }
 

@@ -13,5 +13,5 @@ import es.puentes.entidades.MascotaConId;
 public interface MascotaDAO extends JpaRepository<MascotaConId, Long>, MascotaDAOCustom {
 
 	@RestResource(path="nombre")
-	List<MascotaConId> findByNombreContaining(@Param("nombre") String txt);
+	List<MascotaConId> findByNombreIgnoreCaseContaining(@Param("nombre") String txt);
 }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ClienteImpl } from '../../models/cliente-impl';
+import { ClienteService } from '../../service/cliente.service';
 
 @Component({
   selector: 'app-cliente-ficha',
@@ -15,6 +16,7 @@ export class ClienteFichaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
   eliminar(): void {
     this.clienteEliminar.emit(this.cliente);

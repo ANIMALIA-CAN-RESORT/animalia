@@ -8,7 +8,9 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import es.puentes.entidades.MascotaConId;
 import es.puentes.residencia.Prestacion;
 
 @Transactional(readOnly = true)
@@ -38,6 +40,13 @@ public class MascotaDAOImpl implements MascotaDAOCustom {
 
 		return prestaciones;
 	}
+
+//	@Override
+//	public List<MascotaConId> filtrarMascotas(@PathVariable String nombre) {
+//		List<MascotaConId> mascotas = mascotaDAO.findAll().stream().filter(j -> j.isPagada() == false)
+//				.collect(Collectors.toList());
+//		return mascotas;
+//	}
 	
 	
 //	@Override

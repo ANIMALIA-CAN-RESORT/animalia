@@ -3,12 +3,30 @@
     <img class="card-img-top" alt="">
     <div class="card-body">
       <h4 class="card-title text-center"><b>{{prestacion.tipo | uppercase}}</b></h4>
-      <p class="card-text"><b>Inicio:&nbsp;</b>{{prestacion.fechaEntrada}}</p>
-      <p class="card-text"><b>Fin:&nbsp;</b>{{prestacion.fechaSalida}}</p>
-      <p class="card-text"><b>Jaula:&nbsp;</b>{{prestacion.jaula}}</p>
-      <p class="card-text"><b>Tipo de Comida:&nbsp;</b>{{prestacion.tipoComida}}</p>
-      <p class="card-text"><b>Cantidad de comida/día:&nbsp;</b>{{prestacion.cantidadComidaDiaria}} gr</p>
-      <p class="card-text"><b>Precio:&nbsp;</b>{{prestacion.precioPrestacion}} €</p>
+      <p class="card-text">
+        <span class="mr-2"><b>Inicio:</b></span>
+        <span>{{prestacion.fechaEntrada}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Fin:</b></span>
+        <span>{{prestacion.fechaSalida}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Jaula:</b></span>
+        <span>{{prestacion.jaula}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Tipo de Comida:</b></span>
+        <span>{{prestacion.tipoComida}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Cantidad de comida/día:</b></span>
+        <span>{{prestacion.cantidadComidaDiaria}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Precio:</b></span>
+        <span>{{prestacion.precioPrestacion}}</span>
+      </p>
     </div>
   </div>
 </div>

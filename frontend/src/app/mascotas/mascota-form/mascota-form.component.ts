@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/clientes/models/cliente';
 import { MascotaImpl } from '../models/mascota-impl';
@@ -12,9 +12,7 @@ import { MascotaService } from '../service/mascota.service';
 })
 export class MascotaFormComponent implements OnInit {
   mascota: MascotaImpl = new MascotaImpl();
-  cliente: Cliente;
   clientes: Cliente[];
-  codCliente: string = null;
 
   constructor(private mascotaService: MascotaService, 
     private router: Router) { }
@@ -32,8 +30,6 @@ export class MascotaFormComponent implements OnInit {
   }
 
   cargarCliente() {
-    this.cliente = null;
-    console.log('cargar ', this.cliente.nombre);
-    this.cliente = this.clientes.filter((c) => c.id == this.codCliente)[0];
+    this.mascota.cliente = this.clientes.filter((c) => c === this.mascota.cliente)[0];
   }
 }

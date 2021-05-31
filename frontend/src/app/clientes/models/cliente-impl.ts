@@ -1,3 +1,4 @@
+import { Mascota } from "src/app/mascotas/models/mascota";
 import { Cliente } from "./cliente";
 
 export class ClienteImpl implements Cliente {
@@ -9,7 +10,7 @@ export class ClienteImpl implements Cliente {
   dni: string;
   tfno: string;
   email: string;
-  mascotas: any[];
+  mascotas: Mascota[];
   url: string;
 
   constructor(){}

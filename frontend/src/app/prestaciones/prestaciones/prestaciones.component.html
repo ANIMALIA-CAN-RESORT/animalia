@@ -10,6 +10,16 @@
       <option [value]="mascota" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
     </select>
   </div>
+
+
+  <div class="row justify-content-left">
+    <button class="btn btn-primary text-white"  (click)='filtrarMascota(mascota)'>Seleccionar mascota
+    </button>
+  </div>
+
+
+
+
 </form>
 <div class="row justify-content-end">
   <button class="btn btn-primary text-white" routerLink="/prestaciones/formulario">Nueva Prestación

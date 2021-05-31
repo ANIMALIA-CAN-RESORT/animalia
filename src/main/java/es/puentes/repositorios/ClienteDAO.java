@@ -13,5 +13,5 @@ import es.puentes.entidades.ClienteConId;
 public interface ClienteDAO extends JpaRepository<ClienteConId, String> {
 
 	@RestResource(path="nombre")
-	List<ClienteConId> findByNombreContaining(@Param("nombre") String txt);
+	List<ClienteConId> findByNombreIgnoreCaseContaining(@Param("nombre") String txt);
 }

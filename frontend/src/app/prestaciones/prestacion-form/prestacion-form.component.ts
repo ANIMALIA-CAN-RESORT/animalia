@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Mascota } from 'src/app/mascotas/models/mascota';
 import { PrestacionImpl } from '../models/prestacion-impl';
 import { PrestacionService } from '../service/prestacion.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-prestacion-form',
@@ -21,14 +22,19 @@ export class PrestacionFormComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.prestacion);
     this.prestacion.tipo = 'Alojamiento';
     this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
 
   }
 
   crearPrestacion(): void {
+    
+ this.prestacion.fechaEntrada= moment(this.prestacion.fechaEntrada).format();
+ this.prestacion.fechaSalida= moment(this.prestacion.fechaSalida).format();
     if (this.prestacion.tipo == 'Alojamiento') {
       this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
+        console.log(this.prestacion.fechaEntrada);
         console.log(`He creado un ${this.prestacion.tipo}`);
         this.router.navigate(['/prestaciones']);
       });

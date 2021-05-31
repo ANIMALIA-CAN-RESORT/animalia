@@ -7,8 +7,13 @@
      </div>
   </div>
   <div class="form-row py-2">
-    <div class="col-lg-2 col-md-12">
+    <!-- <div class="col-lg-2 col-md-12">
       <label><b>MASCOTA<sup class="text-danger">*</sup></b></label>
+      
+      <select [(ngModel)]='prestacion.mascota' *ngFor='let mascota of mascotas'>
+        <option value="mascota">{{mascota.nombre}}</option>
+      </select>
+    
       <select name="mascotas" [(ngModel)]="codMascota" (change)="cargarMascota()" class="form-control" required
         #mascota="ngModel" [ngClass]="{ 'is-invalid': mascota.invalid && (mascota.dirty || mascota.touched),
       'is-valid': !mascota.invalid }">
@@ -20,16 +25,16 @@
         <div *ngIf="mascota.errors.required">
           Es obligatorio elegir la mascota
         </div>
-      </div>
-    </div>
-    <!--<div class="col-lg-4 col-md-12">
+      </div> -->
+    <!-- </div> -->
+    <div class="col-lg-4 col-md-12">
       <label><b>ENTRADA<sup class="text-danger">*</sup></b></label>
       <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
      </div>
     <div class="col-lg-4 col-md-12">
       <label><b>SALIDA<sup class="text-danger">*</sup></b></label>
-      <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
-     </div>     -->
+      <input type="date" name="salida" [(ngModel)]='prestacion.fechaSalida' required>
+     </div>    
     <!--a parte de no funcionar me ha puesto a 0 el precio del dia -->
   </div>
   <div class="form-row py-2">
@@ -49,8 +54,8 @@
     <div class="col-lg-1 col-md-12"></div>
       <div class="col-lg-4 col-md-12" *ngIf='prestacion.tipo == "Alimentacion"'>
        <label class="d-flex text-center"><b>TIPO DE COMIDA<sup class="text-danger">*</sup></b></label>
-        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="normal" checked>&nbsp;Normal&nbsp;
-        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="premium">&nbsp;Premium
+        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="normal">&nbsp;Normal&nbsp;
+        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="premium" checked>&nbsp;Premium
       </div>
       <div class="col-lg-4 col-md-12" *ngIf='prestacion.tipo == "Alimentacion"'>
         <label class="d-flex text-center"><b>COMIDA DIARIA<sup class="text-danger">*</sup></b></label>

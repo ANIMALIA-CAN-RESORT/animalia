@@ -1,9 +1,9 @@
-<h2 class="text-center"><b>PROPIETARIO: {{cliente.nombre}}</b></h2>
+<h2 class="text-center"><b>PROPIETARIO: {{mascota.cliente.nombre}}</b></h2>
 <form #mascotaForm="ngForm">
   <div class="form-row py-2">
     <div class="col-lg-4 col-md-12">
       <label><b>CHIP<sup class="text-danger">*</sup></b></label>
-      <input type="text" class="form-control" [(ngModel)]="mascota.chip" placeholder="Chip de la mascota" name="chip"
+      <input type="text" class="form-control" [(ngModel)]="mascota.chip" name="chip"
         required minlength="9" maxlength="9" #chip="ngModel" [ngClass]="{ 'is-invalid': chip.invalid && (chip.dirty || chip.touched),
         'is-valid': !chip.invalid }"/>
       <div class="text-danger" *ngIf="chip.invalid && (chip.dirty || chip.touched)">
@@ -17,7 +17,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <label><b>NOMBRE<sup class="text-danger">*</sup></b></label>
-      <input type="text" class="form-control" [(ngModel)]="mascota.nombre" placeholder="Nombre del Cliente" name="nombre"
+      <input type="text" class="form-control" [(ngModel)]="mascota.nombre" name="nombre"
         required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
         'is-valid': !nombre.invalid }"/>
       <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
@@ -31,7 +31,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <label><b>RAZA</b></label>
-      <input type="text" class="form-control" [(ngModel)]="mascota.raza" placeholder="Raza de la mascota" name="raza"
+      <input type="text" class="form-control" [(ngModel)]="mascota.raza" name="raza"
         minlength="3" #raza="ngModel" [ngClass]="{ 'is-invalid': raza.invalid && (raza.dirty || raza.touched),
         'is-valid': !raza.invalid }"/>
       <div class="text-danger" *ngIf="raza.invalid && (raza.dirty || raza.touched)">
@@ -42,21 +42,14 @@
     </div>
     <div class="col-lg-8 col-md-12">
       <label class="d-flex text-center"><b>TALLA<sup class="text-danger">*</sup></b></label>
-      <input type="radio" name="talla" [(ngModel)]='mascota.talla' value="S">&nbsp;S
-      <input type="radio" name="talla" [(ngModel)]='mascota.talla' value="M">&nbsp;M
-      <input type="radio" name="talla" [(ngModel)]='mascota.talla' value="L">&nbsp;L
-      <input type="radio" name="talla" [(ngModel)]='mascota.talla' value="XL">&nbsp;XL
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="S" class="mr-2">S
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="M" class="mr-2 ml-2">M
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="L" class="mr-2 ml-2">L
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="XL" class="mr-2 ml-2">XL
     </div>
     <div class="col-lg-4 col-md-12">
-      <label><b>CLIENTE&nbsp;</b></label>
-      <select name="cliente" id="cliente" [(ngModel)]='cliente' (change)='cargarCliente(cliente)'>
-        <option [value]="cliente" *ngFor="let cliente of clientes">{{cliente.nombre}}</option>
-      </select>
-      <div class="text-danger" *ngIf="cliente.invalid && (cliente.dirty || cliente.touched)">
-        <div *ngIf="cliente.errors.required">
-          Es obligatorio elegir el cliente
-        </div>
-      </div>
+      <label><b>CLIENTE</b></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.cliente.nombre + ' ' + mascota.cliente.apellido1"  name="cliente" readonly/>
     </div>
   </div>
   <div class="form-row justify-content-between pt-5">

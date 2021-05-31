@@ -12,14 +12,11 @@ import { MascotaService } from '../service/mascota.service';
 export class MascotaComponent implements OnInit {
   @Input() mascota: Mascota;
   @Output() mascotaSeleccionada = new EventEmitter<Mascota>();
-  cliente: ClienteImpl = new ClienteImpl();
-  prestaciones: any [] = [0,0];
 
   constructor(private mascotaService: MascotaService) { }
 
   ngOnInit(): void {
-    this.mascotaService.getCliente(this.mascota).subscribe((response) => this.cliente = this.mascotaService.mapearCliente(response));
-    this.mascotaService.getPrestacionesMascota(this.mascota).subscribe((response) => this.prestaciones = this.mascotaService.extraerPrestacionesMascota(response));
+    this.mascotaService.getCliente(this.mascota).subscribe((response) => this.mascota.cliente = this.mascotaService.mapearCliente(response));
 
   }
 

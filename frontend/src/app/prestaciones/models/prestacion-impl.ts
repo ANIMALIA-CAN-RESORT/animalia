@@ -1,20 +1,22 @@
+import { Mascota } from "src/app/mascotas/models/mascota";
 import { Prestacion } from "./prestacion";
 
 export class PrestacionImpl implements Prestacion {
 
   id: string;
-  fechaEntrada: Date;
-  fechaSalida: Date;
+  fechaEntrada: Date | string;
+  fechaSalida: Date | string;
   pagada: boolean;
   tipoComida?: string;
   cantidadComidaDiaria?: number;
   jaula?: string;
-  mascota: string;
+  mascota: Mascota;
   url: string;
   tipo: string;
   precioPrestacion: number;
 
-  constructor(){}
+  constructor(){
+  }
   getId(url: string): string {
     return url.slice(url.lastIndexOf('/') + 1, url.length);
   }

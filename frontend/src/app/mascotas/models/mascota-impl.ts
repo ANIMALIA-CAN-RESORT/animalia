@@ -1,3 +1,5 @@
+import { Cliente } from "src/app/clientes/models/cliente";
+import { PrestacionImpl } from "src/app/prestaciones/models/prestacion-impl";
 import { Mascota } from "./mascota";
 
 export class MascotaImpl implements Mascota {
@@ -7,8 +9,8 @@ export class MascotaImpl implements Mascota {
   raza: string;
   talla: string;
   chip: string;
-  prestaciones: any[];
-  cliente:string;
+  prestaciones: PrestacionImpl[];
+  cliente: Cliente;
   url: string;
 
   constructor(){}

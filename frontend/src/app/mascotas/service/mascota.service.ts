@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Cliente } from 'src/app/clientes/models/cliente';
 import { ClienteImpl } from 'src/app/clientes/models/cliente-impl';
-import { Prestacion } from 'src/app/prestaciones/models/prestacion';
 import { PrestacionImpl } from 'src/app/prestaciones/models/prestacion-impl';
 import { environment } from 'src/environments/environment';
 import { Mascota } from '../models/mascota';
@@ -141,8 +140,8 @@ export class MascotaService {
     return this.http.get<any>(`${this.urlEndPoint}${mascota.id}/prestaciones`);
   }
 
-  extraerPrestacionesMascota(respuestaApi: any): Prestacion[] {
-    const prestaciones: Prestacion[] = [];
+  extraerPrestacionesMascota(respuestaApi: any): PrestacionImpl[] {
+    const prestaciones: PrestacionImpl[] = [];
 
     if (respuestaApi._embedded.alojamientos) {
       respuestaApi._embedded.alojamientos.forEach(p => {
