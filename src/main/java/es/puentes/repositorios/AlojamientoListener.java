@@ -25,10 +25,10 @@ public class AlojamientoListener {
 		this.alojamientoDAO = alojamientoDAO;
 	}
 	
-	@PrePersist
-	public void preGuardar(AlojamientoConId alojamiento) {
-		System.err.println("Se va a guardar un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
-	}
+//	@PrePersist
+//	public void preGuardar(AlojamientoConId alojamiento) {
+//		System.err.println("Se va a guardar un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
+//	}
 	
 	@PreRemove
 	public void preBorrar(AlojamientoConId alojamiento) {
@@ -40,10 +40,10 @@ public class AlojamientoListener {
 		System.err.println("Se va a actualizar un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
 	}
 	
-	@PostLoad
-	public void postGuardar(AlojamientoConId alojamiento) {
-		log.warn("has guardado un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
-	}
+//	@PostLoad
+//	public void postGuardar(AlojamientoConId alojamiento) {
+//		log.warn("has guardado un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
+//	}
 }
 
 

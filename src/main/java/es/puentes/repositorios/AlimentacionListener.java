@@ -25,10 +25,10 @@ public class AlimentacionListener {
 		this.alimentacionDAO = alimentacionDAO;
 	}
 	
-	@PrePersist
-	public void preGuardar(AlimentacionConId alimentacion) {
-		System.err.println("Se va a guardar una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
-	}
+//	@PrePersist
+//	public void preGuardar(AlimentacionConId alimentacion) {
+//		System.err.println("Se va a guardar una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
+//	}
 	
 	@PreRemove
 	public void preBorrar(AlimentacionConId alimentacion) {
@@ -40,10 +40,10 @@ public class AlimentacionListener {
 		System.err.println("Se va a actualizar una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
 	}
 	
-	@PostLoad
-	public void postGuardar(AlimentacionConId alimentacion) {
-		log.warn("has guardado una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
-	}
+//	@PostLoad
+//	public void postGuardar(AlimentacionConId alimentacion) {
+//		log.warn("has guardado una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
+//	}
 }
 
 

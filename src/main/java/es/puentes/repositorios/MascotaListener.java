@@ -24,10 +24,10 @@ public class MascotaListener {
 		this.mascotaDAO = mascotaDAO;
 	}
 	
-	@PrePersist
-	public void preGuardar(MascotaConId mascota) {
-		System.err.println("Se va a guardar una mascota: " + mascota.getNombre());
-	}
+//	@PrePersist
+//	public void preGuardar(MascotaConId mascota) {
+//		System.err.println("Se va a guardar una mascota: " + mascota.getNombre());
+//	}
 	
 	@PreRemove
 	public void preBorrar(MascotaConId mascota) {
@@ -39,10 +39,10 @@ public class MascotaListener {
 		System.err.println("Se va a actualizar una mascota: " + mascota.getNombre());
 	}
 	
-	@PostLoad
-	public void postGuardar(MascotaConId mascota) {
-		log.warn("has guardado una mascota: " + mascota.getNombre());
-	}
+//	@PostLoad
+//	public void postGuardar(MascotaConId mascota) {
+//		log.warn("has guardado una mascota: " + mascota.getNombre());
+//	}
 }
 
 

@@ -23,10 +23,10 @@ public class ClienteListener {
 		this.clienteDAO = clienteDAO;
 	}
 	
-	@PrePersist
-	public void preGuardar(ClienteConId cliente) {
-		System.err.println("Se va a guardar un cliente: " + cliente.getNombre());
-	}
+//	@PrePersist
+//	public void preGuardar(ClienteConId cliente) {
+//		System.err.println("Se va a guardar un cliente: " + cliente.getNombre());
+//	}
 	
 	@PreRemove
 	public void preBorrar(ClienteConId cliente) {
@@ -38,10 +38,10 @@ public class ClienteListener {
 		System.err.println("Se va a actualizar un cliente: " + cliente.getNombre());
 	}
 	
-	@PostLoad
-	public void postGuardar(ClienteConId cliente) {
-		log.warn("has guardado un cliente: " + cliente.getNombre());
-	}
+//	@PostLoad
+//	public void postGuardar(ClienteConId cliente) {
+//		log.warn("has guardado un cliente: " + cliente.getNombre());
+//	}
 }
 
 
