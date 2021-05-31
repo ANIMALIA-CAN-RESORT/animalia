@@ -31,7 +31,7 @@ public class MascotaListener {
 //	}
 	
 	@PostRemove
-	public void preBorrar(MascotaConId mascota) {
+	public void postBorrar(MascotaConId mascota) {
 		System.err.println("Se va a borrar una mascota: " + mascota.getNombre());
 	}
 	

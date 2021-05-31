@@ -1,21 +1,17 @@
 <hr class='w-100'>
 <form #prestacionForm="ngForm">
-  <input type="radio" name="porPago"  (click)='filtrarSinPagar()'>&nbsp;&nbsp;Sin pagar&nbsp;&nbsp;
-  <input type="radio" name="porPago"  (click)='filtrarPagadas()'>&nbsp;&nbsp;Pagadas&nbsp;&nbsp;
-  <input type="radio" name="porPago"  (click)='ngOnInit()' checked>&nbsp;&nbsp;Todas
+  <input type="radio" name="porPago"  (click)='filtrarSinPagar()' class="mr-2">Sin pagar
+  <input type="radio" name="porPago"  (click)='filtrarPagadas()' class="ml-2 mr-2">Pagadas
+  <input type="radio" name="porPago"  (click)='ngOnInit()' class="ml-1 mr-2" checked>Todas
 
   <div class="col-lg-4 col-md-12">
     <label><b>MASCOTA&nbsp;</b></label>
     <select name="mascota" id="mascota" [(ngModel)]='mascota' (change)='filtrarMascota(mascota)'>
-      <option [value]="mascota" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
+      <option [ngValue]="mascota" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
     </select>
   </div>
 
 
-  <div class="row justify-content-left">
-    <button class="btn btn-primary text-white"  (click)='filtrarMascota(mascota)'>Seleccionar mascota
-    </button>
-  </div>
 
 
 

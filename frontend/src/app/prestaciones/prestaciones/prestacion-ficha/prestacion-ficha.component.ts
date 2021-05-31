@@ -20,7 +20,7 @@ export class PrestacionFichaComponent implements OnInit {
   constructor(private prestacionService: PrestacionService) { }
 
   ngOnInit(): void {
-    this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.mascota = this.prestacionService.mapearMascota(response));
+    this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.prestacion.mascota = this.prestacionService.mapearMascota(response));
 
   }
   eliminar(): void {

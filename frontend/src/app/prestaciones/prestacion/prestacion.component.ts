@@ -13,7 +13,6 @@ import { PrestacionService } from '../service/prestacion.service';
 export class PrestacionComponent implements OnInit {
   @Input() prestacion: Prestacion;
   @Output() prestacionSeleccionada = new EventEmitter<Prestacion>();
-  mascota: MascotaImpl = new MascotaImpl();
   faBed = faBed;
   faBone = faBone;
   faTimes =faTimes;
@@ -22,7 +21,7 @@ export class PrestacionComponent implements OnInit {
   constructor(private prestacionService: PrestacionService) { }
 
   ngOnInit(): void {
-    this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.mascota = this.prestacionService.mapearMascota(response));
+    this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.prestacion.mascota = this.prestacionService.mapearMascota(response));
 
   }
 

@@ -41,10 +41,18 @@ export class PrestacionesComponent implements OnInit {
   }
 
   onPrestacionEliminar(prestacion: PrestacionImpl): void {
-    this.prestacionService.delete(prestacion).subscribe(response => {
-      console.log(`He borrado una ${prestacion.tipo}`);
-      this.router.navigate(['/prestaciones']);
-    });
+    if (prestacion.tipo === 'Alojamiento') {
+      this.prestacionService.borrarAlojamiento(prestacion).subscribe(response => {
+        console.log(`He borrado un ${prestacion.tipo}`);
+        this.router.navigate(['/prestaciones']);
+      });
+    }
+    else  if (prestacion.tipo === 'Alimentacion') {
+      this.prestacionService.borrarAlimentacion(prestacion).subscribe(response => {
+        console.log(`He borrado una ${prestacion.tipo}`);
+        this.router.navigate(['/prestaciones']);
+      });
+    } 
   }
 
   onPrestacionEditar(prestacion: PrestacionImpl): void {

@@ -33,12 +33,17 @@ export class PrestacionFormComponent implements OnInit {
  this.prestacion.fechaEntrada= moment(this.prestacion.fechaEntrada).format();
  this.prestacion.fechaSalida= moment(this.prestacion.fechaSalida).format();
     if (this.prestacion.tipo == 'Alojamiento') {
+      console.log('llega aqui?')
+      console.log(this.prestacion);
+
       this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
-        console.log(this.prestacion.fechaEntrada);
+        console.log(this.prestacion.fechaEntrada + 'prueba');
         console.log(`He creado un ${this.prestacion.tipo}`);
         this.router.navigate(['/prestaciones']);
       });
     } else if (this.prestacion.tipo == 'Alimentacion') {
+      console.log('llega aqui?')
+      console.log(this.prestacion);
       this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
         console.log('He creado un alojamiento');
       });
@@ -49,10 +54,10 @@ export class PrestacionFormComponent implements OnInit {
     } 
   }
 
-  cargarMascota() {
-    this.mascota = null;
-    console.log('cargar ', this.codMascota);
-    this.mascota = this.mascotas.filter((m) => m.id == this.codMascota)[0];
-  }
+  // cargarMascota() {
+  //   this.mascota = null;
+  //   console.log('cargar ', this.codMascota);
+  //   this.mascota = this.mascotas.filter((m) => m.id == this.codMascota)[0];
+  // }
 
 }

@@ -57,20 +57,6 @@ export class PrestacionService {
     return prestacion;
   }
 
-  create(prestacion: Prestacion): Observable<any> {
-    return this.http.post(`${this.urlEndPoint}`, prestacion).pipe(
-      catchError((e) => {
-        if (e.status === 400) {
-          return throwError(e);
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
-
   createAlojamiento(prestacion: Prestacion): Observable<any> {
     return this.http.post(`${this.host}alojamientos/`, prestacion).pipe(
       catchError((e) => {
@@ -99,8 +85,20 @@ export class PrestacionService {
     );
   }
 
-  delete(prestacion): Observable<Prestacion> {
-    return this.http.delete<Prestacion>(`${this.urlEndPoint}${prestacion.id}`)
+  borrarAlojamiento(prestacion): Observable<Prestacion> {
+    return this.http.delete<Prestacion>(`${this.host}alojamientos/${prestacion.id}`)
+      .pipe(
+        catchError((e) => {
+          if (e.status === 405) {
+            console.error('El metodo está bien hecho');
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  borrarAlimentacion(prestacion): Observable<Prestacion> {
+    return this.http.delete<Prestacion>(`${this.host}alimentaciones/${prestacion.id}`)
       .pipe(
         catchError((e) => {
           if (e.status === 405) {
