@@ -46,25 +46,12 @@
       <input type="radio" name="talla" [(ngModel)]='mascota.talla' value="L" class="mr-2 ml-2">L
       <input type="radio" name="talla" [(ngModel)]='mascota.talla' value="XL" class="mr-2 ml-2">XL
     </div>
-
-
     <div class="col-lg-2 col-md-12">
       <label><b>CLIENTE<sup class="text-danger">*</sup></b></label>
-      <select name="cliente"  [(ngModel)]="mascota.cliente" (change)="cargarCliente()" class="form-control" required
-        #cliente="ngModel" [ngClass]="{ 'is-invalid': cliente.invalid && (cliente.dirty || cliente.touched),
-      'is-valid': !cliente.invalid }">
-        <option *ngFor="let cliente of clientes" [value]="cliente">
-          <span>{{ cliente.nombre }}</span>
-        </option>
+      <select name="cliente" id="cliente" [(ngModel)]="mascota.cliente">
+        <option *ngFor="let cliente of clientes" [ngValue]="cliente.url">{{ cliente.nombre }}</option>
       </select>
-     <div class="text-danger" *ngIf="cliente.invalid && (cliente.dirty || cliente.touched)">
-        <div *ngIf="cliente.errors.required">
-          Es obligatorio elegir al cliente
-        </div>
-      </div>
     </div>
-
-
   </div>
   <div class="form-row justify-content-between pt-5">
     <div class="col-lg-5 col-md-12">
