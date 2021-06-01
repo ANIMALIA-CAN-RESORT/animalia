@@ -2,6 +2,7 @@ package es.puentes.rest;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.webmvc.PersistentEntityResource;
 import org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
@@ -17,6 +18,7 @@ import es.puentes.residencia.Prestacion;
 
 @RepositoryRestController
 @RequestMapping(path = "/mascotas/{id}/prestaciones/search")
+@Configuration
 public class MascotaController {
 
 	private MascotaDAO mascotaDAO;

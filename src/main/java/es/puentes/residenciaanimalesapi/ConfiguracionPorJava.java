@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties" })
+@ComponentScan({"es.puentes"})
 public class ConfiguracionPorJava {
 
 	@Bean
