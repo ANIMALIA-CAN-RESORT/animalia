@@ -1,4 +1,5 @@
 import { Mascota } from "src/app/mascotas/models/mascota";
+import { MascotaImpl } from "src/app/mascotas/models/mascota-impl";
 import { Prestacion } from "./prestacion";
 
 export class PrestacionImpl implements Prestacion {
@@ -10,7 +11,7 @@ export class PrestacionImpl implements Prestacion {
   tipoComida?: string;
   cantidadComidaDiaria?: number;
   jaula?: string;
-  mascota: Mascota;
+  mascota: MascotaImpl;
   url: string;
   tipo: string;
   precioPrestacion: number;

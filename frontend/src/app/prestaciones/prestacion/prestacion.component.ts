@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faBed, faBone, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MascotaImpl } from 'src/app/mascotas/models/mascota-impl';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionService } from '../service/prestacion.service';
 
@@ -21,8 +20,6 @@ export class PrestacionComponent implements OnInit {
   constructor(private prestacionService: PrestacionService) { }
 
   ngOnInit(): void {
-    this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.prestacion.mascota = this.prestacionService.mapearMascota(response));
-
   }
 
 }

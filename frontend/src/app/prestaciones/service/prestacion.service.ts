@@ -20,7 +20,6 @@ export class PrestacionService {
   constructor(
     private http: HttpClient) { }
 
-
   getPrestaciones(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
   }
@@ -53,7 +52,6 @@ export class PrestacionService {
     prestacion.url = prestacionApi._links.self.href;
     prestacion.id = prestacion.getId(prestacion.url);
     prestacion.tipo = prestacionApi.jaula ? 'Alojamiento' : 'Alimentacion';
-
     return prestacion;
   }
 
@@ -136,7 +134,6 @@ export class PrestacionService {
     );
   }
 
-
   getMascotas(): Observable<any> {
     return this.http.get<any>(`${this.host}mascotas/`);
   }
@@ -157,7 +154,6 @@ export class PrestacionService {
     mascota.chip = mascotaApi.chip;
     mascota.url = mascotaApi._links.self.href;
     mascota.id = mascota.getId(mascota.url);
-
     return mascota;
   }
 

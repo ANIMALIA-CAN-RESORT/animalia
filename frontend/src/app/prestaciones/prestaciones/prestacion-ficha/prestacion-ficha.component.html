@@ -1,21 +1,20 @@
 <h2 class="text-center" ><b>{{prestacion.mascota.nombre}}</b></h2>
 <form #prestacionForm="ngForm">
   <div class="form-row py-2">
-    <!--<div class="col-lg-4 col-md-12">
+    <div class="col-lg-4 col-md-12 mr-4">
       <label><b>ENTRADA<sup class="text-danger">*</sup></b></label>
       <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
      </div>
     <div class="col-lg-4 col-md-12">
       <label><b>SALIDA<sup class="text-danger">*</sup></b></label>
-      <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
-     </div>     -->
-    <!--a parte de no funcionar me ha puesto a 0 el precio del dia -->
+      <input type="date" name="salida" [(ngModel)]='prestacion.fechaSalida' required>
+     </div>    
   </div>
   <div class="form-row py-2" *ngIf='prestacion.tipo == "Alimentacion"'>
     <div class="col-lg-4 col-md-12">
       <label><b>TIPO DE COMIDA<sup class="text-danger">*</sup></b></label>
-      <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="normal">Normal
-      <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="premium">Premium
+      <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="NORMAL">Normal
+      <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="PREMIUM">Premium
     </div>
     <div class="col-lg-8 col-md-12">
       <label class="d-flex text-center"><b>COMIDA DIARIA<sup class="text-danger">*</sup></b></label>

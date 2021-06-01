@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBed, faBone, faEuroSign } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
 import { Mascota } from 'src/app/mascotas/models/mascota';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
@@ -23,13 +24,19 @@ export class PrestacionesComponent implements OnInit {
   mascotas: Mascota[];
   filtro: string;
   precioFactura:number = 0;
+  filtroMascota: boolean = false;
 
   constructor(
     private prestacionService: PrestacionService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
+    this.prestacionService.getPrestaciones().subscribe((response) => {
+     this.prestaciones = this.prestacionService.extraerPrestaciones(response);
+      this.prestaciones.forEach(p => {
+      this.prestacionService.getMascota(p).subscribe(response => p.mascota = this.prestacionService.mapearMascota(response)) 
+      })
+    });
     this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
     this.filtro = '0';
     this.precioFactura = 0;
@@ -56,6 +63,8 @@ export class PrestacionesComponent implements OnInit {
   }
 
   onPrestacionEditar(prestacion: PrestacionImpl): void {
+    prestacion.fechaEntrada = moment(prestacion.fechaEntrada).format();
+    prestacion.fechaSalida = moment(prestacion.fechaSalida).format();
     this.prestacionService.update(prestacion).subscribe(response => {
       console.log(`He actualizado una ${prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
@@ -86,6 +95,7 @@ export class PrestacionesComponent implements OnInit {
       this.prestacionService.getPrestacionesPagadasDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     }
     this.precioFactura = 0;
+    this.filtroMascota = true;
 
   }
 

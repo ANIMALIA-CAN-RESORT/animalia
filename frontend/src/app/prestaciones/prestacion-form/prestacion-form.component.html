@@ -7,38 +7,12 @@
      </div>
   </div>
   <div class="form-row py-2">
-    
-    
-    
-    
     <div class="col-lg-4 col-md-12">
       <label class="mr-2"><b>MASCOTA</b></label>
       <select name="mascota" id="mascota" [(ngModel)]='prestacion.mascota'>
         <option [ngValue]="mascota.url" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
       </select>
     </div>
-    
-    
-    <!-- <div class="col-lg-2 col-md-12">
-      <label><b>MASCOTA<sup class="text-danger">*</sup></b></label>
-      
-      <select [(ngModel)]='prestacion.mascota' *ngFor='let mascota of mascotas'>
-        <option value="mascota">{{mascota.nombre}}</option>
-      </select>
-    
-      <select name="mascotas" [(ngModel)]="codMascota" (change)="cargarMascota()" class="form-control" required
-        #mascota="ngModel" [ngClass]="{ 'is-invalid': mascota.invalid && (mascota.dirty || mascota.touched),
-      'is-valid': !mascota.invalid }">
-        <option *ngFor="let mascota of mascotas" [value]="mascota.id">
-          <span>{{ mascota.nombre }}</span>
-        </option>
-      </select>
-      <div class="text-danger" *ngIf="mascota.invalid && (mascota.dirty || mascota.touched)">
-        <div *ngIf="mascota.errors.required">
-          Es obligatorio elegir la mascota
-        </div>
-      </div> -->
-    <!-- </div> -->
     <div class="col-lg-4 col-md-12">
       <label><b>ENTRADA<sup class="text-danger">*</sup></b></label>
       <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
@@ -47,7 +21,6 @@
       <label><b>SALIDA<sup class="text-danger">*</sup></b></label>
       <input type="date" name="salida" [(ngModel)]='prestacion.fechaSalida' required>
      </div>    
-    <!--a parte de no funcionar me ha puesto a 0 el precio del dia -->
   </div>
   <div class="form-row py-2">
     <div class="col-lg-2 col-md-12">
@@ -66,8 +39,8 @@
     <div class="col-lg-1 col-md-12"></div>
       <div class="col-lg-4 col-md-12" *ngIf='prestacion.tipo == "Alimentacion"'>
        <label class="d-flex text-center"><b>TIPO DE COMIDA<sup class="text-danger">*</sup></b></label>
-        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="normal" class="mr-2">Normal
-        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="premium" class="mr-2 ml-2" checked>Premium
+        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="NORMAL" class="mr-2">Normal
+        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="PREMIUM" class="mr-2 ml-2" checked>Premium
       </div>
       <div class="col-lg-5 col-md-12" *ngIf='prestacion.tipo == "Alimentacion"'>
         <label class="d-flex text-center"><b>COMIDA DIARIA<sup class="text-danger">*</sup></b></label>

@@ -21,8 +21,8 @@ export class PrestacionFichaComponent implements OnInit {
 
   ngOnInit(): void {
     this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.prestacion.mascota = this.prestacionService.mapearMascota(response));
-
   }
+  
   eliminar(): void {
     this.prestacionEliminar.emit(this.prestacion);
   }
