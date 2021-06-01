@@ -63,13 +63,13 @@ export class PrestacionesComponent implements OnInit {
   }
 
   filtrarSinPagar(): void {
-    this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => !p.pagada));
+    this.prestacionService.getPrestacionesNoPagadas().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     this.filtro = '1';
     this.precioFactura = 0;
 
   }
   filtrarPagadas(): void {
-    this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
+    this.prestacionService.getPrestacionesPagadas().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     this.filtro = '2';
     this.precioFactura = 0;
 
@@ -80,10 +80,10 @@ export class PrestacionesComponent implements OnInit {
     this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     }
     else if (this.filtro == '1') {
-      this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => !p.pagada));
+      this.prestacionService.getPrestacionesNoPagadasDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     }
     else if (this.filtro == '2') {
-        this.prestacionService.getPrestacionesDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
+      this.prestacionService.getPrestacionesPagadasDeMascota(mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     }
     this.precioFactura = 0;
 

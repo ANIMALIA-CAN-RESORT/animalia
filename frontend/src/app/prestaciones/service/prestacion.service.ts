@@ -169,4 +169,20 @@ export class PrestacionService {
     return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/`);
   }
 
+  getPrestacionesPagadas(): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}pagadas/`);
+  }
+
+  getPrestacionesNoPagadas(): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}no-pagadas/`);
+  }
+
+  getPrestacionesPagadasDeMascota(mascota: Mascota): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/pagadas/`);
+  }
+
+  getPrestacionesNoPagadasDeMascota(mascota: Mascota): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/no-pagadas/`);
+  }
+
 }

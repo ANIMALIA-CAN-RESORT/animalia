@@ -17,7 +17,7 @@ import es.puentes.repositorios.MascotaDAO;
 import es.puentes.residencia.Prestacion;
 
 @RepositoryRestController
-@RequestMapping(path = "/mascotas/{id}/prestaciones/search")
+@RequestMapping(path = "/mascotas/{id}/prestaciones")
 @Configuration
 public class MascotaController {
 
