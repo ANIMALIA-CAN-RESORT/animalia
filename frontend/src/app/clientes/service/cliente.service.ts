@@ -20,10 +20,10 @@ export class ClienteService {
     private http: HttpClient) { }
 
   getMascotasIdCliente(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${id}/mascotas`);
+    return this.http.get<any>(`${this.urlEndPoint}${id}/mascotas/?page=0&size=1000`);
   }
   getMascotasCliente(cliente): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${cliente.id}/mascotas`);
+    return this.http.get<any>(`${this.urlEndPoint}${cliente.id}/mascotas/?page=0&size=1000`);
   }
 
   extraerMascotasCliente(respuestaApi: any): any[] {
@@ -37,7 +37,7 @@ export class ClienteService {
     return mascotas;
   }
   getClientes(): Observable<any> {
-    return this.http.get<any>(this.urlEndPoint);
+    return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);
   }
 
   extraerClientes(respuestaApi: any): Cliente[] {

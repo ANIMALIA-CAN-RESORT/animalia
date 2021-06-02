@@ -33,7 +33,6 @@ export class PrestacionFormComponent implements OnInit {
         this.router.navigate(['/prestaciones']);
       });
     } else if (this.prestacion.tipo == 'Alimentacion') {
-      console.log(this.prestacion);
       this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
         console.log('He creado un alojamiento');
       });

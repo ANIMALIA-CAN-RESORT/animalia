@@ -21,7 +21,7 @@ export class PrestacionService {
     private http: HttpClient) { }
 
   getPrestaciones(): Observable<any> {
-    return this.http.get<any>(this.urlEndPoint);
+    return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 prestaciones. sino saldria solo la primera pagina
   }
 
   extraerPrestaciones(respuestaApi: any): Prestacion[] {
@@ -135,7 +135,7 @@ export class PrestacionService {
   }
 
   getMascotas(): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/`);
+    return this.http.get<any>(`${this.host}mascotas/?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 mascotas. sino saldria solo la primera pagina
   }
 
   extraerMascotas(respuestaApi: any): Mascota[] {
@@ -162,23 +162,23 @@ export class PrestacionService {
   }
 
   getPrestacionesDeMascota(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/`);
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/?page=0&size=1000`);
   }
 
   getPrestacionesPagadas(): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}pagadas/`);
+    return this.http.get<any>(`${this.urlEndPoint}pagadas/?page=0&size=1000`);
   }
 
   getPrestacionesNoPagadas(): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}no-pagadas/`);
+    return this.http.get<any>(`${this.urlEndPoint}no-pagadas/?page=0&size=1000`);
   }
 
   getPrestacionesPagadasDeMascota(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/pagadas/`);
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/pagadas/?page=0&size=1000`);
   }
 
   getPrestacionesNoPagadasDeMascota(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/no-pagadas/`);
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/no-pagadas/?page=0&size=1000`);
   }
 
 }
