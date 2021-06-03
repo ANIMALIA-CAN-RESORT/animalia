@@ -13,7 +13,7 @@ import es.puentes.residencia.Alimentacion;
 
 @Entity
 @EntityListeners(AlimentacionListener.class)
-@Table(name="ALIMENTACIONES")
+//@Table(name="ALIMENTACIONES")
 @DiscriminatorValue("AM")
 public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 
@@ -72,16 +72,5 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 	
 	
 
-//	@Override
-//	@OneToMany(targetEntity = MascotaConId.class)
-//	public Collection<Mascota> getMascotas() {
-//		return super.getMascotas();
-//	}
-//	
-//	// Establece la relacion en los dos sentidos
-//	public void addMascotaConId(MascotaConId mascota) {
-//		super.getMascotas().add(mascota);
-//		mascota.setCliente(this);
-//	}
 
 }

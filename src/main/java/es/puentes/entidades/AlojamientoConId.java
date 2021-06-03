@@ -12,7 +12,7 @@ import es.puentes.residencia.Alojamiento;
 
 @Entity
 @EntityListeners(AlojamientoListener.class)
-@Table(name="ALOJAMIENTOS")
+//@Table(name="ALOJAMIENTOS")
 @DiscriminatorValue("AJ")
 public class AlojamientoConId extends PrestacionConId implements Alojamiento {
 
