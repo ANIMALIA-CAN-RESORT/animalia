@@ -1,6 +1,8 @@
 package es.puentes.repositorios;
 
 import javax.persistence.PostLoad;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
@@ -30,14 +32,14 @@ public class AlimentacionListener {
 //		System.err.println("Se va a guardar una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
 //	}
 	
-	@PreRemove
-	public void preBorrar(AlimentacionConId alimentacion) {
-		System.err.println("Se va a borrar una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
+	@PostRemove
+	public void postBorrar(AlimentacionConId alimentacion) {
+		System.err.println("Se ha borrado una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
 	}
 	
-	@PreUpdate
-	public void preActualizar(AlimentacionConId alimentacion) {
-		System.err.println("Se va a actualizar una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
+	@PostUpdate
+	public void postActualizar(AlimentacionConId alimentacion) {
+		System.err.println("Se ha actualizado una alimentacion: " + alimentacion.getFechaEntrada() + " - " + alimentacion.getFechaSalida());
 	}
 	
 //	@PostLoad

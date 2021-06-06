@@ -27,7 +27,7 @@ public abstract class PrestacionConId extends PrestacionImpl {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
-	private String id;
+	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MASCOTA")
@@ -37,11 +37,11 @@ public abstract class PrestacionConId extends PrestacionImpl {
 		super();
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -55,5 +55,4 @@ public abstract class PrestacionConId extends PrestacionImpl {
 
 	@Override
 	public abstract float getPrecioDia();
-	
 }

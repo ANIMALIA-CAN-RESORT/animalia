@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import es.puentes.entidades.PrestacionConId;
-import es.puentes.residencia.Prestacion;
 
 @Transactional(readOnly = true)
 public class PrestacionDAOImpl implements PrestacionDAOCustom {
@@ -35,5 +34,4 @@ public class PrestacionDAOImpl implements PrestacionDAOCustom {
 
 		return prestaciones;
 	}
-
 }

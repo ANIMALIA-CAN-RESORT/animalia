@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm 
         http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
     version="1.0">
-
     <mapped-superclass class="es.puentes.residencia.PrestacionImpl" access="FIELD">
         <attributes>
             <basic name="fechaEntrada" optional="false" />

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import es.puentes.entidades.PrestacionConId;
 import es.puentes.repositorios.MascotaDAO;
 import es.puentes.residencia.Prestacion;
 
@@ -46,19 +45,4 @@ public class MascotaController {
 
 		return assembler.toCollectionModel(prestaciones);
 	}
-	
-	
-	
-	
-
-//	@GetMapping("/con-cliente")
-//	@ResponseBody
-//	public CollectionModel<PersistentEntityResource> getMascotasDeCliente(@RequestParam String dniCliente,
-//			PersistentEntityResourceAssembler assembler) {
-//
-//		List<MascotaConId> mascotas = mascotaDAO.getMascotasDeCliente(dniCliente);
-//
-//		return assembler.toCollectionModel(mascotas);
-//	} 
-	//no m gusta
 }

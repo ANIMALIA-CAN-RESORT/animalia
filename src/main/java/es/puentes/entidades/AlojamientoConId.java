@@ -5,14 +5,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 
-import javax.persistence.Table;
-
 import es.puentes.repositorios.AlojamientoListener;
 import es.puentes.residencia.Alojamiento;
 
 @Entity
 @EntityListeners(AlojamientoListener.class)
-@Table(name="ALOJAMIENTOS")
 @DiscriminatorValue("AJ")
 public class AlojamientoConId extends PrestacionConId implements Alojamiento {
 

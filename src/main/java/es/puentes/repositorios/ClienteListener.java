@@ -1,6 +1,8 @@
 package es.puentes.repositorios;
 
 import javax.persistence.PostLoad;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
@@ -28,14 +30,14 @@ public class ClienteListener {
 //		System.err.println("Se va a guardar un cliente: " + cliente.getNombre());
 //	}
 	
-	@PreRemove
-	public void preBorrar(ClienteConId cliente) {
-		System.err.println("Se va a borrar un cliente: " + cliente.getNombre());
+	@PostRemove
+	public void postBorrar(ClienteConId cliente) {
+		System.err.println("Se ha borrado al cliente: " + cliente.getNombre());
 	}
 	
-	@PreUpdate
-	public void preActualizar(ClienteConId cliente) {
-		System.err.println("Se va a actualizar un cliente: " + cliente.getNombre());
+	@PostUpdate
+	public void postActualizar(ClienteConId cliente) {
+		System.err.println("Se ha actualizado actualizar al cliente: " + cliente.getNombre());
 	}
 	
 //	@PostLoad

@@ -6,14 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.Table;
 
 import es.puentes.repositorios.AlimentacionListener;
 import es.puentes.residencia.Alimentacion;
 
 @Entity
 @EntityListeners(AlimentacionListener.class)
-@Table(name="ALIMENTACIONES")
 @DiscriminatorValue("AM")
 public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 
@@ -68,20 +66,4 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 			resultado = getCantidadComidaDiaria()/50 * getPrecioPremiumCincuenta(); //si la cantidad fueran 100 quiero que el precio sea 2 x PRECIOCINCUENTA
 		}
 		return resultado;	}
-	
-	
-	
-
-//	@Override
-//	@OneToMany(targetEntity = MascotaConId.class)
-//	public Collection<Mascota> getMascotas() {
-//		return super.getMascotas();
-//	}
-//	
-//	// Establece la relacion en los dos sentidos
-//	public void addMascotaConId(MascotaConId mascota) {
-//		super.getMascotas().add(mascota);
-//		mascota.setCliente(this);
-//	}
-
-}
+	}

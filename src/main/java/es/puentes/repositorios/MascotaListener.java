@@ -2,6 +2,7 @@ package es.puentes.repositorios;
 
 import javax.persistence.PostLoad;
 import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
@@ -32,12 +33,12 @@ public class MascotaListener {
 	
 	@PostRemove
 	public void postBorrar(MascotaConId mascota) {
-		System.err.println("Se va a borrar una mascota: " + mascota.getNombre());
+		System.err.println("Se ha borrado a la mascota: " + mascota.getNombre());
 	}
 	
-	@PreUpdate
-	public void preActualizar(MascotaConId mascota) {
-		System.err.println("Se va a actualizar una mascota: " + mascota.getNombre());
+	@PostUpdate
+	public void postActualizar(MascotaConId mascota) {
+		System.err.println("Se vha actualizado a la mascota: " + mascota.getNombre());
 	}
 	
 //	@PostLoad

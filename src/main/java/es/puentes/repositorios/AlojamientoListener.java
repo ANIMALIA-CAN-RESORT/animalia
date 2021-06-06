@@ -1,6 +1,8 @@
 package es.puentes.repositorios;
 
 import javax.persistence.PostLoad;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
@@ -30,14 +32,14 @@ public class AlojamientoListener {
 //		System.err.println("Se va a guardar un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
 //	}
 	
-	@PreRemove
-	public void preBorrar(AlojamientoConId alojamiento) {
-		System.err.println("Se va a borrar un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
+	@PostRemove
+	public void postBorrar(AlojamientoConId alojamiento) {
+		System.err.println("Se ha borrado un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
 	}
 	
-	@PreUpdate
-	public void preActualizar(AlojamientoConId alojamiento) {
-		System.err.println("Se va a actualizar un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
+	@PostUpdate
+	public void postActualizar(AlojamientoConId alojamiento) {
+		System.err.println("Se ha actualizado  un alojamiento: " + alojamiento.getFechaEntrada() + " - " + alojamiento.getFechaSalida());
 	}
 	
 //	@PostLoad

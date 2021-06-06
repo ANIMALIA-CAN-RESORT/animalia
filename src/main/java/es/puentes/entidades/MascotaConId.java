@@ -23,7 +23,7 @@ import es.puentes.residencia.Prestacion;
 public class MascotaConId extends Mascota {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
