@@ -65,14 +65,11 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 		else if (getTipoComida().equals("PREMIUM")) {
 			resultado = getCantidadComidaDiaria()/50 * getPrecioPremiumCincuenta(); //si la cantidad fueran 100 quiero que el precio sea 2 x PRECIOCINCUENTA
 		}
-		return resultado;	}
-<<<<<<< HEAD
+		return resultado;	
 	}
-=======
 	
 	
 	
 
 
 }
->>>>>>> 4e05443a826dbb7fa725c989a55a1565701d4f32
