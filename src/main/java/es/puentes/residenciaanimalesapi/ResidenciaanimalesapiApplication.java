@@ -22,21 +22,18 @@ import es.puentes.repositorios.ClienteDAO;
 import es.puentes.repositorios.MascotaDAO;
 import es.puentes.rest.ConfiguracionRest;
 
-
 @SpringBootApplication
-@ImportResource({"classpath:config/jpa-config.xml"})
-@Import({ConfiguracionPorJava.class, ConfiguracionRest.class})
+@ImportResource({ "classpath:config/jpa-config.xml" })
+@Import({ ConfiguracionPorJava.class, ConfiguracionRest.class })
 public class ResidenciaanimalesapiApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(ResidenciaanimalesapiApplication.class);
-	
+
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context =
-				SpringApplication.run(ResidenciaanimalesapiApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(ResidenciaanimalesapiApplication.class, args);
 		log.debug("Está funcionando la aplicación ANIMALIA para la Residencia de Animales CAN RESORT");
 		System.err.println("Está funcionando la aplicación ANIMALIA para la Residencia de Animales CAN RESORT");
-<<<<<<< HEAD
-	
+
 		// Dejo esto por si quisiera cargarse otra vez los clientes y mascotas
 //				ObjectMapper mapper = context.getBean(ObjectMapper.class);
 //				ClienteDAO clienteDAO = context.getBean(ClienteDAO.class);
@@ -49,49 +46,41 @@ public class ResidenciaanimalesapiApplication {
 //				cargarMascotasDesdeArchivo("src/main/resources/mascotas.json", mapper2, mascotaDAO);
 //				List<MascotaConId> mascotas = mascotaDAO.findAll();
 //				mascotas.stream().map(MascotaConId::toString).forEach(log::trace);
-				
-			}
-			
-			static void cargarClientesDesdeArchivo(String ruta, ObjectMapper mapper, ClienteDAO clienteDAO) {
-				String linea = null;
-				mapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-				try (BufferedReader buffer = new BufferedReader(
-						new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
-					ClienteConId cliente;
-					while((linea = buffer.readLine()) != null) {
-						if (linea.startsWith("{") && linea.endsWith("}")) {
-							cliente = mapper.readValue(linea, ClienteConId.class);
-							clienteDAO.save(cliente);
-							log.trace("Cargado {}", cliente);
-						}
-					}
-				} catch (Exception e) {
-					log.error("Error leyendo: {}", linea);
-				}
-			}
 
-			static void cargarMascotasDesdeArchivo(String ruta, ObjectMapper mapper, MascotaDAO mascotaDAO) {
-				String linea = null;
-				mapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-				try (BufferedReader buffer = new BufferedReader(
-						new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
-					MascotaConId mascota;
-					while((linea = buffer.readLine()) != null) {
-						if (linea.startsWith("{") && linea.endsWith("}")) {
-							mascota = mapper.readValue(linea, MascotaConId.class);
-							mascotaDAO.save(mascota);
-							log.trace("Cargado {}", mascota);
-						}
-					}
-				} catch (Exception e) {
-					log.error("Error leyendo: {}", linea);
+	}
+
+	static void cargarClientesDesdeArchivo(String ruta, ObjectMapper mapper, ClienteDAO clienteDAO) {
+		String linea = null;
+		mapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+		try (BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
+			ClienteConId cliente;
+			while ((linea = buffer.readLine()) != null) {
+				if (linea.startsWith("{") && linea.endsWith("}")) {
+					cliente = mapper.readValue(linea, ClienteConId.class);
+					clienteDAO.save(cliente);
+					log.trace("Cargado {}", cliente);
 				}
 			}
-		
-	
-	
-	
-=======
+		} catch (Exception e) {
+			log.error("Error leyendo: {}", linea);
+		}
 	}
->>>>>>> 4e05443a826dbb7fa725c989a55a1565701d4f32
+
+	static void cargarMascotasDesdeArchivo(String ruta, ObjectMapper mapper, MascotaDAO mascotaDAO) {
+		String linea = null;
+		mapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+		try (BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
+			MascotaConId mascota;
+			while ((linea = buffer.readLine()) != null) {
+				if (linea.startsWith("{") && linea.endsWith("}")) {
+					mascota = mapper.readValue(linea, MascotaConId.class);
+					mascotaDAO.save(mascota);
+					log.trace("Cargado {}", mascota);
+				}
+			}
+		} catch (Exception e) {
+			log.error("Error leyendo: {}", linea);
+		}
+	}
+
 }

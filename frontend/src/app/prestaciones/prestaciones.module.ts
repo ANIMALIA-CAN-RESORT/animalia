@@ -7,9 +7,10 @@ import { PrestacionComponent } from './prestacion/prestacion.component';
 import { PrestacionesRoutingModule } from './prestaciones-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PrestacionFormComponent } from './prestacion-form/prestacion-form.component';
+import { FacturaComponent } from './factura/factura.component';
 
 @NgModule({
-  declarations: [PrestacionesComponent, PrestacionFichaComponent, PrestacionFormComponent, PrestacionComponent],
+  declarations: [PrestacionesComponent, PrestacionFichaComponent, PrestacionFormComponent, PrestacionComponent, FacturaComponent],
   imports: [
     CommonModule,
     PrestacionesRoutingModule,

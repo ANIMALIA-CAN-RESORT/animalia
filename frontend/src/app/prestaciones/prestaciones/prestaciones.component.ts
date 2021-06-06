@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBed, faBone, faEuroSign } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';

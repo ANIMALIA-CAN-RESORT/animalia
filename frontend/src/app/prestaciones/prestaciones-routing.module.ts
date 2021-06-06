@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FacturaComponent } from './factura/factura.component';
 import { PrestacionFormComponent } from './prestacion-form/prestacion-form.component';
 import { PrestacionesComponent } from './prestaciones/prestaciones.component';
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'formulario',
     component: PrestacionFormComponent
+  },
+  {
+    path: 'facturas/:id',
+    component: FacturaComponent
   }
 ];
 
