@@ -35,6 +35,7 @@ public class ResidenciaanimalesapiApplication {
 				SpringApplication.run(ResidenciaanimalesapiApplication.class, args);
 		log.debug("Está funcionando la aplicación ANIMALIA para la Residencia de Animales CAN RESORT");
 		System.err.println("Está funcionando la aplicación ANIMALIA para la Residencia de Animales CAN RESORT");
+<<<<<<< HEAD
 	
 		// Dejo esto por si quisiera cargarse otra vez los clientes y mascotas
 //				ObjectMapper mapper = context.getBean(ObjectMapper.class);
@@ -90,4 +91,7 @@ public class ResidenciaanimalesapiApplication {
 	
 	
 	
+=======
+	}
+>>>>>>> 4e05443a826dbb7fa725c989a55a1565701d4f32
 }

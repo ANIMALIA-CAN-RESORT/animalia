@@ -16,7 +16,7 @@
 
     `npm start`
 
-- La APP de despliega en [servidor local](http://localhost:4270/) sobre BD H2 en entorno de desarrollo.
+- La APP de despliega en [servidor local](http://localhost:4270/) sobre BD H2 en entorno de desarrollo, y posteriormente en ELEPHANTSQL. La API se despliega en Heroku.
 - Se recomienda el uso de Google Chrome o Firefox como navegador.
 
 *Nota: Se recurrirá a HEROKU para desplegar la API y a ELEPHANTSQL para la BBDD, desplegando la aplicación en Netlify.*

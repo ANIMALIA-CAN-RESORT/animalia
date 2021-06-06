@@ -5,9 +5,9 @@
 export const environment = {
   appName: 'Animalia DEV',
   production: false,
-  hostAnimalia: 'http://localhost:8080/api/',
-  host: 'http://swapi.dev/api/',
-  itemsPorPagina: 30
+  // hostAnimalia: 'http://localhost:8080/api/',
+  hostAnimalia: 'https://animalia-residencia-animales.herokuapp.com/api/',
+  host: 'http://swapi.dev/api/'
 };
 
 /*

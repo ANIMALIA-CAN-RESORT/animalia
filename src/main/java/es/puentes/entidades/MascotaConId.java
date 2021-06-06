@@ -2,6 +2,7 @@ package es.puentes.entidades;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -24,10 +25,11 @@ public class MascotaConId extends Mascota {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true)
 	Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CLIENTE")
+	@JoinColumn(name = "CLIENTE", nullable = false)
 	private ClienteConId cliente;
 	
 	public MascotaConId() {}
