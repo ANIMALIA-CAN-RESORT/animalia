@@ -38,7 +38,7 @@ public class UsuarioListener {
 	
 	@PostUpdate
 	public void postActualizar(Usuario usuario) {
-		System.err.println("Se ha actualizado actualizar al usuario: " + usuario.getNombre());
+		System.err.println("Se ha actualizado al usuario: " + usuario.getNombre());
 	}
 	
 //	@PostLoad

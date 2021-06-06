@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faDotCircle } from '@fortawesome/free-regular-svg-icons';
 import { faBed, faBone, faDog, faUser, faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from 'src/app/administracion/models/usuario';
+import { UsuarioService } from 'src/app/administracion/service/usuario.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
   faBone = faBone;
   faUsersCog = faUsersCog;
   faDotCircle = faDotCircle;
-  usuarios: Usuario [] = [{id: 1, nombre:'jose', password:'1234', tipo:'administrador'}, {id:2, nombre:'jorge', password:'1234', tipo:'empleado'}];
+  usuarios: Usuario [] = [];
+  // usuarios: Usuario [] = [{id: '1', nombre:'jose', password:'1234', tipo:'administrador'}, {id:'2', nombre:'jorge', password:'1234', tipo:'empleado'}];
 
   logged: boolean = false;
   admin: boolean = false;
@@ -24,26 +26,27 @@ export class HeaderComponent implements OnInit {
   tipoUsuario: string = '';
 
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.usuarioService.getUsuarios().subscribe((response) => this.usuarios = this.usuarioService.extraerUsuarios(response));
   }
 
   comprobarLogging(): void {
+    this.ngOnInit();
     for (let usuario of this.usuarios) {
       if (usuario.nombre === this.nombreUsuario) {
-        console.log("prueba");
-
         if (usuario.password === this.password) {
           this.logged = true;
           this.tipoUsuario = (usuario.tipo === 'administrador') ? 'administrador' : 'empleado';
-          this.admin = (usuario.tipo === 'administardor');
+          this.admin = (usuario.tipo === 'administrador');
         }
       }
     }
   }
 
   cerrarSesion(): void {
+    this.ngOnInit();
     this.logged = false;
     this.admin = false;
     this.nombreUsuario ='';
