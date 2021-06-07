@@ -39,6 +39,7 @@ export class PrestacionesComponent implements OnInit {
     });
     this.prestacionService.getMascotas().subscribe((response) => this.mascotas = this.prestacionService.extraerMascotas(response));
     this.filtro = '0';
+    this.filtroMascota = false;
     this.precioFactura = 0;
 
   }
@@ -72,6 +73,7 @@ export class PrestacionesComponent implements OnInit {
   }
 
   filtrarSinPagar(): void {
+    // this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
     this.prestacionService.getPrestacionesNoPagadas().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
     this.filtro = '1';
     this.precioFactura = 0;
@@ -79,6 +81,7 @@ export class PrestacionesComponent implements OnInit {
   }
   filtrarPagadas(): void {
     this.prestacionService.getPrestacionesPagadas().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
+    // this.prestacionService.getPrestaciones().subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response).filter(p => p.pagada));
     this.filtro = '2';
     this.precioFactura = 0;
 

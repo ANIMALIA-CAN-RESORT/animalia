@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faBed, faBone, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Mascota } from 'src/app/mascotas/models/mascota';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionService } from '../service/prestacion.service';
 
@@ -12,6 +13,7 @@ import { PrestacionService } from '../service/prestacion.service';
 export class PrestacionComponent implements OnInit {
   @Input() prestacion: Prestacion;
   @Output() prestacionSeleccionada = new EventEmitter<Prestacion>();
+  mascota: Mascota;
   faBed = faBed;
   faBone = faBone;
   faTimes =faTimes;
@@ -20,6 +22,7 @@ export class PrestacionComponent implements OnInit {
   constructor(private prestacionService: PrestacionService) { }
 
   ngOnInit(): void {
+    this.prestacionService.getMascota(this.prestacion).subscribe((response) => this.mascota = this.prestacionService.mapearMascota(response));
   }
 
 }
