@@ -1,8 +1,8 @@
 <hr class='w-100'>
 <form #prestacionForm="ngForm">
-  <input type="radio" name="porPago"  (click)='filtrarSinPagar()' class="mr-2">Sin pagar
-  <input type="radio" name="porPago"  (click)='filtrarPagadas()' class="ml-2 mr-2">Pagadas
-  <input type="radio" name="porPago"  (click)='ngOnInit()' class="ml-1 mr-2" checked>Todas
+  <input type="radio" name="porPago" (click)='filtrarSinPagar()' class="mr-2">Sin pagar
+  <input type="radio" name="porPago" (click)='filtrarPagadas()' class="ml-2 mr-2">Pagadas
+  <input type="radio" name="porPago" (click)='ngOnInit()' class="ml-1 mr-2" checked>Todas
 
   <div class="col-lg-4 col-md-12">
     <label><b>MASCOTA&nbsp;</b></label>
@@ -17,7 +17,7 @@
 </div>
 <hr class='w-100'>
 <div class="row">
-  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center" ><b>MASCOTA</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center"><b>MASCOTA</b></div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-1 col-xl-1 d-flex flex-column text-center">
     <span><b>TIPO</b></span>
     <span display="inline-block">
@@ -43,14 +43,19 @@
 <div *ngFor="let prestacion of prestaciones">
   <app-prestacion [prestacion]="prestacion" (prestacionSeleccionada)="verDatos($event)"></app-prestacion>
 </div>
-<div class="row justify-content-end">
-  <button class="btn btn-primary text-white" (click)='getPrecioFactura()'>Total: {{precioFactura}} €</button>
+<div class="row justify-content-end" *ngIf='precioFactura === 0; else elseBlock'>
+  <button class="btn btn-primary text-white" (click)='getPrecioFactura()'>Ver Total</button>
 </div>
 <div class="row justify-content-center">
-  <button class="btn btn-primary text-white" [routerLink]="['/prestaciones/facturas', mascota.id]" *ngIf='mascota'>Generar factura 
+  <button class="btn btn-primary text-white" [routerLink]="['/prestaciones/facturas', mascota.id]"
+    *ngIf='mascota'>Generar factura
   </button>
-
 </div>
+<ng-template #elseBlock>
+  <div class="row justify-content-end">
+    <button class="btn btn-primary text-white">Total: {{precioFactura}} €</button>
+  </div>
+</ng-template>
 
 <!-- Modal prestacion-->
 <div class="modal fade" id="modalPrestacion" tabindex="-1" role="dialog" aria-labelledby="datosPrestacion"
@@ -75,4 +80,3 @@
     </div>
   </div>
 </div>
-
