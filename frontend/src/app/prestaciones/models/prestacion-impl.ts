@@ -14,6 +14,7 @@ export class PrestacionImpl implements Prestacion {
   mascota: MascotaImpl;
   url: string;
   tipo: string;
+  precioDia: number;
   precioPrestacion: number;
 
   constructor(){

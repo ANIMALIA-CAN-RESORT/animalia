@@ -51,6 +51,7 @@ export class PrestacionService {
     prestacion.pagada = prestacionApi.pagada;
     prestacion.jaula = prestacionApi.jaula ? prestacionApi.jaula : '';
     prestacion.precioPrestacion = prestacionApi.precioPrestacion;
+    prestacion.precioDia = prestacionApi.precioDia;
     prestacion.url = prestacionApi._links.self.href;
     prestacion.id = prestacion.getId(prestacion.url);
     prestacion.tipo = prestacionApi.jaula ? 'Alojamiento' : 'Alimentacion';

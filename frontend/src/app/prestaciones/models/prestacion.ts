@@ -12,6 +12,7 @@ export interface Prestacion {
   mascota: Mascota;
   url: string;
   tipo: string;
+  precioDia: number;
   precioPrestacion: number;
 
 }
