@@ -1,5 +1,6 @@
 package es.puentes.entidades;
 
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
@@ -55,4 +56,5 @@ public abstract class PrestacionConId extends PrestacionImpl {
 
 	@Override
 	public abstract float getPrecioDia();
+	
 }

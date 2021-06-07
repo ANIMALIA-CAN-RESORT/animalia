@@ -25,8 +25,9 @@ export class PrestacionFormComponent implements OnInit {
   }
 
   crearPrestacion(): void {
-    this.prestacion.fechaEntrada = moment(this.prestacion.fechaEntrada).format();
-    this.prestacion.fechaSalida = moment(this.prestacion.fechaSalida).format();
+    this.prestacion.fechaEntrada = moment(this.prestacion.fechaEntrada).format().slice(0, moment(this.prestacion.fechaEntrada).format().lastIndexOf('+')).concat("Z");
+    console.log(this.prestacion.fechaEntrada);
+    this.prestacion.fechaSalida = moment(this.prestacion.fechaSalida).format().slice(0, moment(this.prestacion.fechaSalida).format().lastIndexOf('+')).concat("Z");
     if (this.prestacion.tipo == 'Alojamiento') {
       this.prestacionService.createAlojamiento(this.prestacion).subscribe((response) => {
         console.log(`He creado un ${this.prestacion.tipo}`);

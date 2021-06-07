@@ -63,8 +63,8 @@ export class PrestacionesComponent implements OnInit {
   }
 
   onPrestacionEditar(prestacion: PrestacionImpl): void {
-    prestacion.fechaEntrada = moment(prestacion.fechaEntrada).format();
-    prestacion.fechaSalida = moment(prestacion.fechaSalida).format();
+    prestacion.fechaEntrada = moment(prestacion.fechaEntrada).format().slice(0, moment(prestacion.fechaEntrada).format().lastIndexOf('+')).concat("Z");
+    prestacion.fechaSalida = moment(prestacion.fechaSalida).format().slice(0, moment(prestacion.fechaSalida).format().lastIndexOf('+')).concat("Z");
     this.prestacionService.update(prestacion).subscribe(response => {
       console.log(`He actualizado una ${prestacion.tipo}`);
       this.router.navigate(['/prestaciones']);
