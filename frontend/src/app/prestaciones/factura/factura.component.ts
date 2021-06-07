@@ -4,6 +4,8 @@ import { Cliente } from 'src/app/clientes/models/cliente';
 import { Mascota } from 'src/app/mascotas/models/mascota';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionService } from '../service/prestacion.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-factura',
@@ -16,13 +18,14 @@ export class FacturaComponent implements OnInit {
   prestaciones: Prestacion[] = [];
   cliente: Cliente;
   precioFactura: number = 0;
-  iva: string |number = 0; 
+  iva: string | number = 0;
   meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   hoy = new Date();
-  dia: number = this.hoy.getDate();
+  dia: string | number = this.hoy.getDate() < 10 ? '0' + this.hoy.getDate() : this.hoy.getDate();
   mes: string = this.meses[this.hoy.getMonth()];
+  mesNumero: string | number = (this.hoy.getMonth() + 1) < 10 ? '0' + (this.hoy.getMonth() + 1): this.hoy.getMonth() + 1;
   year: number = this.hoy.getFullYear();
-  numeroFactura: number = Math.floor((Math.random()*1000000)+1);
+  numeroFactura: number = Math.floor((Math.random() * 1000000) + 1);
 
 
   constructor(
@@ -32,8 +35,8 @@ export class FacturaComponent implements OnInit {
   ngOnInit() {
     this.prestacionService.getMascotaId(this.activateRoute.snapshot.params['id']).subscribe((response) => this.mascota = this.prestacionService.mapearMascota(response));
     this.prestacionService.getPrestacionesNoPagadasDeMascotaPorId(this.activateRoute.snapshot.params['id']).subscribe((response) => {
-    this.prestaciones = this.prestacionService.extraerPrestaciones(response);
-    this.getPrecioFactura();
+      this.prestaciones = this.prestacionService.extraerPrestaciones(response);
+      this.getPrecioFactura();
     });
     this.prestacionService.getCliente(this.activateRoute.snapshot.params['id']).subscribe((response) => this.cliente = this.prestacionService.mapearCliente(response));
   }
@@ -44,6 +47,32 @@ export class FacturaComponent implements OnInit {
     for (let prestacion of this.prestaciones) {
       this.precioFactura += prestacion.precioPrestacion;
     }
-    this.iva = (0.21/1.21 * this.precioFactura).toFixed(2);
+    this.iva = (0.21 / 1.21 * this.precioFactura).toFixed(2);
+  }
+
+  downloadPDF() {
+    // Extraemos el
+    const DATA = document.getElementById('htmlData');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+
+    html2canvas(DATA, options).then((canvas) => {
+
+      const img = canvas.toDataURL('image/PNG');
+
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${this.year}-${this.mesNumero}-${this.dia}_${this.cliente.nombre}-${this.cliente.apellido1}_${this.mascota.nombre}_factura.pdf`);
+    });
   }
 }
