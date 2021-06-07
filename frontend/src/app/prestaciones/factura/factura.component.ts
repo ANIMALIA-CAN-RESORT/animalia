@@ -26,7 +26,7 @@ export class FacturaComponent implements OnInit {
   mesNumero: string | number = (this.hoy.getMonth() + 1) < 10 ? '0' + (this.hoy.getMonth() + 1): this.hoy.getMonth() + 1;
   year: number = this.hoy.getFullYear();
   numeroFactura: number = Math.floor((Math.random() * 1000000) + 1);
-
+  enviarCorreo: string ='';
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -38,7 +38,14 @@ export class FacturaComponent implements OnInit {
       this.prestaciones = this.prestacionService.extraerPrestaciones(response);
       this.getPrecioFactura();
     });
-    this.prestacionService.getCliente(this.activateRoute.snapshot.params['id']).subscribe((response) => this.cliente = this.prestacionService.mapearCliente(response));
+    this.prestacionService.getCliente(this.activateRoute.snapshot.params['id']).subscribe((response) => {
+      this.cliente = this.prestacionService.mapearCliente(response);
+    this.enviarCorreo = 'mailto:' + this.cliente.email + '?&subject=Factura de CAN RESORT&body=Le envíamos la factura de las prestaciones disfrutadas por ' + this.mascota.nombre;
+    // this.enviarCorreo = 'mailto:' + this.cliente.email;
+    document.querySelector('#email').setAttribute('href', this.enviarCorreo);
+
+    });
+
   }
 
   getPrecioFactura(): void {
