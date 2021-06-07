@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Cliente } from 'src/app/clientes/models/cliente';
+import { ClienteImpl } from 'src/app/clientes/models/cliente-impl';
 import { Mascota } from 'src/app/mascotas/models/mascota';
 import { MascotaImpl } from 'src/app/mascotas/models/mascota-impl';
 import { environment } from 'src/environments/environment';
@@ -161,8 +163,23 @@ export class PrestacionService {
     return this.http.get<any>(`${this.urlEndPoint}${prestacion.id}/mascota/`);
   }
 
+  getMascotaId(id): Observable<any> {
+    return this.http.get<Mascota>(`${this.host}mascotas/${id}`).pipe(
+      catchError((e) => {
+        if (e.status !== 401 && e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
+  }
+
   getPrestacionesDeMascota(mascota: Mascota): Observable<any> {
     return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/?page=0&size=1000`);
+  }
+
+  getPrestacionesIdMascota(id: string): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones/?page=0&size=1000`);
   }
 
   getPrestacionesPagadas(): Observable<any> {
@@ -181,7 +198,25 @@ export class PrestacionService {
     return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/no-pagadas/?page=0&size=1000`);
   }
 
-  getPrestacionesNoPagadasDeMascotaPorId(id: number): Observable<any> {
+  getPrestacionesNoPagadasDeMascotaPorId(id: string): Observable<any> {
     return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones/no-pagadas/?page=0&size=1000`);
+  }
+
+  getCliente(id: string): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/${id}/cliente/`);
+  }
+
+  mapearCliente(clienteApi: any): Cliente {
+    const cliente = new ClienteImpl();
+    cliente.nombre = clienteApi.nombre;
+    cliente.apellido1 = clienteApi.apellido1;
+    cliente.apellido2 = clienteApi.apellido2;
+    cliente.tfno = clienteApi.tfno;
+    cliente.email = clienteApi.email;
+    cliente.dni = clienteApi.dni;
+    cliente.url = clienteApi._links.self.href;
+    cliente.id = cliente.getId(cliente.url);
+
+    return cliente;
   }
 }
