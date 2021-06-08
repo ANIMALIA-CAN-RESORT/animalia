@@ -65,7 +65,7 @@
                 },
                 {
                   "replace": "src/favicon.ico",
-                  "with": "src/favicon_et.ico"
+                  "with": "src/favicon.ico"
                 }
               ],
               "optimization": true,
