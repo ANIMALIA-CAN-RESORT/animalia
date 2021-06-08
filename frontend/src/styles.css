@@ -6,3 +6,14 @@ body {
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.not-found-div {
+  color:white;
+
+}
+.not-found-h1 {
+  color:fuchsia;
+}
+.not-found-h2 {
+  color:red;
+}
