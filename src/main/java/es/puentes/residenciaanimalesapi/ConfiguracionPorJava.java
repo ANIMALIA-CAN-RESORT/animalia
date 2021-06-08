@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.puentes.entidades.ClienteConId;
 import es.puentes.entidades.MascotaConId;
-import es.puentes.entidades.PrestacionConId;
 import es.puentes.rest.MixIns;
 
 @Configuration
@@ -40,7 +39,7 @@ public class ConfiguracionPorJava {
 		public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
 			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 			CorsConfiguration config = new CorsConfiguration();
-			config.setAllowCredentials(true);
+			config.setAllowCredentials(false);
 			config.setAllowedOrigins(Collections.singletonList("*"));
 			config.setAllowedMethods(Collections.singletonList("*"));
 			config.setAllowedHeaders(Collections.singletonList("*"));
