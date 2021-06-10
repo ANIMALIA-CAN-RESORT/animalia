@@ -55,7 +55,7 @@
             <td class="text-center">{{prestacion.precioDia}} €</td>
             <td class="text-center">{{prestacion.precioPrestacion}} €</td>
           </tr>
-          <tr>
+          <tr *ngIf='precioFactura != 0'>
             <td colspan="5" class="text-right">
               <span class="mr-2">IVA (21%):</span><span>{{iva}} €</span>
             </td>

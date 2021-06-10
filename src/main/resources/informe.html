@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe tareas</title>
+    <!-- <link th:href="@{/estilos.css}" rel="stylesheet" /> -->
+    <style>
+        body {
+        	font-family: Calibri, Arial, Helvetica, sans-serif;
+        	width: 100%;
+        }
+        .caducada { background-color: #ff0000; }
+        .proxima-caducar { background-color: #ffff00; }
+      	.titulo {
+	        display: inline-block;
+	        border: 2px solid black;
+	        width: 100%;
+	        background-color: rgb(240, 240, 240);
+	        padding: 0 2rem;
+	    }
+	    .subtitulo {
+	        display: inline-block;
+	        width: 100%;
+	    }
+	    .subtitulo strong {
+	        padding: 0.6rem 2rem;
+	    }
+	    .tabla { width: 98%; }
+	    table { width: 100%; }
+	    th {
+        	border: 1px solid black;
+        	background-color: rgb(240, 240, 240);
+      	}
+	    .fondo-blanco .caducada, .fondo-blanco .proxima-caducar {
+	    	background-color: white;
+	    }
+    </style>
+</head>
+
+<body>
+	<div class="titulo">
+    	<h1><strong th:text="|Resumen de estado de tareas ${rol}|">Resumen de estado de tareas ROL</strong></h1>
+    </div>
+    <div class="subtitulo">
+    	<h2><span style="background-color: #2B72CF; color: white;"><strong>PRIORITARIAS:</strong></span></h2>
+    </div>
+    <div class="tabla">
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Tablero</th>
+                <th>Fecha vto.</th>
+                <th>Asignado</th>
+                <th>Responsable</th>
+                <th>Enlace</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tarea : ${prioritarias}" th:class="${tarea.estado.texto}" th:object="${tarea}">
+                <td th:text="${tarea.titulo}">Titulo tarea</td>
+                <td th:text="${tarea.tablero}">Nombre Tablero</td>
+                <td th:text="${#dates.format(tarea.fecha, 'yyyy-MM-dd')}">2020-11-01</td>
+                <td th:text="${tarea.asignado}">SECOG</td>
+                <td th:text="${tarea.responsable}">Antonio Fernandez</td>
+                <td><a th:href="${tarea.enlace}">Ver tarea</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="subtitulo">
+    	<h2><strong>CADUCADAS:</strong></h2>
+    </div>
+    <div class="tabla fondo-blanco">
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Tablero</th>
+                <th>Fecha vto.</th>
+                <th>Asignado</th>
+                <th>Responsable</th>
+                <th>Enlace</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tarea : ${caducadas}" th:class="${tarea.estado.texto}" th:object="${tarea}">
+                <td th:text="${tarea.titulo}">Titulo tarea</td>
+                <td th:text="${tarea.tablero}">Nombre Tablero</td>
+                <td th:text="${#dates.format(tarea.fecha, 'yyyy-MM-dd')}">2020-11-01</td>
+                <td th:text="${tarea.asignado}">SECOG</td>
+                <td th:text="${tarea.responsable}">Antonio Fernandez</td>
+                <td><a th:href="${tarea.enlace}">Ver tarea</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="subtitulo">
+    	<h2><strong>PROXIMAS A CADUCAR:</strong></h2>
+    </div>
+    <div class="tabla fondo-blanco">
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Tablero</th>
+                <th>Fecha vto.</th>
+                <th>Asignado</th>
+                <th>Responsable</th>
+                <th>Enlace</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tarea : ${proximas}" th:class="${tarea.estado.texto}" th:object="${tarea}">
+                <td th:text="${tarea.titulo}">Titulo tarea</td>
+                <td th:text="${tarea.tablero}">Nombre Tablero</td>
+                <td th:text="${#dates.format(tarea.fecha, 'yyyy-MM-dd')}">2020-11-01</td>
+                <td th:text="${tarea.asignado}">SECOG</td>
+                <td th:text="${tarea.responsable}">Antonio Fernandez</td>
+                <td><a th:href="${tarea.enlace}">Ver tarea</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+
+</html>

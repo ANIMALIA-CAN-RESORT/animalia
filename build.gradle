@@ -21,6 +21,8 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'com.github.joseluispuentes82:residenciaAnimales-libreria:0.0.1'
+	implementation 'io.woo:htmltopdf:1.0.6'
+    implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
 	//implementation project(':residenciaAnimales-libreria')
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -29,4 +31,12 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+task cloneJvmProfile {
+    ext.profile = System.getProperty("spring.profiles.active")
+    if (profile != null) {
+        println "Setting $profile profile in bootRun"
+        bootRun.systemProperties.put("spring.profiles.active", profile)
+    }
 }
