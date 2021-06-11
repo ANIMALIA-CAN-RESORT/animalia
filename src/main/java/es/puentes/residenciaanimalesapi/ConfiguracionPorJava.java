@@ -10,7 +10,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.puentes.entidades.ClienteConId;
@@ -18,8 +17,8 @@ import es.puentes.entidades.MascotaConId;
 import es.puentes.rest.MixIns;
 
 @Configuration
-@PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties" })
-@ComponentScan({"es.puentes"})
+@PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties",
+"classpath:config/mail.properties" })@ComponentScan({"es.puentes"})
 public class ConfiguracionPorJava {
 
 	@Bean

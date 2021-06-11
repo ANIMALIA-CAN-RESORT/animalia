@@ -1,9 +1,9 @@
 package es.puentes.facturas;
 
-
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,19 +11,24 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-import es.puentes.entidades.PrestacionConId;
-
+import es.puentes.entidades.AlimentacionConId;
+import es.puentes.entidades.AlojamientoConId;
 
 @Component
 public class SerializadorFactura {
-	
-	@Value("${facturas.url-front}")//tengo que meterlo en el properties
-	String hostFront;
-	
-	public String generarFactura(List<PrestacionConId> prestaciones) {
 
-		List<PrestacionDTO> prestacionesDTO = prestaciones.stream().map(p -> toDTO(p))
+	@Value("${prestaciones.url-front}") // tengo que meterlo en el properties
+	String hostFront;
+
+	public String generarFactura(List<AlimentacionConId> alimentaciones, List<AlojamientoConId> alojamientos) {
+
+		List<PrestacionDTO> alimentacionesDTO = alimentaciones.stream().map(p -> toAlimentacionDTO(p))
 				.collect(Collectors.toList());
+
+		List<PrestacionDTO> alojamientosDTO = alojamientos.stream().map(p -> toAlojamientoDTO(p))
+				.collect(Collectors.toList());
+		
+		List<PrestacionDTO> prestaciones = Stream.concat(alimentacionesDTO.stream(), alojamientosDTO.stream()).collect(Collectors.toList());
 
 		ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
 		resolver.setTemplateMode("HTML5");
@@ -32,28 +37,28 @@ public class SerializadorFactura {
 		TemplateEngine templateEngine = new TemplateEngine();
 		templateEngine.setTemplateResolver(resolver);
 		Context context = new Context(locale);
-		context.setVariable("prestaciones", prestacionesDTO);
+		context.setVariable("prestaciones", prestaciones);
 		String html = templateEngine.process("factura", context);
 
 		return html;
 	}
 
-	private PrestacionDTO toDTO(PrestacionConId prestacion) {
-		
-		PrestacionDTO prestacionDTO = new PrestacionDTO(prestacion.getFechaEntrada(), prestacion.getFechaSalida(), prestacion.getMascota(),
-				hostFront + "/prestaciones/" + prestacion.getId());
-		if (prestacion.getClass().getSimpleName().equals("AlimentacionConId")) {
-			prestacionDTO.tipo = "Alimentacion";
-			prestacionDTO.jaula = "";
-			
-		} else {
-			prestacionDTO.tipo = "Alojamiento";
-			prestacionDTO.tipoComida = "";
-			prestacionDTO.cantidadComidaDiaria = 0;
-		}
-		return prestacionDTO;
- 	}
-	
+	private PrestacionDTO toAlimentacionDTO(AlimentacionConId alimentacion) {
 
+		AlimentacionDTO alimentacionDTO = new AlimentacionDTO(alimentacion.getFechaEntrada(),
+				alimentacion.getFechaSalida(), alimentacion.getTipoComida(), alimentacion.getCantidadComidaDiaria(),
+				alimentacion.getMascota(), hostFront + "/prestaciones/" + alimentacion.getId());
+		alimentacionDTO.tipo = "Alimentacion";
+		return alimentacionDTO;
+	}
+	
+	private PrestacionDTO toAlojamientoDTO(AlojamientoConId alojamiento) {
+		AlojamientoDTO alojamientoDTO = new AlojamientoDTO(alojamiento.getFechaEntrada(),alojamiento.getFechaSalida(),
+				alojamiento.getJaula(), alojamiento.getMascota(), hostFront + "/prestaciones/" + alojamiento.getId());
+		alojamientoDTO.tipo = "Alojamiento";
+		
+		return alojamientoDTO;
+		
+	}
 
 }
