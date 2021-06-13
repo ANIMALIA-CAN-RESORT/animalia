@@ -3,8 +3,6 @@ package es.puentes.residenciaanimalesapi;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +15,8 @@ import org.springframework.context.annotation.ImportResource;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import es.puentes.descargarMascotas.Descarga;
 import es.puentes.entidades.ClienteConId;
 import es.puentes.entidades.MascotaConId;
-import es.puentes.facturas.Descargar;
 import es.puentes.repositorios.ClienteDAO;
 import es.puentes.repositorios.MascotaDAO;
 import es.puentes.rest.ConfiguracionRest;
@@ -50,10 +46,6 @@ public class ResidenciaanimalesapiApplication {
 //				List<MascotaConId> mascotas = mascotaDAO.findAll();
 //				mascotas.stream().map(MascotaConId::toString).forEach(log::trace);
 		
-		Descargar descarga = new Descargar();
-
-//		descarga.generarFacturas();
-
 	}
 
 	static void cargarClientesDesdeArchivo(String ruta, ObjectMapper mapper, ClienteDAO clienteDAO) {

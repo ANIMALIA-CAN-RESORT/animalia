@@ -104,6 +104,7 @@ export class PrestacionesComponent implements OnInit {
 
   generarFactura() {
     this.prestacionService.generarFacturaDeMascota(this.mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
+    this.router.navigate(['/']);
   }
 
   getPrecioFactura(): void {

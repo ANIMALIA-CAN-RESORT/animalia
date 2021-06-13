@@ -21,6 +21,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'com.github.joseluispuentes82:residenciaAnimales-libreria:0.0.1'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'io.woo:htmltopdf:1.0.6'
     implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
 	//implementation project(':residenciaAnimales-libreria')

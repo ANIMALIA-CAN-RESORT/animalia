@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import es.puentes.repositorios.AlojamientoListener;
 import es.puentes.residencia.Alojamiento;

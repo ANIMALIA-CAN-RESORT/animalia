@@ -15,7 +15,6 @@ import es.puentes.entidades.MascotaConId;
 @Component
 public class SerializadorInforme {
 	
-	@Value("${mascotas.url-front}")
 	String hostFront;
 	
 	
