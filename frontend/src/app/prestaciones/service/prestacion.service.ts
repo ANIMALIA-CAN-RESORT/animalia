@@ -203,6 +203,10 @@ export class PrestacionService {
     return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones/no-pagadas/?page=0&size=1000`);
   }
 
+  generarFacturaDeMascota(mascota: Mascota): Observable<any> {
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/no-pagadas/factura`);
+  }
+
   getCliente(id: string): Observable<any> {
     return this.http.get<any>(`${this.host}mascotas/${id}/cliente/`);
   }

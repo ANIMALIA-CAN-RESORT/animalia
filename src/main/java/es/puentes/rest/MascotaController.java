@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import es.puentes.entidades.MascotaConId;
+import es.puentes.entidades.PrestacionConId;
+import es.puentes.facturas.Descargar;
 import es.puentes.repositorios.MascotaDAO;
 import es.puentes.residencia.Prestacion;
 
@@ -45,4 +48,17 @@ public class MascotaController {
 
 		return assembler.toCollectionModel(prestaciones);
 	}
+	
+	@GetMapping("/no-pagadas/factura")
+	@ResponseBody
+	public CollectionModel<PersistentEntityResource> generarFacturas(@PathVariable Long id,
+			PersistentEntityResourceAssembler assembler) {
+
+		List<PrestacionConId> prestaciones = Descargar.generarFacturas(id);
+		
+		return assembler.toCollectionModel(prestaciones);
+	}
+		
+		
+	
 }

@@ -5,6 +5,8 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import es.puentes.repositorios.AlojamientoListener;
 import es.puentes.residencia.Alojamiento;
 
@@ -14,6 +16,8 @@ import es.puentes.residencia.Alojamiento;
 public class AlojamientoConId extends PrestacionConId implements Alojamiento {
 
 	private String jaula;
+	
+//	@Value("${alojamiento.precio-dia}")
 	private final static float PRECIO_DIA = 15;
 	
 	public AlojamientoConId() {
