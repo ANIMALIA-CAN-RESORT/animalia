@@ -99,12 +99,12 @@ export class PrestacionesComponent implements OnInit {
     }
     this.precioFactura = 0;
     this.filtroMascota = true;
-
+    this.prestacionService.getCliente(this.mascota.id).subscribe((response) => this.mascota.cliente = this.prestacionService.mapearCliente(response));
   }
 
   generarFactura() {
     this.prestacionService.generarFacturaDeMascota(this.mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
-    alert("Se ha generado la factura y enviado el email con la factura de " + this.mascota.nombre);
+    alert("Se ha generado la factura de las prestaciones de " + this.mascota.nombre + " y se ha enviado a " + this.mascota.cliente.email);
     this.router.navigate(['/']);
   }
 
