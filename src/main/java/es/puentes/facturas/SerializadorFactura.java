@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import es.puentes.entidades.ClienteConId;
@@ -47,7 +48,7 @@ public class SerializadorFactura {
 		iva = dosDecimales.format(totalFactura *0.21f / 1.21f) + " €";
 		String totalFacturaString = totalFactura + " €";
 		ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-		resolver.setTemplateMode("HTML");
+		resolver.setTemplateMode(TemplateMode.HTML);
 		resolver.setSuffix(".html");
 		Locale locale = Locale.getDefault();
 		TemplateEngine templateEngine = new TemplateEngine();

@@ -51,8 +51,7 @@ th {
 		<div class="text-right">
 			<h4>NIT: A45684218F</h4>
 			<h4>
-				<span><strong>Factura: nº </strong><span
-					th:text="${numFactura}"></span></span>
+				<span><strong>Factura: nº </strong><span>16064137</span></span>
 			</h4>
 		</div>
 	</div>
@@ -63,22 +62,20 @@ th {
 	<div>
 		<div>
 			<h4>
-				Paseo del Espolón 23, Santo Domingo de la Calzada (La Rioja), <span
-					th:text="${hoy}"></span>
+				Paseo del Espolón 23, Santo Domingo de la Calzada (La Rioja), <span> 14 de Junio de 2021</span>
 			</h4>
 			<h4>
-				<b>Comprador:</b><span th:text="${cliente.getNombre()}"></span>&nbsp;<span
-					th:text="${cliente.getApellidos()}"></span>
+				<b>Comprador:</b><span>José Luis</span>&nbsp;<span>Puentes Alamos</span>
 			</h4>
 			<h4>
-				<b>DNI:</b><span th:text="${cliente.getDni().toUpperCase()}"></span>
+				<b>DNI:</b><span>72727277Z</span>
 			</h4>
 		</div>
 	</div>
 	<hr />
 	<div>
 		<h4>
-			<b>Mascota:</b><span th:text="${mascota.getNombre().toUpperCase()}"></span>
+			<b>Mascota:</b><span>TROIKA</span>
 		</h4>
 	</div>
 	<hr />
@@ -108,26 +105,27 @@ th {
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="text-center" th:each="prestacion : ${prestaciones}"
-				th:class="${prestacion}" th:object="${prestacion}">
-				<td th:text="${prestacion.tipo}">Tipo</td>
-				<td class="text-center" th:text="${prestacion.periodo}">Periodo</td>
-				<td class="text-center" th:text="${prestacion.precioDiaString}"><span>
-						€</span></td>
-				<td class="text-center"
-					th:text="${prestacion.precioPrestacionString}">Precio
-					Prestacion<span>€</span>
-				</td>
+			<tr class="es.puentes.facturas.PrestacionDTO@174b8411">
+				<td>Alimentacion</td>
+				<td class="text-center">2JUN2021 - 17JUN2021</td>
+				<td class="text-center">10.0 €</td>
+				<td class="text-center">150.0 €</td>
+			</tr>
+			<tr class="es.puentes.facturas.PrestacionDTO@59d3b31e">
+				<td>Alojamiento</td>
+				<td class="text-center">2JUN2021 - 17JUN2021</td>
+				<td class="text-center">15.0 €</td>
+				<td class="text-center">225.0 €</td>
 			</tr>
 		</tbody>
 	</table>
 	<hr />
 	<div class="text-right">
 		<h4>
-			<span><strong>IVA (21%): </strong><span th:text="${iva}"></span></span>
+			<span><strong>IVA (21%): </strong><span>65.08 €</span></span>
 		</h4>
 		<h4>
-			<span><strong>Precio Total: </strong><span th:text="${totalFactura}"></span></span>
+			<span><strong>Precio Total: </strong><span>375.0 €</span></span>
 		</h4>
 	</div>
 	<div>
