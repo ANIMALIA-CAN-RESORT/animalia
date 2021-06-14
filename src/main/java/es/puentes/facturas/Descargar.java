@@ -52,8 +52,8 @@ public class Descargar {
 			printerHtml.close();
 
 			String outputFolder = 
-//					System.getProperty("user.home") + File.separator + "Escritorio" + 
-			File.separator + "Factura_" + (1900 + hoy.getYear()) + mes + hoy.getDate() + "_" + prestaciones.get(0).getMascota().getCliente().getDni().toUpperCase() + "_" + prestaciones.get(0).getMascota().getNombre() + ".pdf";
+//					System.getProperty("user.home") + File.separator + "Escritorio" + File.separator + 
+					"Factura_" + (1900 + hoy.getYear()) + mes + hoy.getDate() + "_" + prestaciones.get(0).getMascota().getCliente().getDni().toUpperCase() + "_" + prestaciones.get(0).getMascota().getNombre() + ".pdf";
 			OutputStream outputStream = new FileOutputStream(outputFolder);
 
 			ITextRenderer renderer = new ITextRenderer();
@@ -70,8 +70,8 @@ public class Descargar {
 					"Buenos días " + prestaciones.get(0).getMascota().getCliente().getNombre()
 							+ ",<br><br> Le envíamos la factura de las prestaciones disfrutadas por "
 							+ prestaciones.get(0).getMascota().getNombre() + ".",
-//							System.getProperty("user.home") + File.separator + "Escritorio" + 
-							File.separator + "Factura_" + (1900 + hoy.getYear()) + mes + hoy.getDate() + "_" + prestaciones.get(0).getMascota().getCliente().getDni().toUpperCase() + "_" + prestaciones.get(0).getMascota().getNombre() + ".pdf");
+//							System.getProperty("user.home") + File.separator + "Escritorio" + File.separator + 
+							"Factura_" + (1900 + hoy.getYear()) + mes + hoy.getDate() + "_" + prestaciones.get(0).getMascota().getCliente().getDni().toUpperCase() + "_" + prestaciones.get(0).getMascota().getNombre() + ".pdf");
 			System.err.println("Factura enviada a " + prestaciones.get(0).getMascota().getCliente().getEmail());
 
 		} catch (Exception e) {

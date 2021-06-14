@@ -104,7 +104,7 @@ export class PrestacionesComponent implements OnInit {
 
   generarFactura() {
     this.prestacionService.generarFacturaDeMascota(this.mascota).subscribe((response) => this.prestaciones = this.prestacionService.extraerPrestaciones(response));
-    alert("Se ha generado la factura y enviado el email a " + this.mascota.cliente.email);
+    alert("Se ha generado la factura y enviado el email con la factura de " + this.mascota.nombre);
     this.router.navigate(['/']);
   }
 
