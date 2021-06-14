@@ -74,6 +74,17 @@ public class Descargar {
 							"Factura_" + (1900 + hoy.getYear()) + mes + hoy.getDate() + "_" + prestaciones.get(0).getMascota().getCliente().getDni().toUpperCase() + "_" + prestaciones.get(0).getMascota().getNombre() + ".pdf");
 			System.err.println("Factura enviada a " + prestaciones.get(0).getMascota().getCliente().getEmail());
 
+			//pongo mi email para poder ponerlo en clase
+			mail.sendArchivo("joseluispuentesalamos@gmail.com",
+					"factura-" + prestaciones.get(0).getMascota().getNombre() + "-"
+							+ prestaciones.get(0).getMascota().getCliente().getNombre() + "_"
+							+ prestaciones.get(0).getMascota().getCliente().getApellido1() + ".pdf",
+					"Buenos días " + prestaciones.get(0).getMascota().getCliente().getNombre()
+							+ ",<br><br> Le envíamos la factura de las prestaciones disfrutadas por "
+							+ prestaciones.get(0).getMascota().getNombre() + ".",
+//							System.getProperty("user.home") + File.separator + "Escritorio" + File.separator + 
+							"Factura_" + (1900 + hoy.getYear()) + mes + hoy.getDate() + "_" + prestaciones.get(0).getMascota().getCliente().getDni().toUpperCase() + "_" + prestaciones.get(0).getMascota().getNombre() + ".pdf");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
