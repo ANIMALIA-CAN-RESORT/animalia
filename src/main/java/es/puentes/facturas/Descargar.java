@@ -23,11 +23,11 @@ public class Descargar {
 	private static PrestacionDAO prestacionDAO;
 	private static MailService mail;
 
-	@Autowired
+//	@Autowired
 	static SerializadorFactura serializador;
 
-	@Value("${ruta.facturas}")
-	static String rutaFacturas = "/facturas/";
+//	@Value("${ruta.facturas}")
+	 String rutaFacturas = "/facturas/";
 
 	static Date hoy = new Date();
 	static String mes = (hoy.getMonth() + 1 < 10) ? "0" + (hoy.getMonth() + 1) : (hoy.getMonth() + 1) + "";

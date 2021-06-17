@@ -7,25 +7,37 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import es.puentes.repositorios.AlimentacionListener;
 import es.puentes.residencia.Alimentacion;
+import net.bytebuddy.asm.Advice.This;
 
 @Entity
 @EntityListeners(AlimentacionListener.class)
 @DiscriminatorValue("AM")
+@Component
 public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 
 	@Column(name="TIPO_COMIDA")
 	private String tipoComida;//será "NORMAL" o "PREMIUM
 	@Column(name="CANTIDAD_COMIDA_DIA")
 	private float cantidadComidaDiaria;//será multiplo de 50 gramos, en función de la talla de la mascota
-	private final static float PRECIO_NORMAL_CINCUENTA = 2.5f;
-	private final static float PRECIO_PREMIUM_CINCUENTA = 3.5f;
+	private static float precioNormalCincuenta = 2.5f;
+	private static float precioPremiumCincuenta = 3.5f;
 	
 	public AlimentacionConId() {
 		super();
 	}
 
+	@Autowired
+	public AlimentacionConId(@Qualifier("precioAlimentacionNormal") float precioNormalCincuenta, @Qualifier("precioAlimentacionPremium") float precioPremiumCincuenta) {
+		AlimentacionConId.precioNormalCincuenta = precioNormalCincuenta;
+		AlimentacionConId.precioPremiumCincuenta = precioPremiumCincuenta;
+	}	
+	
 	public String getTipoComida() {
 		return tipoComida;
 	}
@@ -44,11 +56,11 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 	}
 	
 	public static float getPrecioNormalCincuenta() {
-		return PRECIO_NORMAL_CINCUENTA;
+		return precioNormalCincuenta;
 	}
 	
 	public static float getPrecioPremiumCincuenta() {
-		return PRECIO_PREMIUM_CINCUENTA;
+		return precioPremiumCincuenta;
 	}
 
 	@Override

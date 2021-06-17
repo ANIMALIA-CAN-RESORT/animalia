@@ -18,10 +18,37 @@ import es.puentes.rest.MixIns;
 
 @Configuration
 @PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties",
-"classpath:config/mail.properties" })
+"classpath:config/mail.properties", "classpath:config/precios.properties" })
 @ComponentScan({"es.puentes"})
 public class ConfiguracionPorJava {
 
+	@Value("${alojamiento.precio-dia}")
+	private float precioDia;
+	
+	@Value("${alimentacion.precio-normal-cincuenta}")
+	private float precioNormalCincuenta;
+	
+	@Value("${alimentacion.precio-premium-cincuenta}")
+	private float precioPremiumCincuenta;
+	
+	@Bean("precioAlojamiento")
+	public float getPrecioDia() {
+
+		return precioDia;
+	}
+	
+	@Bean("precioAlimentacionNormal")
+	public float getPrecioNormalCincuenta() {
+
+		return precioNormalCincuenta;
+	}
+	
+	@Bean("precioAlimentacionPremium")
+	public float getPrecioPremiumCincuenta() {
+
+		return precioPremiumCincuenta;
+	}
+	
 	@Bean
 	public ObjectMapper getObjectMapper() {
 
