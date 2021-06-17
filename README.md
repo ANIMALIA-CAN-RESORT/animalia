@@ -5,7 +5,7 @@
 ### PREPRODUCCIÓN
 - Haga click [aquí](https://animalia-can-resort.netlify.app/) para acceder a la aplicación. 
 - Puede consultar la documentación accediendo a la [WIKI](https://git.institutomilitar.com/joseluispuentes82/residenciaanimales-api/wikis/home)
-- Para documentacion más especifica del FRONT, se puede consultar en la siguiente [URL](https://joseluispuentes82.github.io/).
+- Para documentacion más especifica del FRONT, se puede consultar en la siguiente [URL](https://joseluispuentes82.github.io/animalia-frontend-documentation/).
 
 ### DESARROLLO
 - Clone el repositorio
