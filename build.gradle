@@ -23,9 +23,13 @@ dependencies {
 	implementation 'com.github.joseluispuentes82:residenciaAnimales-libreria:0.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	//implementation 'io.woo:htmltopdf:1.0.6' //peta al desplegar en heroku por implicar 800 megas
-    implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
+	implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
     implementation 'org.xhtmlrenderer:flying-saucer-pdf:9.1.20'
-	//implementation project(':residenciaAnimales-libreria')
+    //para levantar la documentacion en swagger
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    //implementation project(':residenciaAnimales-libreria')
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
