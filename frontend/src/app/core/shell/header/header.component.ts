@@ -17,13 +17,12 @@ export class HeaderComponent implements OnInit {
   faUsersCog = faUsersCog;
   faDotCircle = faDotCircle;
   usuarios: Usuario [] = [];
-  // usuarios: Usuario [] = [{id: '1', nombre:'jose', password:'1234', tipo:'administrador'}, {id:'2', nombre:'jorge', password:'1234', tipo:'empleado'}];
-
   logged: boolean = false;
   admin: boolean = false;
   nombreUsuario: string ='';
   password: string = '';
   tipoUsuario: string = '';
+  static logged: boolean = false;
 
 
   constructor(private usuarioService: UsuarioService) { }
@@ -38,6 +37,7 @@ export class HeaderComponent implements OnInit {
       if (usuario.nombre === this.nombreUsuario) {
         if (usuario.password === this.password) {
           this.logged = true;
+          HeaderComponent.logged = true;
           this.tipoUsuario = (usuario.tipo === 'administrador') ? 'administrador' : 'empleado';
           this.admin = (usuario.tipo === 'administrador');
         }
@@ -48,6 +48,7 @@ export class HeaderComponent implements OnInit {
   cerrarSesion(): void {
     this.ngOnInit();
     this.logged = false;
+    HeaderComponent.logged = false;
     this.admin = false;
     this.nombreUsuario ='';
     this.password = '';

@@ -1,3 +1,4 @@
+<div *ngIf='logged'>
 <hr class='w-100'>
 <div class="row justify-content-end">
   <button class="btn btn-primary text-white" routerLink="/clientes/formulario">Nuevo Cliente</button>
@@ -14,7 +15,7 @@
 <div *ngFor="let cliente of clientes">
   <app-cliente [cliente]="cliente" (clienteSeleccionado)="verDatos($event)"></app-cliente>
 </div>
-
+</div>
 <!-- Modal cliente-->
 <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="datosCliente"
   aria-hidden="true">

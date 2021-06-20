@@ -1,3 +1,4 @@
+<div *ngIf='logged'>
 <hr class='w-100'>
 <div class="row justify-content-end">
   <button class="btn btn-primary text-white" routerLink="/administracion/formulario">Nuevo Usuario</button>
@@ -12,7 +13,7 @@
 <div *ngFor="let usuario of usuarios">
   <app-usuario [usuario]="usuario" (usuarioSeleccionado)="verDatos($event)"></app-usuario>
 </div>
-
+</div>
 <!-- Modal usuario-->
 <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="datosUsuario"
   aria-hidden="true">

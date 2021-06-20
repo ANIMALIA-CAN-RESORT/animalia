@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderComponent } from 'src/app/core/shell/header/header.component';
 import { Usuario } from '../models/usuario';
 import { UsuarioImpl } from '../models/usuario-impl';
 import { UsuarioService } from '../service/usuario.service';
@@ -13,6 +14,7 @@ import { UsuarioService } from '../service/usuario.service';
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuarioVerDatos: Usuario;
+  logged: boolean = HeaderComponent.logged;
 
   constructor(
     private usuarioService: UsuarioService,

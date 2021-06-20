@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBed, faBone, faEuroSign } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
+import { HeaderComponent } from 'src/app/core/shell/header/header.component';
 import { Mascota } from 'src/app/mascotas/models/mascota';
 import { Prestacion } from '../models/prestacion';
 import { PrestacionImpl } from '../models/prestacion-impl';
@@ -25,6 +26,7 @@ export class PrestacionesComponent implements OnInit {
   filtro: string;
   precioFactura:number = 0;
   filtroMascota: boolean = false;
+  logged: boolean = HeaderComponent.logged;
 
   constructor(
     private prestacionService: PrestacionService,
