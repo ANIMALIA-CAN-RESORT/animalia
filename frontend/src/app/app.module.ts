@@ -6,6 +6,8 @@ import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { CanActivateViaLoggingEmpleado } from './canActivateViaLoggingEmpleado';
+import { CanActivateViaLoggingAdministrador } from './canActivateViaLoggingAdministrador';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [CanActivateViaLoggingEmpleado, CanActivateViaLoggingAdministrador],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

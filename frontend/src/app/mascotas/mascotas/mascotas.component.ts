@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/clientes/models/cliente';
-import { HeaderComponent } from 'src/app/core/shell/header/header.component';
 import { Mascota } from '../models/mascota';
 import { MascotaImpl } from '../models/mascota-impl';
 import { MascotaService } from '../service/mascota.service';
@@ -16,7 +14,6 @@ import { MascotaService } from '../service/mascota.service';
 export class MascotasComponent implements OnInit {
   mascotas: Mascota[] = [];
   mascotaVerDatos: Mascota;
-  logged: boolean = HeaderComponent.logged;
 
   constructor(
     private mascotaService: MascotaService,

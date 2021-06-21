@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderComponent } from 'src/app/core/shell/header/header.component';
 import { Cliente } from '../models/cliente';
 import { ClienteImpl } from '../models/cliente-impl';
 import { ClienteService } from '../service/cliente.service';
@@ -14,7 +13,6 @@ import { ClienteService } from '../service/cliente.service';
 export class ClientesComponent implements OnInit {
   clientes: Cliente[] = [];
   clienteVerDatos: Cliente;
-  logged: boolean = HeaderComponent.logged;
 
   constructor(
     private clienteService: ClienteService,
