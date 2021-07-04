@@ -20,7 +20,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
-	implementation 'com.github.joseluispuentes82:residenciaAnimales-libreria:0.0.1'
+	implementation 'com.github.ANIMALIA-CAN-RESORT:residenciaAnimales-libreria:Tag'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	//implementation 'io.woo:htmltopdf:1.0.6' //peta al desplegar en heroku por implicar 800 megas
 	implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
