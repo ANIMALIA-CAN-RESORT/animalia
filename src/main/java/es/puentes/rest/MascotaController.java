@@ -9,17 +9,13 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import es.puentes.entidades.MascotaConId;
 import es.puentes.entidades.PrestacionConId;
 import es.puentes.facturas.Descargar;
 import es.puentes.repositorios.MascotaDAO;
-import es.puentes.residencia.Prestacion;
 
 @RepositoryRestController
-@RequestMapping(path = "/mascotas/{id}/prestaciones")
 @Configuration
 public class MascotaController {
 
@@ -29,27 +25,27 @@ public class MascotaController {
 		this.mascotaDAO = mascotaDAO;
 	}
 	
-	@GetMapping("/pagadas")
+	@GetMapping("/mascotas/{id}/prestaciones/pagadas")
 	@ResponseBody
 	public CollectionModel<PersistentEntityResource> getPrestacionesPagadasDeMascota(@PathVariable Long id,
 			PersistentEntityResourceAssembler assembler) {
 
-		List<Prestacion> prestaciones = mascotaDAO.getPrestacionesPagadasDeMascota(id);
+		List<PrestacionConId> prestaciones = mascotaDAO.getPrestacionesPagadasDeMascota(id);
 
 		return assembler.toCollectionModel(prestaciones);
 	}
 
-	@GetMapping("/no-pagadas")
+	@GetMapping("/mascotas/{id}/prestaciones/no-pagadas")
 	@ResponseBody
 	public CollectionModel<PersistentEntityResource> getPrestacionesNoPagadasDeMascota(@PathVariable Long id,
 			PersistentEntityResourceAssembler assembler) {
 
-		List<Prestacion> prestaciones = mascotaDAO.getPrestacionesNoPagadasDeMascota(id);
+		List<PrestacionConId> prestaciones = mascotaDAO.getPrestacionesNoPagadasDeMascota(id);
 
 		return assembler.toCollectionModel(prestaciones);
 	}
 	
-	@GetMapping("/no-pagadas/factura")
+	@GetMapping("/mascotas/{id}/prestaciones/no-pagadas/factura")
 	@ResponseBody
 	public CollectionModel<PersistentEntityResource> generarFacturas(@PathVariable Long id,
 			PersistentEntityResourceAssembler assembler) {

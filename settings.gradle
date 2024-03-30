@@ -1,3 +1,1 @@
-rootProject.name = 'residenciaAnimales-api'
-
-//includeFlat 'residenciaAnimales-libreria'
+rootProject.name = 'animalia'

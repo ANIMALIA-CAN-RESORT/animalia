@@ -14,7 +14,7 @@ export class UsuarioService {
 
 
   private host: string = environment.hostAnimalia;
-  private urlEndPoint: string = `${this.host}usuarios/`;
+  private urlEndPoint: string = `${this.host}usuarios`;
 
   constructor(
     private http: HttpClient) { }
@@ -58,7 +58,7 @@ export class UsuarioService {
   }
 
   delete(usuario): Observable<Usuario> {
-    return this.http.delete<Usuario>(`${this.urlEndPoint}${usuario.id}`)
+    return this.http.delete<Usuario>(`${this.urlEndPoint}/${usuario.id}`)
       .pipe(
         catchError((e) => {
           if (e.status === 405) {
@@ -71,7 +71,7 @@ export class UsuarioService {
 
   update(usuario: Usuario): Observable<any> {
     return this.http
-      .put<any>(`${this.urlEndPoint}${usuario.id}`, usuario)
+      .put<any>(`${this.urlEndPoint}/${usuario.id}`, usuario)
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -86,7 +86,7 @@ export class UsuarioService {
   }
 
   getUsuario(id): Observable<any> {
-    return this.http.get<Usuario>(`${this.urlEndPoint}${id}`).pipe(
+    return this.http.get<Usuario>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status !== 401 && e.error.mensaje) {
           console.error(e.error.mensaje);

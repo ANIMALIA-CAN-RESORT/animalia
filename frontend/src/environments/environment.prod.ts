@@ -1,6 +1,6 @@
 export const environment = {
-  appName: 'Angular Board PROD',
+  appName: 'Animalia PROD',
   production: true,
-  hostAnimalia: 'https://animalia1-zhn3i7bc.b4a.run/api/'
+  hostAnimalia: 'https://animalia2024-nckdcwxh.b4a.run/api/'
 
 };

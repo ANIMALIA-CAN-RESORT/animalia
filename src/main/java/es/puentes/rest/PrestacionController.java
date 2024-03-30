@@ -8,14 +8,12 @@ import org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.puentes.entidades.PrestacionConId;
 import es.puentes.repositorios.PrestacionDAO;
 
 @RepositoryRestController
-@RequestMapping(path = "/prestaciones")
 @Configuration
 public class PrestacionController {
 
@@ -25,7 +23,7 @@ public class PrestacionController {
 		this.prestacionDAO = prestacionDAO;
 	}
 
-	@GetMapping("/pagadas")
+	@GetMapping("/prestaciones/pagadas")
 	@ResponseBody
 	public CollectionModel<PersistentEntityResource> getPrestacionesPagadas(PersistentEntityResourceAssembler assembler) {
 
@@ -34,7 +32,7 @@ public class PrestacionController {
 		return assembler.toCollectionModel(prestaciones);
 	}
 
-	@GetMapping("/no-pagadas")
+	@GetMapping("/prestaciones/no-pagadas")
 	@ResponseBody
 	public CollectionModel<PersistentEntityResource> getPrestacionesNoPagadas(
 			PersistentEntityResourceAssembler assembler) {

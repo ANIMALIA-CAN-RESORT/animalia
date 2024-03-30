@@ -2,24 +2,22 @@ package es.puentes.entidades;
 
 import java.time.temporal.ChronoUnit;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import es.puentes.repositorios.AlimentacionListener;
-import es.puentes.residencia.Alimentacion;
-import net.bytebuddy.asm.Advice.This;
 
 @Entity
 @EntityListeners(AlimentacionListener.class)
 @DiscriminatorValue("AM")
 @Component
-public class AlimentacionConId extends PrestacionConId implements Alimentacion {
+public class AlimentacionConId extends PrestacionConId {
 
 	@Column(name="TIPO_COMIDA")
 	private String tipoComida;//será "NORMAL" o "PREMIUM
@@ -46,7 +44,6 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 		this.tipoComida = tipoComida;
 	}
 	
-	@Override
 	public float getCantidadComidaDiaria() {
 		return cantidadComidaDiaria;
 	}
@@ -63,7 +60,6 @@ public class AlimentacionConId extends PrestacionConId implements Alimentacion {
 		return precioPremiumCincuenta;
 	}
 
-	@Override
 	public float getCantidadComidaTotal() {
 		return getFechaEntrada().until(getFechaSalida(), ChronoUnit.DAYS) * getCantidadComidaDiaria();
 	}

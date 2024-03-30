@@ -1,6 +1,6 @@
 package es.puentes.facturas;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import es.puentes.servicios.MailService;
 

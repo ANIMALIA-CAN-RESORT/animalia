@@ -16,6 +16,6 @@ export class ClienteMascotasComponent implements OnInit {
  
     ngOnInit(): void {
       this.clienteService.getMascotasIdCliente(this.activateRoute.snapshot.params['id']).subscribe((response) => this.mascotas = this.clienteService.extraerMascotasCliente(response));
-
+    console.log(this.mascotas);
     }
 }

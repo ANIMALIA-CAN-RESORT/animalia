@@ -16,7 +16,7 @@ export class MascotaService {
 
 
   private host: string = environment.hostAnimalia;
-  private urlEndPoint: string = `${this.host}mascotas/`;
+  private urlEndPoint: string = `${this.host}mascotas`;
 
   constructor(
     private http: HttpClient) { }
@@ -61,7 +61,7 @@ export class MascotaService {
   }
 
   delete(mascota): Observable<Mascota> {
-    return this.http.delete<Mascota>(`${this.urlEndPoint}${mascota.id}`)
+    return this.http.delete<Mascota>(`${this.urlEndPoint}/${mascota.id}`)
       .pipe(
         catchError((e) => {
           if (e.status === 405) {
@@ -74,7 +74,7 @@ export class MascotaService {
 
   update(mascota: Mascota): Observable<any> {
     return this.http
-      .put<any>(`${this.urlEndPoint}${mascota.id}`, mascota)
+      .put<any>(`${this.urlEndPoint}/${mascota.id}`, mascota)
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -89,7 +89,7 @@ export class MascotaService {
   }
 
   getMascota(id): Observable<any> {
-    return this.http.get<Mascota>(`${this.urlEndPoint}${id}`).pipe(
+    return this.http.get<Mascota>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status !== 401 && e.error.mensaje) {
           console.error(e.error.mensaje);
@@ -100,7 +100,7 @@ export class MascotaService {
   }
 
   getClientes(): Observable<any> {
-    return this.http.get<any>(`${this.host}clientes/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}clientes?page=0&size=1000`);
   }
 
   extraerClientes(respuestaApi: any): Cliente[] {
@@ -126,18 +126,18 @@ export class MascotaService {
   }
 
   getCliente(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${mascota.id}/cliente/`);
+    return this.http.get<any>(`${this.urlEndPoint}/${mascota.id}/cliente`);
   }
 
   getMascotasDeCliente(cliente: Cliente): Observable<any> {
-    return this.http.get<any>(`${this.host}clientes/${cliente.id}/mascotas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}clientes/${cliente.id}/mascotas?page=0&size=1000`);
   }
 
   getPrestacionesIdMascota(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${id}/prestaciones/?page=0&size=1000`);
+    return this.http.get<any>(`${this.urlEndPoint}/${id}/prestaciones?page=0&size=1000`);
   }
   getPrestacionesMascota(mascota): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${mascota.id}/prestaciones/?page=0&size=1000`);
+    return this.http.get<any>(`${this.urlEndPoint}/${mascota.id}/prestaciones?page=0&size=1000`);
   }
 
   extraerPrestacionesMascota(respuestaApi: any): PrestacionImpl[] {

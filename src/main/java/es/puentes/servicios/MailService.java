@@ -1,6 +1,6 @@
 package es.puentes.servicios;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 public interface MailService {
 

@@ -17,7 +17,7 @@ import { PrestacionImpl } from '../models/prestacion-impl';
 export class PrestacionService {
 
   private host: string = environment.hostAnimalia;
-  private urlEndPoint: string = `${this.host}prestaciones/`;
+  private urlEndPoint: string = `${this.host}prestaciones`;
 
   constructor(
     private http: HttpClient) { }
@@ -59,7 +59,7 @@ export class PrestacionService {
   }
 
   createAlojamiento(prestacion: Prestacion): Observable<any> {
-    return this.http.post(`${this.host}alojamientos/`, prestacion).pipe(
+    return this.http.post(`${this.host}alojamientos`, prestacion).pipe(
       catchError((e) => {
         if (e.status === 400) {
           return throwError(e);
@@ -73,7 +73,7 @@ export class PrestacionService {
   }
 
   createAlimentacion(prestacion: Prestacion): Observable<any> {
-    return this.http.post(`${this.host}alimentaciones/`, prestacion).pipe(
+    return this.http.post(`${this.host}alimentaciones`, prestacion).pipe(
       catchError((e) => {
         if (e.status === 400) {
           return throwError(e);
@@ -112,7 +112,7 @@ export class PrestacionService {
 
   update(prestacion: Prestacion): Observable<any> {
     return this.http
-      .put<any>(`${this.urlEndPoint}${prestacion.id}`, prestacion)
+      .put<any>(`${this.urlEndPoint}/${prestacion.id}`, prestacion)
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -127,7 +127,7 @@ export class PrestacionService {
   }
 
   getPrestacion(id): Observable<any> {
-    return this.http.get<Prestacion>(`${this.urlEndPoint}${id}`).pipe(
+    return this.http.get<Prestacion>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status !== 401 && e.error.mensaje) {
           console.error(e.error.mensaje);
@@ -138,7 +138,7 @@ export class PrestacionService {
   }
 
   getMascotas(): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 mascotas. sino saldria solo la primera pagina
+    return this.http.get<any>(`${this.host}mascotas?page=0&size=1000`);//con lo ultimo le digo que me muestre 1000 mascotas. sino saldria solo la primera pagina
   }
 
   extraerMascotas(respuestaApi: any): Mascota[] {
@@ -161,7 +161,7 @@ export class PrestacionService {
   }
 
   getMascota(prestacion: Prestacion): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${prestacion.id}/mascota/`);
+    return this.http.get<any>(`${this.urlEndPoint}/${prestacion.id}/mascota`);
   }
 
   getMascotaId(id): Observable<any> {
@@ -176,31 +176,31 @@ export class PrestacionService {
   }
 
   getPrestacionesDeMascota(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones?page=0&size=1000`);
   }
 
   getPrestacionesIdMascota(id: string): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones?page=0&size=1000`);
   }
 
   getPrestacionesPagadas(): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}pagadas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.urlEndPoint}/pagadas?page=0&size=1000`);
   }
 
   getPrestacionesNoPagadas(): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}no-pagadas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.urlEndPoint}/no-pagadas?page=0&size=1000`);
   }
 
   getPrestacionesPagadasDeMascota(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/pagadas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/pagadas?page=0&size=1000`);
   }
 
   getPrestacionesNoPagadasDeMascota(mascota: Mascota): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/no-pagadas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}mascotas/${mascota.id}/prestaciones/no-pagadas?page=0&size=1000`);
   }
 
   getPrestacionesNoPagadasDeMascotaPorId(id: string): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones/no-pagadas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.host}mascotas/${id}/prestaciones/no-pagadas?page=0&size=1000`);
   }
 
   generarFacturaDeMascota(mascota: Mascota): Observable<any> {
@@ -208,7 +208,7 @@ export class PrestacionService {
   }
 
   getCliente(id: string): Observable<any> {
-    return this.http.get<any>(`${this.host}mascotas/${id}/cliente/`);
+    return this.http.get<any>(`${this.host}mascotas/${id}/cliente`);
   }
 
   mapearCliente(clienteApi: any): Cliente {

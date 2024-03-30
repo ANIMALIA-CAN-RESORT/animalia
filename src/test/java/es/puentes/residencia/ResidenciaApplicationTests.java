@@ -1,12 +1,13 @@
-package es.puentes.residenciaanimalesapi;
+package es.puentes.residencia;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ResidenciaanimalesapiApplicationTests {
+class ResidenciaApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
+
 }

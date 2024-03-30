@@ -1,24 +1,21 @@
 package es.puentes.entidades;
 
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import es.puentes.repositorios.AlojamientoListener;
-import es.puentes.residencia.Alojamiento;
-import net.bytebuddy.asm.Advice.This;
 
 @Entity
 @EntityListeners(AlojamientoListener.class)
 @DiscriminatorValue("AJ")
 @Component
-public class AlojamientoConId extends PrestacionConId implements Alojamiento {
+public class AlojamientoConId extends PrestacionConId {
 
 	private String jaula;
 	
@@ -33,7 +30,6 @@ public class AlojamientoConId extends PrestacionConId implements Alojamiento {
 		AlojamientoConId.precioDia = precioDia;
 	}
 	
-	@Override
 	public String getJaula() {
 		return jaula;
 	}

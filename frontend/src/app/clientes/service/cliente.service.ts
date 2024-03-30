@@ -14,16 +14,16 @@ export class ClienteService {
 
 
   private host: string = environment.hostAnimalia;
-  private urlEndPoint: string = `${this.host}clientes/`;
+  private urlEndPoint: string = `${this.host}clientes`;
 
   constructor(
     private http: HttpClient) { }
 
   getMascotasIdCliente(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${id}/mascotas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.urlEndPoint}/${id}/mascotas?page=0&size=1000`);
   }
   getMascotasCliente(cliente): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}${cliente.id}/mascotas/?page=0&size=1000`);
+    return this.http.get<any>(`${this.urlEndPoint}/${cliente.id}/mascotas?page=0&size=1000`);
   }
 
   extraerMascotasCliente(respuestaApi: any): any[] {
@@ -78,7 +78,7 @@ export class ClienteService {
   }
 
   delete(cliente): Observable<Cliente> {
-    return this.http.delete<Cliente>(`${this.urlEndPoint}${cliente.id}`)
+    return this.http.delete<Cliente>(`${this.urlEndPoint}/${cliente.id}`)
       .pipe(
         catchError((e) => {
           if (e.status === 405) {
@@ -91,7 +91,7 @@ export class ClienteService {
 
   update(cliente: Cliente): Observable<any> {
     return this.http
-      .put<any>(`${this.urlEndPoint}${cliente.id}`, cliente)
+      .put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente)
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -106,7 +106,7 @@ export class ClienteService {
   }
 
   getCliente(id): Observable<any> {
-    return this.http.get<Cliente>(`${this.urlEndPoint}${id}`).pipe(
+    return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status !== 401 && e.error.mensaje) {
           console.error(e.error.mensaje);
