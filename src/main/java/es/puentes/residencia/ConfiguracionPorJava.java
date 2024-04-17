@@ -28,17 +28,19 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
-@PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties",
-"classpath:config/mail.properties", "classpath:config/precios.properties"
-//, "config/passwordsBD.properties" 
+@PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties", 
+	"classpath:config/precios.properties", "classpath:config/gestionBBDD.properties", "classpath:config/mail.properties"
+//	, "classpath:config/passwords.properties" 
 })
-@ComponentScan({"es.puentes"})
 @EnableTransactionManagement
-@EnableJpaRepositories("${misRepositorios}")
+@EnableJpaRepositories({"${misRepositorios}", "es.puentes.security.usuarios"}) // leer valor de propiedades? pero solo para las entidades anotadas
+@ComponentScan({"es.puentes.rest", "es.puentes.security"}) // para que escanee los Controller y los servicios...
 public class ConfiguracionPorJava {
 
 	@Value("${misEntidades}")
 	String entidades;
+	@Value("${entidadSecurity}")
+	String entidadSecurity;
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env,
@@ -49,7 +51,7 @@ public class ConfiguracionPorJava {
 //	    JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter(); // O pedirlo como parametro y que haga el Autowired
 		em.setJpaVendorAdapter(vendorAdapter);
 
-		em.setPackagesToScan(entidades); // leer valor de propiedades? pero solo para las entidades anotadas
+		em.setPackagesToScan(entidades, entidadSecurity); // leer valor de propiedades? pero solo para las entidades anotadas
 		// em.setMappingResources("jpa/Usuario.orm.xml", "jpa/Cuaderno.orm.xml"); //para escanear archivos xml...
 		// leerValorDePropiedades?
 

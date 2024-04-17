@@ -4,7 +4,7 @@
 
 ### PREPRODUCCIÓN
 - Haga click [aquí](https://animalia-can-resort.netlify.app/) para acceder a la aplicación. 
-- Puede consultar la documentación accediendo a la [WIKI](https://github.com/ANIMALIA-CAN-RESORT/animalia-can-resort-wiki)
+- Puede consultar la documentación accediendo a la [WIKI](https://git.institutomilitar.com/joseluispuentes82/residenciaanimales-api/wikis/home)
 - Para documentacion más especifica del FRONT, se puede consultar en la siguiente [URL](https://animalia-can-resort.github.io/animalia-frontend-documentation/).
 
 ### DESARROLLO
@@ -16,10 +16,10 @@
 
     `npm start`
 
-- La APP de despliega en [servidor local](http://localhost:4270/) sobre BD H2 en entorno de desarrollo, y posteriormente en AIVENSQL. La API se despliega en Heroku.
+- La APP de despliega en [servidor local](http://localhost:4270/) sobre BD H2 en entorno de desarrollo, y posteriormente en ELEPHANTSQL. La API se despliega en Heroku.
 - Se recomienda el uso de Google Chrome o Firefox como navegador.
 
-*Nota: Se ha recurrido a HEROKU para desplegar la API y a AIVENSQL para la BBDD, desplegando la aplicación en Netlify (ya funcionando).*
+*Nota: Se ha recurrido a HEROKU para desplegar la API y a ELEPHANTSQL para la BBDD, desplegando la aplicación en Netlify (ya funcionando).*
 
 # ANIMALIA: Funcionalidades
 

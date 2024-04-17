@@ -13,7 +13,7 @@ import { ClienteImpl } from '../models/cliente-impl';
 export class ClienteService {
 
 
-  private host: string = environment.hostAnimalia;
+  private host: string = environment.urlHost;
   private urlEndPoint: string = `${this.host}clientes`;
 
   constructor(

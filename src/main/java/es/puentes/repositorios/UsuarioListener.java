@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import es.puentes.entidades.ClienteConId;
 import es.puentes.entidades.Usuario;
 
-@Component
+//@Component
 public class UsuarioListener {
 
 	private Logger log = LoggerFactory.getLogger(UsuarioListener.class);

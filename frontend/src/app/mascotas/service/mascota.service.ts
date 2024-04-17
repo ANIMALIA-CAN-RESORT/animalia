@@ -15,7 +15,7 @@ import { MascotaImpl } from '../models/mascota-impl';
 export class MascotaService {
 
 
-  private host: string = environment.hostAnimalia;
+  private host: string = environment.urlHost;
   private urlEndPoint: string = `${this.host}mascotas`;
 
   constructor(

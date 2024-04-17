@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CanActivateViaLoggingAdministrador } from './canActivateViaLoggingAdministrador';
-import { CanActivateViaLoggingEmpleado } from './canActivateViaLoggingEmpleado';
 import { NotFoundComponent } from './core/not-found/not-found.component'
+import { LoginComponent } from './auth/login/login.component';
+import { CanActivateViaLoggingUSER } from './canActivateViaLoggingUSER';
+import { CanActivateViaLoggingADMIN } from './canActivateViaLoggingADMIN';
+
 
 const routes: Routes = [
   {
@@ -12,23 +14,26 @@ const routes: Routes = [
   {
     path: 'clientes',
     loadChildren: () => import('./clientes/clientes.module').then(m => m.ClientesModule),
-    canActivateChild: [CanActivateViaLoggingEmpleado]
+    canActivateChild: [CanActivateViaLoggingUSER]
   },
   {
     path: 'mascotas',
     loadChildren: () => import('./mascotas/mascotas.module').then(m => m.MascotasModule),
-    canActivateChild: [CanActivateViaLoggingEmpleado]
+    canActivateChild: [CanActivateViaLoggingUSER]
   },
   {
     path: 'prestaciones',
     loadChildren: () => import('./prestaciones/prestaciones.module').then(m => m.PrestacionesModule),
-    canActivateChild: [CanActivateViaLoggingEmpleado]
+    canActivateChild: [CanActivateViaLoggingUSER]
   },
   {
     path: 'administracion',
-    loadChildren: () => import('./administracion/administracion.module').then(m => m.AdministracionModule),
-    canActivateChild: [CanActivateViaLoggingAdministrador]
-  }, 
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    , canActivateChild: [CanActivateViaLoggingADMIN]
+  },
+  {
+    path: 'iniciar-sesion',
+    component: LoginComponent  },
   {
     path: 'not-found',
     component: NotFoundComponent

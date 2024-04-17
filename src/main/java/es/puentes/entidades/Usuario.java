@@ -11,9 +11,9 @@ import jakarta.persistence.Table;
 import es.puentes.repositorios.UsuarioListener;
 
 
-@Entity
-@EntityListeners(UsuarioListener.class)
-@Table(name="USUARIOS")
+//@Entity
+//@EntityListeners(UsuarioListener.class)
+//@Table(name="USUARIOS")
 public class Usuario {
 
 	@Id

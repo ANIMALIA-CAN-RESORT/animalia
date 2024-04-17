@@ -15,6 +15,7 @@ export class PrestacionFichaComponent implements OnInit {
   @Output() prestacionEditar = new EventEmitter<PrestacionImpl>();
   jaulas: string[] = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"];
   mascota: MascotaImpl = new MascotaImpl();
+
   
   
   constructor(private prestacionService: PrestacionService) { }

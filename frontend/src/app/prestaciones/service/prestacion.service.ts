@@ -16,7 +16,7 @@ import { PrestacionImpl } from '../models/prestacion-impl';
 })
 export class PrestacionService {
 
-  private host: string = environment.hostAnimalia;
+  private host: string = environment.urlHost;
   private urlEndPoint: string = `${this.host}prestaciones`;
 
   constructor(

@@ -36,4 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 /logs
-src/main/resources/config/passwordsBD.properties
+src/main/resources/config/passwords.properties
