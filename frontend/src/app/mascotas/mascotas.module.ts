@@ -7,6 +7,7 @@ import { MascotaComponent } from './mascota/mascota.component';
 import { MascotaFichaComponent } from './mascotas/mascota-ficha/mascota-ficha.component';
 import { MascotaFormComponent } from './mascota-form/mascota-form.component';
 import { MascotaPrestacionesComponent } from './mascota-prestaciones/mascota-prestaciones.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MascotaPrestacionesComponent } from './mascota-prestaciones/mascota-pre
   imports: [
     CommonModule,
     MascotasRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class MascotasModule { }

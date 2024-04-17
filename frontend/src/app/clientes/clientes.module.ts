@@ -7,6 +7,7 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClienteFichaComponent } from './clientes/cliente-ficha/cliente-ficha.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ClienteMascotasComponent } from './cliente-mascotas/cliente-mascotas.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -16,7 +17,8 @@ import { ClienteMascotasComponent } from './cliente-mascotas/cliente-mascotas.co
   imports: [
     CommonModule,
     ClientesRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class ClientesModule { }

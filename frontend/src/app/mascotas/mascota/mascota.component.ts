@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ClienteImpl } from 'src/app/clientes/models/cliente-impl';
 import { Mascota } from '../models/mascota';
 import { MascotaService } from '../service/mascota.service';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-mascota',
@@ -10,6 +11,7 @@ import { MascotaService } from '../service/mascota.service';
   ]
 })
 export class MascotaComponent implements OnInit {
+  faEdit =faEdit;
   @Input() mascota: Mascota;
   @Output() mascotaSeleccionada = new EventEmitter<Mascota>();
 
