@@ -34,7 +34,7 @@ import jakarta.persistence.EntityManagerFactory;
 })
 @EnableTransactionManagement
 @EnableJpaRepositories({"${misRepositorios}", "es.puentes.security.usuarios"}) // leer valor de propiedades? pero solo para las entidades anotadas
-@ComponentScan({"es.puentes.rest", "es.puentes.security"}) // para que escanee los Controller y los servicios...
+@ComponentScan({"es.puentes.rest", "es.puentes.security", "es.puentes.facturas"}) // para que escanee los Controller y los servicios...
 public class ConfiguracionPorJava {
 
 	@Value("${misEntidades}")
