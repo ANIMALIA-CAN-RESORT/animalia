@@ -5,8 +5,8 @@
 export const environment = {
   appName: 'Animalia DEV',
   production: false,
-  urlHost:'http://localhost:8080/api/',
-  //urlHost: 'https://animalia-34bd91d51ead.herokuapp.com/api/'
+  //urlHost:'http://localhost:8080/api/',
+  urlHost: 'https://animalia-34bd91d51ead.herokuapp.com/api/'
 
 };
 
